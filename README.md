@@ -21,6 +21,7 @@ version.
 | [oni-flagship-mods](https://github.com/Salacious-Oni-Dev/oni-flagship-mods) | gameplay mods built only on that API, as working examples | MIT |
 | [oni-sim-visualizer](https://github.com/Salacious-Oni-Dev/oni-sim-visualizer) | a standalone viewer for the simulation's state, from a recording or a running game | MPL-2.0 |
 | [oni-dev-environment](https://github.com/Salacious-Oni-Dev/oni-dev-environment) | a debuggable development copy of the game, with its own data and Klei's debug tools working again | MIT |
+| [oni-sim-vanilla](https://github.com/Salacious-Oni-Dev/oni-sim-vanilla) | a plain `SimDLL.dll` that behaves like the game's own, with no extensions and every part documented; frozen, and not used by the SDK | MPL-2.0 |
 
 ## Guides
 
