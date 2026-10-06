@@ -62,11 +62,15 @@ scheduler that costs time even while the game is paused, and on further simulati
 - **Planetary Logistics (Mod 4).** Landing pads, cargo, storage and trade between colonies, built
   on the game's own rockets. Planned.
 - **Automation (Mod 5).** Programmable automation built on Stationeers' IC10 language, with
-  sensors and devices that read and drive the new simulation. Research done, no code yet.
+  sensors and devices that read and drive the new simulation. Built in private development; the
+  language and the chip work, the art does not, and it is not tied to a release.
 
 [What comes next](NEXT-ALPHA.md) has all of this in detail: how releases are planned and checked,
 everything Alpha 1 contains and its known limitations, the performance measurements, what each
 candidate gives players and modders, and the status of each future mod.
+
+Between releases, [In progress](NEXT-ALPHA.md#in-progress) gives a look at what is being worked
+on, including work that is still private.
 
 ## License
 

@@ -236,6 +236,235 @@ None of this is in Alpha 1.
   provably cannot change (on a settled test asteroid, heat conduction alone would fall by about
   half), and running the empty-cell pass only where something changed.
 
+## In progress
+
+Between releases, this section gives a look at what is being worked on. It is updated from time
+to time, not on a schedule, and it is replaced at each release by that release's notes. Most of
+what it describes is developed privately today and is intended to become public later. None of
+it can be downloaded yet unless it says so.
+
+Everything here is work in progress. Any of it can change, slip to a later release, or be
+dropped, and nothing on this page is a promise of a feature or a date.
+
+The automation buildings shown in the videos are wearing placeholder art. The final art is still
+being made, and none of what you see there is what ships.
+
+### Next release
+
+These are built in development and going through the checks every release has to pass. Each
+ships only if it passes them by the cut-off.
+
+**Simulation**
+
+- **More than one disease per cell**, when a mod switches it on, and **an odour field**: three
+  odour channels that move with the air, spread, fade and are saved with the world.
+- **Liquid depth pressure.** Liquids keep their real density, pressure rises with depth, and
+  connected bodies of liquid level out by pressure, including siphons. Off by default.
+- **Smoke.** Gas can carry airborne particulate that moves with it and settles out as a
+  deposit. The smoke system came from an idea by Kaz, in the Oxygen Not Included community
+  Discord.
+- **Gas mixture rooms** exchange heat with their walls and with liquid in them, stir between
+  neighbouring cells, and condense steam by its share of the air's pressure.
+- Small speed recoveries in several simulation passes, and fixes.
+
+**Mods**
+
+- **Fire.** Wood, peat, coal, natural gas, hydrogen and ethanol burn by what they are made of, and
+  a smoky, incomplete burn leaves soot. Methane, hydrogen and ethanol vapour ignite, spread and
+  burn out, with flames, light and haze, and water puts a gas fire out. A logic-driven Sparker
+  starts fires on purpose.
+- **A Campfire that really burns:** duplicants deliver fuel and light it, it draws oxygen from the
+  room and gives off carbon dioxide, steam, soot and heat, and it goes out when the fuel or the
+  air runs out or when it is drowned.
+- **A Fire Sprinkler** whose glass bulb bursts at a set temperature and sprays water on the fire
+  below, with stand-in art for now.
+- **Grime.** Duplicants get grimy, which slows them; showers clean them; grime smells, and other
+  duplicants react to it.
+- **A Hydrogen Generator** that burns hydrogen with oxygen into hot water.
+- **A Steam Room**, where a Sauna vents its steam into the sealed room around it.
+- **Mod 1's tanks and pumps** run on game time instead of screen frames, and keep the pipe line
+  they look after at one temperature along its length.
+- **A Mash Tun**, the first step toward fermentation and distillation: fruit splits into sugary
+  water and pulp. Nothing ferments yet.
+- **An Active Vent** that both empties a room into a pipe and fills it from one, switched by a
+  setting, with its one pipe connection changing direction to match. It moves air as a single
+  mixture and hands it to the pipe at the gas's own temperature.
+- **Balance changes**: the Electrolyzer draws more power, so splitting water and burning the
+  hydrogen again loses energy, and the Solar Panel makes up to twice the game's output.
+
+### Planned: developed privately
+
+This work lives only in private development repositories today. It is intended to become
+public later. None of it is downloadable now, and none of it is tied to a release.
+
+**Automation: an IC10 programmable chip**
+
+A fifth gameplay mod is being built privately: Stationeers' integrated-circuit automation, brought
+into ONI. A building called the IC Housing holds a program written in IC10, the language
+Stationeers uses, and runs it against the buildings plugged into its six sockets. The program
+reads values out of them and writes values back: switch a building on, move a slider, open a door.
+
+IC10 is an assembly language modelled on MIPS, and it reads like one: sixteen general registers,
+branches and jumps, and the MIPS mnemonics themselves — `add`, `sub`, `and`, `or`, `sll`, `slt`,
+`j`, `jal`, `jr` — with load and store pointed at devices rather than memory, and Stationeers'
+own device and batch instructions alongside them. Anyone who has written MIPS assembly already
+knows most of it, and a program written for Stationeers is a program that runs here.
+
+- **The language is there in full**, all 154 instructions, with a compiler and a runtime that are
+  checked by 2,497 automated tests.
+- **It is written and edited inside the game**, in a code editor that tells you whether the text
+  compiles and shows the reference line for the instruction you are typing, with the chip's
+  registers and sockets beside it.
+- **Devices are joined by a data cable** of its own, with a data overlay, cable bridges, and a
+  link tool for choosing which building answers on which socket. Alongside the housing there are
+  the small single-purpose logic units Stationeers has — reader, writer, math, compare, select,
+  min/max, batch readers, a PID controller — and memory, dial, switch, button and display bricks.
+- **It reads and drives the vanilla game**: temperature, pressure, power, battery charge, a
+  plant's growth, a fabricator's recipe, a door's state, and the automation inputs of the game's
+  own buildings.
+
+Two videos show it running. Both are recordings of the automated demonstrations that are run
+against the mod, so the numbers on screen are read out of the running game rather than typed in.
+
+**`ic10-airlock.mp4`** (1:36) — *Salacious Airlock v0.2*, a program written for Stationeers,
+running in ONI against ONI buildings. Two building names were changed for the port and nothing
+else; for the demonstration the program's waits are removed so it runs at a watchable speed. It
+cycles a real two-door airlock through an Active Vent that reverses its own pipe: the chamber is
+pumped down to vacuum, a suited duplicant walks out, and the same air — a nitrogen and oxygen
+mixture, not an abstraction — is pumped back in behind them, with each door held shut until the
+pressure is right and the mass accounted for at every step.
+
+**`ic10-life-support.mp4`** (3:25) — a program holding a sealed room habitable. It takes the room
+from 4.3% carbon dioxide down to about 0.1% and then holds it near 100 kPa, purging to space and
+refilling from an oxygen tank through Active Vents, deciding what to do from the gas sensors on
+its data network. The middle of the video runs at four times speed, labelled on screen; the
+beginning and the end are at the recorded speed.
+
+How early it is: the building art and the editor window are stand-ins, drawn to get the thing
+working, and will be redrawn before it is released. Only the first automation input of a building
+can be driven, buildings added by other mods after load cannot be driven at all, and the chip is
+not tied to a release. There is no date for it.
+
+**Multiplayer**
+
+Co-op multiplayer for one shared colony, built as lockstep: every player's PC runs the same
+simulation, and only the players' orders travel between them.
+
+**`multiplayer-lockstep.mp4`** (1:52) — two PCs on a network, side by side, playing one colony.
+Both panels are the same instant of simulation. The video follows a session from both main menus:
+one PC hosts its colony, the other joins it, the colony is sent across and both load it; the new
+player picks three duplicants of their own, and the two players dig a tunnel, build a generator
+and a lamp from the copper they mine, and lay half a wire each until the halves meet as one
+circuit. Each player's orders go only to their own duplicants, a coloured ring at a duplicant's
+feet shows whose it is, and a players view colours every duplicant, and the job it is doing, in
+its player's colour. A duplicant runs on the generator and the lamp lights on the same turn on
+both machines. The IN SYNC light on the bar beneath the panels is the two PCs' own agreement
+check: after every turn they compare a digest of the entire world, and it is green only while
+those digests match. The opening, from the menus to the first shared turn, plays at double speed
+and says so on screen.
+
+- **How it works.** The game advances in turns of one 200 ms simulation step. Orders are bundled
+  into a turn a few steps ahead, and every PC applies them on the same turn. Every few seconds
+  the PCs compare a digest of the colony; if they differ, everyone reloads the host's colony and
+  the difference is written to a log.
+- **What a player can do today:** dig, build, deconstruct, cancel and set priorities, pick from
+  the printing pod, and chat. Each player owns the duplicants they picked; when a player leaves,
+  their duplicants are stored, and they come back when the player does.
+- **Joining.** A host starts a server with its colony, with an optional password, and friends
+  join through a Steam invite or by IP address. When someone joins, every PC loads the same save
+  together. A player whose game build or mods differ from the host's is turned away, with the
+  differences listed.
+- **How early it is.** Building settings, research, schedules and skills are not sent between
+  PCs yet, so changing them in a shared colony puts the PCs out of step. Only small saves have
+  been tried. A server only starts on the game build it was tested on, with Spaced Out and no
+  other DLC content, on map layouts that have passed a test, and with no other mods enabled,
+  this SDK's mods included. It runs on its own copy of the game-identical simulation library
+  with a small addition for lockstep, so none of the new simulation features above are in it
+  yet. Most of the current work is finding the places where the game's own code depends on the
+  screen's frame rate instead of the simulation's clock, which is what lets two PCs drift apart.
+
+- **Why lockstep, and not copying the world from a host.** The other way to do this is state
+  synchronisation: one machine simulates, and it sends the resulting world to everyone else. That
+  is what the existing ONI multiplayer mods do, and it is the right choice for a mod that has to
+  treat the simulation as a black box. It costs bandwidth that grows with the colony, it makes the
+  host's machine the only truth, and it introduces a failure of its own — when the host sends the
+  *result* of an action as well as the action, an action that both machines also performed locally
+  can be applied twice, which is where duplicated items come from.
+
+  Lockstep avoids that by sending only the orders, never the results, and it is possible here for
+  one reason: this project does not mod the simulation from the outside, it replaces it. The
+  simulation library is ours, both machines run the same build of it, and its output is held to
+  being byte-identical by its own test suite — the same property that lets it stand in for the
+  game's own library is the property lockstep needs. Floating-point arithmetic is deterministic
+  when the same binary runs the same IEEE-754 operations in the same order; what is not
+  automatically safe is compiler contraction and the maths library's transcendental functions, and
+  those are build settings on a library we build. The parts of the game above the simulation are a
+  harder problem — collection order, work spread across threads, and random number generators
+  called at different times — and no claim is made here that they are all solved.
+
+  What is claimed is that disagreement is caught rather than hoped away. After every turn both
+  machines compare a digest of the entire world, so a divergence is found in the turn it happens
+  rather than minutes later as a colony that has quietly gone wrong, and the difference is written
+  to a log that says what differed. When one is found, every machine reloads the host's colony.
+  Desyncs do happen today; the work in progress is the hunt for the code that depends on the
+  screen's frame rate, which is the largest known source of them.
+
+**Performance**
+
+A performance mod is being measured and built, one change at a time, each behind its own switch
+in a test build. The combined mod does not exist yet.
+
+- On one small test save at normal speed, the frame rate went from about 55 to about 124 frames
+  a second with every change switched on, and at the fastest speed from about 34 to about 53.
+  All of that came from changes to the game's own code; the replacement simulation library on
+  its own made no difference to frame rate.
+- While paused with the camera still, a frame took about 3 ms.
+
+**Loading a very large colony**
+
+The work is measured against a publicly available save, [Euphoria 66 by
+texhex](https://github.com/texhex/Euphoria66) (Apache-2.0): a 384 x 672 asteroid of 66 duplicants
+at cycle 2,196, about 239,000 objects, 45 MB packed and about 823 MB unpacked. Its author built it
+in debug mode, spawning geysers and insta-building, as a deliberately no-limits colony, which is
+what makes it a good worst-case test. It is only ever loaded as a benchmark input: it is not
+redistributed, and it is in none of these repositories.
+
+Measured from the main menu to a running colony, on that save:
+
+| | menu to running |
+|---|---|
+| before | 449 s |
+| loading spread across frames | 126.3 s |
+| + a compiled save reader | 95 s |
+| + fewer repeated name lookups | 86.5 s |
+| + holding collection through the replay | about 83 s |
+
+That is about seven and a half minutes down to about a minute and a half, roughly five and a half
+times faster. Reading the save alone went from 22.6 to 10.1 seconds, and 3,513,389 pieces of save
+data were compared byte for byte against a normal load, with none differing. A further change
+starts off-screen objects after the loading screen closes; once everything has arrived, the colony
+is identical to a normal load.
+
+**Garbage-collection stutter**
+
+Part of the stutter ONI shows every so often is the game's memory collector stopping everything
+while it works. This is a separate piece of work, in two parts, and neither needs the replacement
+simulation library.
+
+- **A rebuilt runtime.** The game's own runtime, rebuilt from Unity's public source with the
+  collector marking memory on several threads at once. On a large test save, the pause of a
+  collection fell from about 220 ms to about 42 ms, and it passed a two-hour run of saves and
+  loads with no errors. It replaces a file the game ships, so it needs the same kind of checked
+  install and restore as the simulation library.
+- **A timing mod.** It runs a collection when the game's window loses focus, so a collection
+  that would have landed in play lands while nobody is looking. Collecting on pause was also
+  built and measured; it took no collections out of play, so it is off by default.
+
+### Direction
+
+The long-term plan, five gameplay mods in three flagship releases, is unchanged and is described
+under [Further out](#further-out) below.
+
 ## Candidates for the next alpha
 
 Expected about four weeks after Alpha 1. These are candidates; each ships only if it has passed
