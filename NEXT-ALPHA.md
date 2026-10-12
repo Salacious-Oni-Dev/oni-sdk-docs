@@ -1,29 +1,173 @@
 # What comes next
 
-This page says what Alpha 1 of the Oxygen Not Included simulation SDK is, what it does not do yet,
-what the next releases are expected to bring, and how releases work. Everything below the Alpha 1
+*Oxygen Not Included: now with actual reasons for the oxygen to be not included.*
+
+This page says what Alpha 2 of the Oxygen Not Included simulation SDK is, what it does not do yet,
+what is being built for later releases, and how releases work. Everything below the Alpha 2
 sections is a plan, not a promise: scope moves to fit the release date, and anything not ready
 waits for the following release.
 
+## Alpha 3 (in development)
+
+Alpha 3 is the next release. What it carries is decided at its cut-off (see
+[How releases work](#how-releases-work)); everything in this section is a plan, not a promise, and
+anything not ready moves to a later release.
+
+**Built, in the preview videos** (see [Preview](#preview)); candidates, not commitments:
+
+- Planetary Logistics (Mod 4): a first trade route between planets.
+- A chlor-alkali cell, the first of the chemistry work.
+- Navigator, an in-game reference for the elements and substances.
+- Building art that reloads into a running game, planned for its own repository, `oni-livedev`;
+  a first step towards an in-game kanim editor (see [Preview](#preview)).
+
+**In development:**
+
+- Multiplayer: lockstep co-op, with prediction and rollback.
+- Performance: more of the game's own per-frame code, continuing the performance mod released
+  alongside Alpha 2.
+
+**Scoped, not started:**
+
+- The part of the API that runs on the game's own simulation, `OniFramework.Library`, moves to its
+  own repository.
+- An audit of every place the simulation library empties or rewrites a cell, following the dig fix
+  in Alpha 1.1.
+- Two further simulation speed changes (see [What is being worked on](#what-is-being-worked-on)).
+
+## Alpha 2
+
+Alpha 2 adds to everything in Alpha 1; no Alpha 1 interface is removed or changed.
+
+| repository | in Alpha 2 |
+|---|---|
+| [oni-sim-replacement](https://github.com/Salacious-Oni-Dev/oni-sim-replacement) | library version 0.2: liquid depth pressure, several diseases per cell, an odour field, airborne particulate (smoke), condensation, heat exchange and stirring in gas-mixture rooms, an ignition event stream, two new save-format versions, and the dig fix from Alpha 1.1 |
+| [oni-framework-api](https://github.com/Salacious-Oni-Dev/oni-framework-api) | API level 0.2: combustion and gas fires with their visuals, particulate, multi-disease and odour, hydrostatics, falling-liquid heat exchange, custom room types, building claims, reversible pipe ports, pipe flow direction, a determinism digest, and more |
+| [oni-flagship-mods](https://github.com/Salacious-Oni-Dev/oni-flagship-mods) | Mod 1 gains the Active Vent, the Steam Room, germs that travel through pipes, and flow arrows; Mod 2 gains fire, the Campfire, Sparker, Fire Sprinkler and Mash Tun, Soot, hygiene, and a rebuilt Hydrogen Generator; and a new mod, Mod 5 (Automation / IC10): Stationeers' IC10 programmable chips reading and driving the game's own buildings, with AI placeholder art |
+| [oni-sim-visualizer](https://github.com/Salacious-Oni-Dev/oni-sim-visualizer) | a standalone viewer for the simulation's state, from a recording or a running game |
+| [oni-dev-environment](https://github.com/Salacious-Oni-Dev/oni-dev-environment) | a debuggable development copy of the game |
+| [oni-sdk-docs](https://github.com/Salacious-Oni-Dev/oni-sdk-docs) | the guides that cover the SDK as a whole, this page, and [Art wanted](ART-WANTED.md) |
+
+Each repository's `CHANGELOG.md` lists the release in full.
+
+**Alongside the SDK.** Two performance mods are released at the same time under
+[Salacious-Oni-Mods](https://github.com/Salacious-Oni-Mods). They do not need the SDK, and the
+SDK does not need them:
+
+- **oni-perf-mod:** frame-time fixes to the game's own code, and faster loading of large colonies.
+  Its fast loader ships switched off; see its README for what it does, and for the three files
+  that are not under the MIT licence.
+- **oni-gc-runtime:** a garbage-collection timing mod and a rebuilt runtime that shortens the
+  pause of a collection.
+
+### Mod 5, Automation / IC10
+
+New in Alpha 2, the first release of the third flagship: Stationeers' IC10 language in the game,
+all 154 instructions, written and edited in an in-game editor, with chips and logic units that
+read and drive the game's own buildings over a data cable. See its
+[README](https://github.com/Salacious-Oni-Dev/oni-flagship-mods/tree/main/mod5-automation-ic10).
+Its interpreter follows Stationeers' own closely and is not under the MIT licence; it will be
+rewritten later (see that repository's NOTICE). Its building art is AI placeholder art.
+
+**`ic10-in-game.mp4`** (3:29), attached to the
+[Alpha 2 release](https://github.com/Salacious-Oni-Dev/oni-sdk-docs/releases/tag/v0.1.0-alpha.2):
+a test world of the automation buildings, checked live: the chips run their programs against the
+buildings on their data network, and the editor and device windows are opened and checked. One
+known issue shows in the run, in how a solar panel's maximum output is read (see Known
+limitations).
+
+### Also in Alpha 2
+
+- **Bottle and canister emptiers start at once.** An emptier that is placed or loaded already
+  holding something starts emptying it, instead of waiting for another delivery. This changes
+  the game's own behaviour for every game with the framework.
+- **Fixed:** every liquid pipe line read "Critical Vaporization" in its tooltip.
+- The smoke system came from an idea by Kaz, in the Oxygen Not Included community Discord.
+
+## Known limitations of Alpha 2
+
+Alpha 2 is an alpha. These are the things it does not do yet, or does only roughly, so that
+testers know what to expect.
+
+**Platform and installation**
+
+- **Windows only.** The simulation library is a Windows x64 DLL, so the SDK needs the game's
+  Windows version. On any other platform the framework leaves the game's own library in use, and
+  Mods 1 and 2 cannot do their work.
+- **One game build.** Alpha 2 supports game build 744825 only. On any other build the framework
+  and the installer leave the game's own library in place.
+- **A game update puts the game's own library back.** Install again only with a release that
+  lists the new build. See
+  [After a game update](guides/installing.md#after-a-game-update).
+- **The first acceptance restarts the game once** when Mod 1 is enabled, because the game has
+  already loaded its own library by the time the consent dialog appears.
+- **Build version, not release number.** The watermark, `FrameworkVersion` and `SimVersion` show
+  a build version; the release is the tag. See [Compatibility](guides/compatibility.md).
+
+**Saves**
+
+- **A world in which a mod stored extension data is saved in a newer format,** which the game's
+  own library is not built to read. Alpha 2 adds two newer versions, for cells with several
+  diseases and for cells holding carried heat. Keep a copy of saves before removing the SDK, and
+  keep the framework enabled for those saves.
+
+**Simulation and gameplay**
+
+- **Several diseases per cell is off unless a mod switches it on,** and no flagship mod does yet.
+  With it off, two diseases that meet still destroy one another, as in the game itself.
+- **Liquid depth pressure is off by default.** Mod 1 switches it on only when the game is started
+  with `--mod1-hydrostatics`. Sealed tanks and a dedicated API for siphons are later stages.
+- **The odour field has little gameplay yet.** Grime in Mod 2 smells; nothing else in the game
+  emits odour.
+- **Stand-in art.** The Active Vent, Sparker, Fire Sprinkler and Mash Tun wear a vanilla building's
+  animation until their own art is made ([Art wanted](ART-WANTED.md)). Mod 5's buildings wear AI
+  placeholder art, to be replaced.
+- **Balance is not final.** Mod 1 and Mod 2 are demonstrations of what the simulation can do. Their
+  numbers, and how hard they make a colony, can change between releases.
+- **No planet or logistics yet.** Those are the second flagship ([Preview](#preview) and
+  [Further out](#further-out) below), and neither is in Alpha 2. Programmable automation, the
+  third flagship, is new in Alpha 2 as Mod 5.
+- **Mod 5 and the Solar Panel.** With Mod 2 installed, a chip reads a Solar Panel's `Maximum` as
+  half of the panel's real rating. A fix is planned.
+- **Mod 5 drives only a building's first automation input,** and the IC Memory and IC Sorter have
+  no player controls of their own yet; a program sets them.
+
+**Compatibility with other mods**
+
+- **Mods that replace the simulation library, or that load it before the framework,** stop the
+  framework from providing it; the game's own library is then used for that session. Keep the
+  framework at the top of the mod list.
+- **Mods that patch the Electrolyzer or the Hydrogen Generator** have those patches set aside
+  while Mod 2 is enabled, because Mod 2 rebuilds both buildings. Each removal is written to the
+  log.
+- **FastTrack,** the widely used community performance mod, has been run alongside the framework
+  and Mods 1 and 2 without errors. It replaces the code path Mod 1 uses to draw its overlays,
+  though, and whether Mod 1's overlays still update under it has not been checked yet.
+
+**Development tooling**
+
+- **Development only:** the debug servers have no authentication. Start them only on a trusted
+  network. See [the full note](guides/simviz.md).
+
 ## How releases work
 
-Releases run on a fixed schedule, about every four weeks after Alpha 1. **The date is fixed; the
-scope moves.** Each release ships what has passed its checks by that release's cut-off, and nothing
-holds a release back for a feature that is late. A late feature moves to the next release.
+Releases follow a regular cadence, currently a trial of about ten days between releases. Each
+release ships what has passed its checks by its cut-off; anything late moves to the next one.
+**The scope moves, not the cut-off:** nothing holds a release back for a feature that is late.
+The interval itself is still on trial, so it is not a promise.
 
-Every release has one version number (`0.1.0-alpha.1`, then `0.1.0-alpha.2`, and so on),
-tagged in every repository. The [Compatibility](guides/compatibility.md) guide covers numbering,
-supported game builds and what a game update means. Each repository's `CHANGELOG.md` records what
-changed.
+Every release has one version number (`0.1.0-alpha.1`, `0.1.0-alpha.2`, and so on), tagged in
+every repository. The [Compatibility](guides/compatibility.md) guide covers numbering, supported
+game builds and what a game update means. Each repository's `CHANGELOG.md` records what changed.
 
 ### Cut-offs
 
-- **Scope freeze.** About a week before each release, scope is frozen. Only work that is in the
+- **Scope freeze.** A few days before each release, scope is frozen. Only work that is in the
   development repositories by then can ship; nothing is added to a release after its freeze.
-- **The last week is for fixes.** Inside the week before a release, the only work done for it is
-  fixing problems that would stop it shipping.
-- **New work starts early.** New features start only in the first half of a four-week cycle.
-  Anything proposed later is planned for the release after.
+- **After the freeze, only fixes.** Between the freeze and the release, the only work done for
+  it is fixing problems that would stop it shipping.
+- **New work starts early.** New features start only in the first part of a cycle. Anything
+  proposed later is planned for the release after.
 
 ### How a candidate is checked before it ships
 
@@ -33,7 +177,10 @@ A change to the simulation library has to pass, at the freeze:
   the game's own `SimDLL.dll` and through the replacement, and the output must match exactly.
   This is what makes "behaves like the game until a mod uses its extensions" a checked claim
   rather than a hope. A feature that changes behaviour ships off by default or opt-in, so that
-  with it off the comparison still matches.
+  with it off the comparison still matches. Alpha 2 makes one exception, and names it: liquid
+  that the game's library deleted when a cell turned into a falling drop is now kept. The
+  `FlowKeepInflow` setting at 0 restores the game's arithmetic (see the
+  [library's changelog](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/main/CHANGELOG.md)).
 - **The offline suites.** White-box tests of the simulation's kernels, the extension surface and
   the save format, plus fixed-world checks whose cell counts and state digests are recorded and
   must not move unless a change means them to.
@@ -41,13 +188,15 @@ A change to the simulation library has to pass, at the freeze:
   on worlds that have been left to settle first, for any change that could affect speed. It is
   not yet an automatic gate.
 - **Live runs in the game.** Scripted test scenarios run in a real game with the SDK installed,
-  each ending in a pass or fail verdict. The showcase videos in
-  [oni-flagship-mods](https://github.com/Salacious-Oni-Dev/oni-flagship-mods) are recordings of
-  such runs. A failure is investigated before the release, and is either fixed or listed as a
-  known issue.
+  each ending in a pass or fail verdict. The showcase videos are recordings of such runs. A
+  failure is investigated before the release, and is either fixed or listed as a known issue.
 - **An install test.** A fresh copy of each repository is built from source, installed, played
   and removed again, and the game's own library must be back in place afterwards.
 - **A wording and content check** on everything that goes into a public repository.
+
+These checks run in the development repositories before every release. The public repositories
+have no automated checks of their own yet; the bit-exact comparison needs the game's own library,
+so it could not run on a public build server in any case.
 
 ### How fixes are picked
 
@@ -67,95 +216,29 @@ enabled mods and `Player.log` can usually be reproduced; one without them often 
 suggested in an issue is ported into the development repositories by hand, and reaches the
 public ones at the next release.
 
-## Alpha 1
+### Suggesting an idea
 
-Alpha 1 is an SDK: a replacement simulation library, the API mods call, the first gameplay mods
-built on it, and the tools to inspect and develop against it.
+Have an idea for the simulation, the API or one of the mods? Open an
+[idea request](https://github.com/Salacious-Oni-Dev/oni-sdk-docs/issues/new?template=idea-request.yml)
+on this repository. Check the open requests first: someone may already have asked for it. Say what
+should happen in the game, why it would make the game better, and which part it touches if you
+know. Every request is read. An idea that is taken up goes into planning and is credited by name
+in the release notes, unless you would rather not be named.
 
-| repository | in Alpha 1 |
-|---|---|
-| [oni-sim-replacement](https://github.com/Salacious-Oni-Dev/oni-sim-replacement) | the replacement `SimDLL.dll`, behaving like the game's own library until a mod uses its extensions: gas mixtures, per-cell properties, per-element attributes, event streams, conduit runs, a grid raycast, mass and energy ledgers |
-| [oni-framework-api](https://github.com/Salacious-Oni-Dev/oni-framework-api) | the `OniFramework` mod: the managed API, and delivery of the simulation library with the player's consent |
-| [oni-flagship-mods](https://github.com/Salacious-Oni-Dev/oni-flagship-mods) | Mod 1, Physical Thermodynamics + Fluid Dynamics, and Mod 2, Matter / Environmental Physics |
-| [oni-sim-visualizer](https://github.com/Salacious-Oni-Dev/oni-sim-visualizer) | a standalone viewer for the simulation's state, from a recording or a running game |
-| [oni-dev-environment](https://github.com/Salacious-Oni-Dev/oni-dev-environment) | a debuggable development copy of the game |
-| [oni-sdk-docs](https://github.com/Salacious-Oni-Dev/oni-sdk-docs) | the guides that cover the SDK as a whole |
-
-### Also in Alpha 1
-
-- **Small heat payments land in full.** The game applies each heat payment to a cell as one
-  temperature step, so a payment that is small next to the cell's heat capacity comes out a
-  little too large or too small, the same way every time. An optional setting keeps each cell's
-  remainder for its next payment. It is off by default, which is the game's own arithmetic, and
-  Mod 1 switches it on.
-- **Mixed-gas temperatures conserve energy.** When gas is added to a cell that holds a mixture,
-  the new temperature is blended by heat capacity rather than by mass. This matters only to
-  mods that use gas mixtures.
-
-## Known limitations of Alpha 1
-
-Alpha 1 is an alpha. These are the things it does not do yet, or does only roughly, so that
-testers know what to expect.
-
-**Platform and installation**
-
-- **Windows only.** The simulation library is a Windows x64 DLL, so the SDK needs the game's
-  Windows version. On any other platform the framework leaves the game's own library in use, and
-  Mods 1 and 2 cannot do their work.
-- **One game build.** Alpha 1 supports game build 744825 only. On any other build the framework
-  and the installer leave the game's own library in place.
-- **A game update puts the game's own library back.** Install again only with a release that
-  lists the new build. See
-  [After a game update](guides/installing.md#after-a-game-update).
-- **The first acceptance restarts the game once** when Mod 1 is enabled, because the game has
-  already loaded its own library by the time the consent dialog appears.
-- **Build version, not release number.** The watermark, `FrameworkVersion` and `SimVersion` show
-  a build version (`0.1.<n>+<commit>`); the release is the tag. See
-  [Compatibility](guides/compatibility.md).
-
-**Saves**
-
-- **A world in which a mod stored extension data is saved in a newer format,** which the game's
-  own library is not built to read. Keep a copy of saves before removing the SDK, and keep the
-  framework enabled for those saves.
-
-**Simulation and gameplay**
-
-- **A cell still holds one disease.** When two diseases meet, one is destroyed, as in the game
-  itself. Keeping several is a candidate for the next alpha (below).
-- **Disease is not carried through pipe equalisation** in Mod 1's pipes.
-- **Liquids behave as in the game:** a deeper cell simply holds more mass, and there is no
-  pressure that rises with depth. Depth pressure is a candidate for the next alpha (below).
-- **Gases far above their critical point.** Mod 1's pipes treat condensation by a vapour-pressure
-  curve. A gas pipe held at very high pressure can report a condensation temperature above the
-  gas's critical point, where no liquid should form. A fix to the model is planned.
-- **Balance is not final.** Mod 1 and Mod 2 are demonstrations of what the simulation can do. Their
-  numbers, and how hard they make a colony, can change between releases.
-- **No planet, logistics or programmable automation yet.** Those are the second and third
-  flagships (below), and none of them is in Alpha 1.
-
-**Compatibility with other mods**
-
-- **Mods that replace the simulation library, or that load it before the framework,** stop the
-  framework from providing it; the game's own library is then used for that session. Keep the
-  framework at the top of the mod list.
-- **FastTrack,** the widely used community performance mod, has been run alongside the framework
-  and Mods 1 and 2 without errors. It replaces the code path Mod 1 uses to draw its overlays,
-  though, and whether Mod 1's overlays still update under it has not been checked yet.
-
-**Development tooling**
-
-- **The debug servers have no authentication.** The framework's debug server, which Mod 1 starts
-  with `--oni-debug-inspector` and the visualizer attaches to, listens on every network interface.
-  Use it only on a machine and network you trust, and only while you use it. The development copy
-  of the game has the same caveat for its debugger.
+Ideas are not promises: anything accepted lands in the release whose cut-off it makes. Artists:
+[Art wanted](ART-WANTED.md) lists the building animations that are needed.
 
 ## Performance
 
-### What Alpha 1 already gains
+### What the SDK already gains
 
-Every number here was measured on a development machine, on the conditions given. They show the
-size of each change; they are not a promise about any particular colony or computer.
+None of these numbers compares Alpha 2 with Alpha 1, and none compares the whole SDK with the
+unmodified game. Most are a before-and-after of one change, made before Alpha 1 and still in
+Alpha 2: the same code just before the change against just after it, on the same test world and
+the same development machine; the rest give what one part of a frame costs. The simulation-library numbers come from the library's own offline benchmark on
+test grids, except where a bullet names a test save in the game; where a bullet measures against the
+game's own library, it says so. They show the size of each change; they are not a promise about any
+particular colony or computer.
 
 **In the simulation library**
 
@@ -167,17 +250,12 @@ size of each change; they are not a promise about any particular colony or compu
   about 0.5 to 0.6 ms per simulation tick, 2.7 % of its frame; the rest of the simulation's work
   is hidden on the worker.
 - **Compiler optimisation and a baseline instruction set** (`-O3`, and the x86-64-v2 instruction
-  set). On a 256 x 384 test asteroid the frame got 7.3 %
-  faster, and on a settled, mostly-rock test world 22.1 % faster, with output identical to the
-  previous build. A newer instruction set was tried and refused, because it changed results.
+  set). Against the same library built without them, on a 256 x 384 test asteroid the frame got
+  7.3 % faster, and on a settled, mostly-rock test world 22.1 % faster, with identical output. A newer instruction set was tried and refused, because it changed results.
 - **Each world in a cluster refreshes only its own area.** The game runs the simulation once per
   discovered world, and the replacement used to copy the whole grid for each one. On a test
   cluster cut into twelve worlds, with the same cells to simulate, the frame got 19.6 % faster;
   a single world is unchanged.
-- **The pass that tidies empty cells skips them cheaply.** One compiler hint on that pass took it
-  from 0.681 ms to 0.276 ms on a twelve-world test cluster, and an idle frame there from 2.143 ms
-  to 1.752 ms (18 % faster). No other part of the simulation changed speed, and the output is
-  byte-identical.
 - **The simulation stops republishing what has not changed.** On a 512 x 768 test grid, the frame
   went from 5.88 ms to 3.72 ms, and the worst frame from 7.74 ms to 5.36 ms.
 
@@ -198,345 +276,68 @@ size of each change; they are not a promise about any particular colony or compu
 
 ### What is being worked on
 
-None of this is in Alpha 1.
-
-- **Garbage-collection stutter.** The occasional long freeze in a large colony is the game's
-  garbage collector stopping everything to scan a managed heap of several gigabytes: about 216 to
-  242 ms a collection on large test saves. A mod can change when collections happen, not what one
-  costs. A separate garbage-collection project is in development. It replaces the game's
-  collector runtime with one that marks in parallel: on a test save with about 3.3 GB of live
-  heap, the part of a collection that stops the game fell from 219.7 ms to about 42 ms, and it has
-  passed two-hour soak tests with saves and loads. A companion mod that moves collections to
-  moments when they do not show (a pause, losing window focus) is in testing. Because this also
-  replaces a game file, the plan is for it to share the SDK's installer, with the same hash
-  checks, backup and restore.
-- **Where a frame actually goes.** Measured on a large test save with the SDK and Mods 1 and 2:
-  the main thread takes about 22 ms a frame, and about 78 % of that is the game's own managed
-  per-frame code (8.1 ms in updates, 9.1 ms in late updates). The GPU finishes in under 3 ms, and
-  the render thread spends about 18 ms waiting for managed code. The simulation is a small part of
-  the frame, so the larger gains are in the game's managed code, and that is where this work is
-  looking next.
-- **The duplicant and critter AI scheduler.** Over a 4.6-hour session on build 744825 it used
-  10.9 % of all wall-clock time, and as much while the game was paused as while it ran, because it
-  runs a fixed amount of work per rendered frame and never checks for a pause.
-- **Overlay textures.** The game's overlay texture work costs about 1.55 ms a frame on a late-game
-  test colony. Only about 0.42 ms of that could move into the simulation library, so the work
-  focuses on not recomputing what has not changed (the cache above), and on the change
-  information the simulation would need to extend it to more passes.
-- **FastTrack.** Any performance claim for the SDK is checked against a game that already runs
-  FastTrack, not only against the plain game. On a development copy of the game, FastTrack fails
-  without a small fix, which the project's profiling tools carry; with it, FastTrack took a large
-  test save from 46.3 to 51.5 fps, all of it from the game's late-update code. Checking that Mod 1's
-  overlays still update under FastTrack is planned.
-- **Memory and loading.** On a large development save, the managed heap of about 10.85 GB was measured to
-  be live data rather than uncollected garbage, so the lever is how much the game keeps, not the
-  collector. The heap also grows by several hundred MB with each load of a save within one
-  session, with only diagnostic mods enabled, which is being investigated.
+- **Where a frame actually goes.** On a large test save with the SDK and Mods 1 and 2, about 78 %
+  of the main thread's frame is the game's own managed per-frame code, and the simulation is a
+  small part of it. The larger gains are in the game's managed code; the performance mod released
+  alongside Alpha 2 is the first of that work.
+- **Overlay textures.** Extending the overlay cache to more of the game's overlay passes needs
+  change information from the simulation, which is being scoped.
 - **More simulation speed.** Two further changes are scoped and not built: skipping cells that
   provably cannot change (on a settled test asteroid, heat conduction alone would fall by about
   half), and running the empty-cell pass only where something changed.
 
-## In progress
+## Preview
 
-Between releases, this section gives a look at what is being worked on. It is updated from time
-to time, not on a schedule, and it is replaced at each release by that release's notes. Most of
-what it describes is developed privately today and is intended to become public later. None of
-it can be downloaded yet unless it says so.
+This is work that is built in development but is **not** in Alpha 2. It is shown so testers can
+see where the SDK is going. Any of it can change, slip, or be dropped, and none of it is a promise
+of a feature or a date. The videos are recordings of the automated test runs, so the numbers on
+screen are read out of the running game. Most of the buildings in them wear stand-in or draft art.
 
-Everything here is work in progress. Any of it can change, slip to a later release, or be
-dropped, and nothing on this page is a promise of a feature or a date.
+The videos and screenshots are attached to the
+[Alpha 2 release](https://github.com/Salacious-Oni-Dev/oni-sdk-docs/releases/tag/v0.1.0-alpha.2).
 
-The automation buildings shown in the videos are wearing placeholder art. The final art is still
-being made, and none of what you see there is what ships.
+**`first-trade.mp4`** (5:48): **Planetary Logistics (Mod 4), the first trade.** A rocket flies
+1,000 kg of liquid carbon dioxide to a trade depot three rings out and brings water home. The
+film follows the outbound flight, the exchange at the depot, the landing and unloading, and the
+books: the carbon dioxide and the water are each accounted for across the whole trip. A second
+trip is then refused, because the depot's water stock has fallen below one lot, and the rocket
+comes home with its cargo. The game's own welcome dialog shows behind the briefing card in the
+first seconds.
 
-### Next release
+**`chlor-alkali-cell.mp4`** (2:51): **A chlor-alkali cell.** Electricity splits salt water into
+chlorine, hydrogen and caustic soda, in a 3x3 building drawn from a concept sheet. Every kilogram
+and every joule is counted against the simulation's own books, and the run checks the reaction's
+proportions as it goes. One check in this run does not pass: a small energy remainder is not yet
+accounted for, and is being worked on. The building and its new substances belong to the
+chemistry work planned for a later release.
 
-These are built in development and going through the checks every release has to pass. Each
-ships only if it passes them by the cut-off.
+**`kanim-hot-reload.mp4`** (0:35): **Building art, reloaded into a running game.** A building's
+animation is replaced while the game runs, and the change shows within a second, without a
+restart. This is development tooling for making building art faster. It is intended as a first
+step towards an in-game kanim editor and creator suite, for building, editing and fully animating
+kanim art right in the game.
 
-**Simulation**
+**Navigator** (`navigator-*.png`): an in-game reference for the expanded simulation. One tab is
+the periodic table, showing which of the 118 elements the game has; the other lists every
+substance with its properties, its phase diagram, its heating curve, a buoyancy ladder of the
+gases, and, for a planet, how a substance behaves across a day.
 
-- **More than one disease per cell**, when a mod switches it on, and **an odour field**: three
-  odour channels that move with the air, spread, fade and are saved with the world.
-- **Liquid depth pressure.** Liquids keep their real density, pressure rises with depth, and
-  connected bodies of liquid level out by pressure, including siphons. Off by default.
-- **Smoke.** Gas can carry airborne particulate that moves with it and settles out as a
-  deposit. The smoke system came from an idea by Kaz, in the Oxygen Not Included community
-  Discord.
-- **Gas mixture rooms** exchange heat with their walls and with liquid in them, stir between
-  neighbouring cells, and condense steam by its share of the air's pressure.
-- Small speed recoveries in several simulation passes, and fixes.
+**Multiplayer:** lockstep co-op with prediction and rollback is in progress. There is no new
+footage in this release.
 
-**Mods**
+### Coming with the chemistry work
 
-- **Fire.** Wood, peat, coal, natural gas, hydrogen and ethanol burn by what they are made of, and
-  a smoky, incomplete burn leaves soot. Methane, hydrogen and ethanol vapour ignite, spread and
-  burn out, with flames, light and haze, and water puts a gas fire out. A logic-driven Sparker
-  starts fires on purpose.
-- **A Campfire that really burns:** duplicants deliver fuel and light it, it draws oxygen from the
-  room and gives off carbon dioxide, steam, soot and heat, and it goes out when the fuel or the
-  air runs out or when it is drowned.
-- **A Fire Sprinkler** whose glass bulb bursts at a set temperature and sprays water on the fire
-  below, with stand-in art for now.
-- **Grime.** Duplicants get grimy, which slows them; showers clean them; grime smells, and other
-  duplicants react to it.
-- **A Hydrogen Generator** that burns hydrogen with oxygen into hot water.
-- **A Steam Room**, where a Sauna vents its steam into the sealed room around it.
-- **Mod 1's tanks and pumps** run on game time instead of screen frames, and keep the pipe line
-  they look after at one temperature along its length.
-- **A Mash Tun**, the first step toward fermentation and distillation: fruit splits into sugary
-  water and pulp. Nothing ferments yet.
-- **An Active Vent** that both empties a room into a pipe and fills it from one, switched by a
-  setting, with its one pipe connection changing direction to match. It moves air as a single
-  mixture and hands it to the pipe at the gas's own temperature.
-- **Balance changes**: the Electrolyzer draws more power, so splitting water and burning the
-  hydrogen again loses energy, and the Solar Panel makes up to twice the game's output.
-
-### Planned: developed privately
-
-This work lives only in private development repositories today. It is intended to become
-public later. None of it is downloadable now, and none of it is tied to a release.
-
-**Automation: an IC10 programmable chip**
-
-A fifth gameplay mod is being built privately: Stationeers' integrated-circuit automation, brought
-into ONI. A building called the IC Housing holds a program written in IC10, the language
-Stationeers uses, and runs it against the buildings plugged into its six sockets. The program
-reads values out of them and writes values back: switch a building on, move a slider, open a door.
-
-IC10 is an assembly language modelled on MIPS, and it reads like one: sixteen general registers,
-branches and jumps, and the MIPS mnemonics themselves — `add`, `sub`, `and`, `or`, `sll`, `slt`,
-`j`, `jal`, `jr` — with load and store pointed at devices rather than memory, and Stationeers'
-own device and batch instructions alongside them. Anyone who has written MIPS assembly already
-knows most of it, and a program written for Stationeers is a program that runs here.
-
-- **The language is there in full**, all 154 instructions, with a compiler and a runtime that are
-  checked by 2,497 automated tests.
-- **It is written and edited inside the game**, in a code editor that tells you whether the text
-  compiles and shows the reference line for the instruction you are typing, with the chip's
-  registers and sockets beside it.
-- **Devices are joined by a data cable** of its own, with a data overlay, cable bridges, and a
-  link tool for choosing which building answers on which socket. Alongside the housing there are
-  the small single-purpose logic units Stationeers has — reader, writer, math, compare, select,
-  min/max, batch readers, a PID controller — and memory, dial, switch, button and display bricks.
-- **It reads and drives the vanilla game**: temperature, pressure, power, battery charge, a
-  plant's growth, a fabricator's recipe, a door's state, and the automation inputs of the game's
-  own buildings.
-
-Two videos show it running. Both are recordings of the automated demonstrations that are run
-against the mod, so the numbers on screen are read out of the running game rather than typed in.
-
-**`ic10-airlock.mp4`** (1:36) — *Salacious Airlock v0.2*, a program written for Stationeers,
-running in ONI against ONI buildings. Two building names were changed for the port and nothing
-else; for the demonstration the program's waits are removed so it runs at a watchable speed. It
-cycles a real two-door airlock through an Active Vent that reverses its own pipe: the chamber is
-pumped down to vacuum, a suited duplicant walks out, and the same air — a nitrogen and oxygen
-mixture, not an abstraction — is pumped back in behind them, with each door held shut until the
-pressure is right and the mass accounted for at every step.
-
-**`ic10-life-support.mp4`** (3:25) — a program holding a sealed room habitable. It takes the room
-from 4.3% carbon dioxide down to about 0.1% and then holds it near 100 kPa, purging to space and
-refilling from an oxygen tank through Active Vents, deciding what to do from the gas sensors on
-its data network. The middle of the video runs at four times speed, labelled on screen; the
-beginning and the end are at the recorded speed.
-
-How early it is: the building art and the editor window are stand-ins, drawn to get the thing
-working, and will be redrawn before it is released. Only the first automation input of a building
-can be driven, buildings added by other mods after load cannot be driven at all, and the chip is
-not tied to a release. There is no date for it.
-
-**Multiplayer**
-
-Co-op multiplayer for one shared colony, built as lockstep: every player's PC runs the same
-simulation, and only the players' orders travel between them.
-
-**`multiplayer-lockstep.mp4`** (1:52) — two PCs on a network, side by side, playing one colony.
-Both panels are the same instant of simulation. The video follows a session from both main menus:
-one PC hosts its colony, the other joins it, the colony is sent across and both load it; the new
-player picks three duplicants of their own, and the two players dig a tunnel, build a generator
-and a lamp from the copper they mine, and lay half a wire each until the halves meet as one
-circuit. Each player's orders go only to their own duplicants, a coloured ring at a duplicant's
-feet shows whose it is, and a players view colours every duplicant, and the job it is doing, in
-its player's colour. A duplicant runs on the generator and the lamp lights on the same turn on
-both machines. The IN SYNC light on the bar beneath the panels is the two PCs' own agreement
-check: after every turn they compare a digest of the entire world, and it is green only while
-those digests match. The opening, from the menus to the first shared turn, plays at double speed
-and says so on screen.
-
-- **How it works.** The game advances in turns of one 200 ms simulation step. Orders are bundled
-  into a turn a few steps ahead, and every PC applies them on the same turn. Every few seconds
-  the PCs compare a digest of the colony; if they differ, everyone reloads the host's colony and
-  the difference is written to a log.
-- **What a player can do today:** dig, build, deconstruct, cancel and set priorities, pick from
-  the printing pod, and chat. Each player owns the duplicants they picked; when a player leaves,
-  their duplicants are stored, and they come back when the player does.
-- **Joining.** A host starts a server with its colony, with an optional password, and friends
-  join through a Steam invite or by IP address. When someone joins, every PC loads the same save
-  together. A player whose game build or mods differ from the host's is turned away, with the
-  differences listed.
-- **How early it is.** Building settings, research, schedules and skills are not sent between
-  PCs yet, so changing them in a shared colony puts the PCs out of step. Only small saves have
-  been tried. A server only starts on the game build it was tested on, with Spaced Out and no
-  other DLC content, on map layouts that have passed a test, and with no other mods enabled,
-  this SDK's mods included. It runs on its own copy of the game-identical simulation library
-  with a small addition for lockstep, so none of the new simulation features above are in it
-  yet. Most of the current work is finding the places where the game's own code depends on the
-  screen's frame rate instead of the simulation's clock, which is what lets two PCs drift apart.
-
-- **Why lockstep, and not copying the world from a host.** The other way to do this is state
-  synchronisation: one machine simulates, and it sends the resulting world to everyone else. That
-  is what the existing ONI multiplayer mods do, and it is the right choice for a mod that has to
-  treat the simulation as a black box. It costs bandwidth that grows with the colony, it makes the
-  host's machine the only truth, and it introduces a failure of its own — when the host sends the
-  *result* of an action as well as the action, an action that both machines also performed locally
-  can be applied twice, which is where duplicated items come from.
-
-  Lockstep avoids that by sending only the orders, never the results, and it is possible here for
-  one reason: this project does not mod the simulation from the outside, it replaces it. The
-  simulation library is ours, both machines run the same build of it, and its output is held to
-  being byte-identical by its own test suite — the same property that lets it stand in for the
-  game's own library is the property lockstep needs. Floating-point arithmetic is deterministic
-  when the same binary runs the same IEEE-754 operations in the same order; what is not
-  automatically safe is compiler contraction and the maths library's transcendental functions, and
-  those are build settings on a library we build. The parts of the game above the simulation are a
-  harder problem — collection order, work spread across threads, and random number generators
-  called at different times — and no claim is made here that they are all solved.
-
-  What is claimed is that disagreement is caught rather than hoped away. After every turn both
-  machines compare a digest of the entire world, so a divergence is found in the turn it happens
-  rather than minutes later as a colony that has quietly gone wrong, and the difference is written
-  to a log that says what differed. When one is found, every machine reloads the host's colony.
-  Desyncs do happen today; the work in progress is the hunt for the code that depends on the
-  screen's frame rate, which is the largest known source of them.
-
-**Performance**
-
-A performance mod is being measured and built, one change at a time, each behind its own switch
-in a test build. The combined mod does not exist yet.
-
-- On one small test save at normal speed, the frame rate went from about 55 to about 124 frames
-  a second with every change switched on, and at the fastest speed from about 34 to about 53.
-  All of that came from changes to the game's own code; the replacement simulation library on
-  its own made no difference to frame rate.
-- While paused with the camera still, a frame took about 3 ms.
-
-**Loading a very large colony**
-
-The work is measured against a publicly available save, [Euphoria 66 by
-texhex](https://github.com/texhex/Euphoria66) (Apache-2.0): a 384 x 672 asteroid of 66 duplicants
-at cycle 2,196, about 239,000 objects, 45 MB packed and about 823 MB unpacked. Its author built it
-in debug mode, spawning geysers and insta-building, as a deliberately no-limits colony, which is
-what makes it a good worst-case test. It is only ever loaded as a benchmark input: it is not
-redistributed, and it is in none of these repositories.
-
-Measured from the main menu to a running colony, on that save:
-
-| | menu to running |
-|---|---|
-| before | 449 s |
-| loading spread across frames | 126.3 s |
-| + a compiled save reader | 95 s |
-| + fewer repeated name lookups | 86.5 s |
-| + holding collection through the replay | about 83 s |
-
-That is about seven and a half minutes down to about a minute and a half, roughly five and a half
-times faster. Reading the save alone went from 22.6 to 10.1 seconds, and 3,513,389 pieces of save
-data were compared byte for byte against a normal load, with none differing. A further change
-starts off-screen objects after the loading screen closes; once everything has arrived, the colony
-is identical to a normal load.
-
-**Garbage-collection stutter**
-
-Part of the stutter ONI shows every so often is the game's memory collector stopping everything
-while it works. This is a separate piece of work, in two parts, and neither needs the replacement
-simulation library.
-
-- **A rebuilt runtime.** The game's own runtime, rebuilt from Unity's public source with the
-  collector marking memory on several threads at once. On a large test save, the pause of a
-  collection fell from about 220 ms to about 42 ms, and it passed a two-hour run of saves and
-  loads with no errors. It replaces a file the game ships, so it needs the same kind of checked
-  install and restore as the simulation library.
-- **A timing mod.** It runs a collection when the game's window loses focus, so a collection
-  that would have landed in play lands while nobody is looking. Collecting on pause was also
-  built and measured; it took no collections out of play, so it is off by default.
-
-### Direction
-
-The long-term plan, five gameplay mods in three flagship releases, is unchanged and is described
-under [Further out](#further-out) below.
-
-## Candidates for the next alpha
-
-Expected about four weeks after Alpha 1. These are candidates; each ships only if it has passed
-its checks by the cut-off. The simulation side of the first three is built in development and
-going through those checks now.
-
-### More than one disease per cell
-
-- **What players see.** Nothing changes unless a mod switches it on. With it on, several diseases
-  can share a cell instead of one destroying the other where they meet, so a contaminated area
-  keeps all of what is in it. The germ overlay and everything else in the game still show each
-  cell's strongest disease.
-- **What modders get.** `OniFramework.MultiDisease`:
-  - `SetPolicy(MultiDiseasePolicy.PerCell)` allows up to eight diseases in a cell
-    (`MultiDiseasePolicy.Vanilla` is the game's own rule);
-  - `TryReadCell(cell, CellDisease[])` reads every disease in a cell: its index, germ count and
-    how long it has been there;
-  - the `Consumed` event reports the extra diseases a consumer takes in with
-    the mass, which the game's own consumed-mass report has room for only one of. (A consumer is a
-    pump, a building's intake, or anything else that takes mass out of the world.)
-
-  The extra diseases are saved with the world. The policy itself is not, so a mod sets it once
-  per session.
-- **Opt-in, off by default.** With it off, the simulation behaves exactly as it does now. It has a
-  cost when on: in development benchmarks with two diseases in every infected cell, the gas pass
-  takes about 0.7 ms more a frame.
-- **How to try it.** No flagship mod switches it on yet, so trying it takes a mod of a few lines
-  that calls `SetPolicy` when a world loads.
-
-### An odour field
-
-- **What players see.** Nothing yet. The field is there for gameplay mods to use; the gameplay
-  that uses it (duplicants getting grimy, smelling, and reacting to it) is planned for a later
-  release.
-- **What modders get.** `OniFramework.Odour`, with three channels (`OdourChannel.Funk`, `Stink`
-  and `Rot`):
-  - `Emit(cell, channel, amount)` puts odour into a gas cell;
-  - `Read(cell, channel)` and `Composition(cell, values)` read it back;
-  - `SetHalfLife(channel, seconds)` sets how fast each channel fades.
-
-  Odour rides the air: it moves with gas as gas moves, spreads between neighbouring gas cells,
-  fades at its own rate, never enters liquid or rock, and leaves when its gas does. The values are
-  saved with the world; the rates are set once per session.
-- **Always present, empty until a mod emits.** Nothing in the game emits odour, so it costs
-  nothing measurable until a mod uses it. With odour in every gas cell of a test world, it costs
-  about 1.3 ms a frame.
-- **How to try it.** A mod emits odour, for example from a building or a duplicant, and reads it
-  back on a hover card or an overlay.
-
-### Liquids with real depth pressure
-
-- **What players see.** In the game, the deeper water is, the more mass each cell holds, and
-  pressure exists only as that extra mass. With this switched on, liquid keeps its real density,
-  every liquid cell has a pressure that rises with depth, and connected pools level out by
-  pressure. A wall holding back deep water feels the weight of the whole column above it.
-- **Off by default, for testing.** The first stage is a simulation setting,
-  `HydrostaticsEnabled`, off unless switched on. With it off, the simulation's output is
-  byte-identical to today's.
-- **What modders get.** At first, only the setting and its tuning values, through the existing
-  `SimTunables` API. Sealed tanks, siphons and a dedicated API are later stages.
-- **How to try it.** Once it ships, set `"HydrostaticsEnabled": 1` in `sim-tunables.json` in the
-  framework's folder (see the framework's README) and start a world with water in it.
-
-### Fixes
-
-Fixes to anything reported against Alpha 1, chosen as described under "How fixes are picked".
+The chlor-alkali cell is the first of a larger chemistry set, built in development and not in
+Alpha 2: 31 more real elements as data (among them calcium, vanadium, platinum, sodium, silicon,
+gallium, argon, neon, krypton, xenon, titanium and silver), and about two dozen real compounds
+with their own phases, such as sulfur dioxide, sulfuric acid, hydrochloric acid, caustic soda,
+quicklime and gypsum. The vanilla game has 21 real elements; Mod 2 adds a 22nd, nitrogen.
 
 ## Further out
 
-The SDK's long-term plan is five gameplay mods in three flagship releases. Alpha 1 carries the
-first flagship (Mods 1 and 2). The other two are further out, and their order and timing are not
-fixed.
+The SDK's long-term plan is five gameplay mods in three flagship releases. Alpha 1 and Alpha 2
+carry the first flagship (Mods 1 and 2). The other two are further out, and their order and
+timing are not fixed.
 
 As with the first flagship, the aim is that everything these mods do is reachable through the
 public API, so other mods can build the same things.
@@ -570,8 +371,8 @@ checked by scripted runs in the game:
   down, and light passing through glass, water or thin gas is dimmed as in the game's own light
   rules.
 
-The simulation side of the planet environment is already in the Alpha 1 library. The API that
-drives it, and Mod 3 itself, are not.
+The simulation side of the planet environment is already in the public library. The API that
+drives it, and Mod 3 itself, are not public yet.
 
 **Planned, not built:** machines that extract and process the atmosphere, the liquid carbon
 dioxide refrigeration loop, dust, hazards, and more planets after Mars.
@@ -582,9 +383,9 @@ dioxide refrigeration loop, dust, hazards, and more planets after Mars.
 storage, a console for orders and trade, and planets that need to import what they lack. It is
 built on the game's own rockets rather than a new transport system.
 
-**Status: planned.** No code exists yet. The landed rocket and launch pad Mod 3 already places are
-the natural first anchor for landing pads and cargo, and logistics needs a second planet to run
-between, so it follows Mod 3.
+**Status: built in development.** The first trade route runs: a rocket carries cargo to a trade
+depot and brings the goods it bought home, with everything it carries accounted for (see
+[Preview](#preview)). It follows Mod 3, because logistics needs a second planet to run between.
 
 ### Flagship 3: Automation (Mod 5)
 
@@ -592,21 +393,18 @@ between, so it follows Mod 3.
 language: programmable chips, sensors that read the new simulation (temperature, pressure, gas
 composition, a planet's state) and devices that act on it (valves, pumps, compressors).
 
-**Status: research done, no code yet.** The study of IC10 is complete: its instruction set of
-about 150 instructions, its registers and stack, how it runs a fixed number of instructions per
-tick, and how it addresses devices directly, across a data network, or by reference. The finding
-is that IC10 itself can be ported closely. The real design work is the device interface, the
-equivalent of Stationeers' interface for logic values, through which game buildings would be
-read and controlled. The physical state it would read and drive already exists in Mods 1 and 2
-(valves, pumps, phase chambers, pipe pressure and stress).
+**Status: first released in Alpha 2** (see [Mod 5](#mod-5-automation--ic10) above). What comes
+next for it: the final building art, driving more than a building's first automation input, an
+interpreter written independently of Stationeers' own, and readings of the planetary state once
+the second flagship has one.
 
 ## Following along and reporting issues
 
 - **Releases:** watch the repositories above. Each release is one commit per repository, tagged
   `v<version>`, with its notes in `CHANGELOG.md`.
 - **Issues are open.** The repositories have issue forms: a bug report, which asks for the SDK
-  version, game build, installed `SimDLL.dll`, enabled mods and `Player.log`, and a feature or API
-  request. Please file an issue in the repository the problem is in; if you are unsure which, use
+  version, game build, installed `SimDLL.dll`, enabled mods and `Player.log`, a feature or API
+  request, and an [idea request](#suggesting-an-idea). Please file an issue in the repository the problem is in; if you are unsure which, use
   [oni-sdk-docs](https://github.com/Salacious-Oni-Dev/oni-sdk-docs/issues).
 - **Pull requests are not accepted yet.** The public repositories are generated from the
   development repositories at each release, so a pull request cannot be merged directly. A fix

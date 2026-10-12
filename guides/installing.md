@@ -106,21 +106,25 @@ replacement as `SimDLL.dll.vanilla`, after checking that the copy is identical.
 
 Each mod is a folder holding its DLL, `mod.yaml` and `mod_info.yaml`. Download them from the
 releases of [oni-framework-api](https://github.com/Salacious-Oni-Dev/oni-framework-api/releases)
-(`OniFramework-<version>.zip`, holding the `OniFramework` folder) and
+(`OniFramework-<version>.zip`, holding the `OniFramework.Library` and `OniFramework` folders) and
 [oni-flagship-mods](https://github.com/Salacious-Oni-Dev/oni-flagship-mods/releases)
 (`oni-flagship-mods-<version>.zip`, holding `mod1-thermo-fluid` and `mod2-matter-environment`),
-and unpack both. Copy the `OniFramework` folder, then each mod's folder, into the game's local
-mods folder:
+and unpack both. Copy the `OniFramework.Library` and `OniFramework` folders, then each mod's
+folder, into the game's local mods folder:
 
     Documents/Klei/OxygenNotIncluded/mods/Local/
 
-Start the game, open **Mods**, enable the framework and the mods, and restart when the game
-asks. The framework must be listed above the mods: the game loads mods from the top of the list
-down, and new mods are added at the bottom. Drag the framework up if it is below them. If you
-do not, it moves itself up at the next start: a message box explains what it is doing, the game
+Start the game, open **Mods**, enable **OniFramework.Library**, **OniFramework** and the mods, and
+restart when the game asks. The library and the framework must be listed above the mods, the
+library first: the game loads mods from the top of the list
+down, and new mods are added at the bottom. Drag them up if they are below. If you do not,
+each moves itself up at the next start: a message box explains what it is doing, the game
 restarts once, and a dialog on the main menu names the mods it moved. This is not a crash. A mod
-must not carry its own copy of `OniFramework.dll`; the framework is installed once, as its own
-mod.
+must not carry its own copy of `OniFramework.dll` or `OniFramework.Library.dll`; each is
+installed once, as its own mod.
+
+A mod that does not use the replacement simulation library needs only **OniFramework.Library**.
+Its README says so; it runs on the game's own `SimDLL.dll`, and you can skip part 1.
 
 ## Removing
 
@@ -149,7 +153,7 @@ In every case, Steam can restore the game's own library: open the game's **Prope
 in which no mod stored extension data is saved in exactly the game's own format. A world in
 which one did is saved in a newer format version that the game's own library is not built to
 read, so keep the framework enabled for those saves. The replacement library's
-[save format](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.1/docs/SAVE-FORMAT.md)
+[save format](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.2/docs/SAVE-FORMAT.md)
 lists the versions.
 
 ## After a game update

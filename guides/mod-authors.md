@@ -18,10 +18,22 @@ Mod 1 enabled asks for one restart.
 
 ## 2. Reference the framework, and do not bundle it
 
-Reference `OniFramework.dll` with **Copy Local off**, so that your build output does not contain
-a copy of it:
+The framework is two assemblies. `OniFramework.Library.dll` holds the surfaces that do not need
+the replacement simulation library (the framework's README marks them *(library)*);
+`OniFramework.dll` holds the rest and is built on the library. Every type is in the
+`OniFramework` namespace either way. A mod that uses only library surfaces references only
+`OniFramework.Library.dll`, and its players need only the `OniFramework.Library` mod; it runs on
+the game's own simulation library, and section 1's replacement is not needed. A mod that uses
+the simulation references both.
+
+Reference each with **Copy Local off**, so that your build output does not contain a copy of
+it:
 
 ```xml
+<Reference Include="OniFramework.Library">
+  <HintPath>path\to\OniFramework.Library.dll</HintPath>
+  <Private>false</Private>
+</Reference>
 <Reference Include="OniFramework">
   <HintPath>path\to\OniFramework.dll</HintPath>
   <Private>false</Private>
@@ -64,6 +76,9 @@ public class MyMod : UserMod2
 to degrade or stop stays with your mod. It also checks that only one copy of the framework is
 loaded and names every copy's path if not.
 
+A mod that uses only the library checks the library's version instead, the same way:
+`OniFramework.LibraryVersion.Require(1, 3, "MyMod")`. Library 1.3 is the version in this release.
+
 A mod that registers its own per-cell properties or element attributes uses the overload that
 also returns an `ExtOwner`, the token that names everything the mod registers:
 
@@ -88,14 +103,14 @@ if (!SimVersion.IsCustom)
 
 | to | read |
 |---|---|
-| see how a frame is ordered, and which extension messages exist | [Extension points](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.1/docs/EXTENSION-POINTS.md) |
-| store your own data per cell or per element, and have it saved | [Extension registries](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.1/docs/EXT-REGISTRY.md) |
-| hold several gases in one cell | [Gas mixtures](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.1/docs/GAS-MIXTURES.md) |
-| know what the game reads from the simulation each frame, and what a mod may change | [Projection](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.1/docs/PROJECTION.md) |
-| check that your mod conserves mass and energy | [Conservation ledgers](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.1/docs/LEDGERS.md) |
-| know what a save holds and what a load restores | [Save format](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.1/docs/SAVE-FORMAT.md) |
-| call any of the above from C# | the [framework's README](https://github.com/Salacious-Oni-Dev/oni-framework-api/blob/v0.1.0-alpha.1/README.md) and the XML documentation on each public type |
-| see a complete mod built on the API | [oni-flagship-mods](https://github.com/Salacious-Oni-Dev/oni-flagship-mods/tree/v0.1.0-alpha.1) |
+| see how a frame is ordered, and which extension messages exist | [Extension points](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.2/docs/EXTENSION-POINTS.md) |
+| store your own data per cell or per element, and have it saved | [Extension registries](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.2/docs/EXT-REGISTRY.md) |
+| hold several gases in one cell | [Gas mixtures](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.2/docs/GAS-MIXTURES.md) |
+| know what the game reads from the simulation each frame, and what a mod may change | [Projection](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.2/docs/PROJECTION.md) |
+| check that your mod conserves mass and energy | [Conservation ledgers](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.2/docs/LEDGERS.md) |
+| know what a save holds and what a load restores | [Save format](https://github.com/Salacious-Oni-Dev/oni-sim-replacement/blob/v0.1.0-alpha.2/docs/SAVE-FORMAT.md) |
+| call any of the above from C# | the [framework's README](https://github.com/Salacious-Oni-Dev/oni-framework-api/blob/v0.1.0-alpha.2/README.md) and the XML documentation on each public type |
+| see a complete mod built on the API | [oni-flagship-mods](https://github.com/Salacious-Oni-Dev/oni-flagship-mods/tree/v0.1.0-alpha.2) |
 
 The framework's API is the supported surface. The library's C ABI (`abi/sim_ext_api.h` in
 oni-sim-replacement) is documented for completeness and for tools, but a mod that calls it

@@ -37,6 +37,8 @@ level it needs.
 | SDK version | API level | game build | tag |
 |---|---|---|---|
 | 0.1.0-alpha.1 | 0.1 | 744825 | `v0.1.0-alpha.1` |
+| 0.1.0-alpha.1.1 (a fix to the simulation library only) | 0.1 | 744825 | `v0.1.0-alpha.1.1` |
+| 0.1.0-alpha.2 | 0.2 | 744825 | `v0.1.0-alpha.2` |
 
 ## Game updates
 

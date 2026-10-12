@@ -1,5 +1,7 @@
 # oni-sdk-docs
 
+*Oxygen Not Included: now with actual reasons for the oxygen to be not included.*
+
 Guides for the Oxygen Not Included simulation SDK as a whole: what it is, how its parts fit
 together, how to install and remove it, which versions work together, and where a mod author
 starts.
@@ -12,16 +14,34 @@ cover what no single component can, and link into those references rather than c
 **Windows only.** The simulation library is a Windows DLL, so the SDK needs the game's Windows
 version.
 
+## Alpha 2 (current release)
+
+Alpha 2 (`0.1.0-alpha.2`) adds liquid depth pressure, several diseases per cell, an odour field,
+smoke, fire and the buildings that use it, and rooms whose air condenses and exchanges heat. The
+flagship mods gain the Active Vent, the Steam Room, the Campfire, the Fire Sprinkler and more, and a
+new mod, Mod 5, brings Stationeers' IC10 programmable chips into the game. No Alpha 1 interface is
+removed or changed.
+
+[Changelog](CHANGELOG.md) ·
+[Release notes](https://github.com/Salacious-Oni-Dev/oni-sdk-docs/releases/tag/v0.1.0-alpha.2) ·
+[What is in Alpha 2, and its known limitations](NEXT-ALPHA.md#alpha-2)
+
 ## The SDK
 
 | repository | what it is | license |
 |---|---|---|
 | [oni-sim-replacement](https://github.com/Salacious-Oni-Dev/oni-sim-replacement) | a replacement for the game's native simulation library, `SimDLL.dll`, with an extension surface for mods | MPL-2.0 |
-| [oni-framework-api](https://github.com/Salacious-Oni-Dev/oni-framework-api) | the managed API that mods call, installed as its own mod | MIT |
-| [oni-flagship-mods](https://github.com/Salacious-Oni-Dev/oni-flagship-mods) | gameplay mods built only on that API, as working examples | MIT |
+| [oni-framework-api](https://github.com/Salacious-Oni-Dev/oni-framework-api) | the managed API that mods call, installed as two mods: `OniFramework.Library` (needs no SDK simulation library) and `OniFramework` (the simulation half) | MIT |
+| [oni-flagship-mods](https://github.com/Salacious-Oni-Dev/oni-flagship-mods) | gameplay mods built only on that API, as working examples | MIT, except Mod 5's IC10 interpreter (see its NOTICE) |
 | [oni-sim-visualizer](https://github.com/Salacious-Oni-Dev/oni-sim-visualizer) | a standalone viewer for the simulation's state, from a recording or a running game | MPL-2.0 |
 | [oni-dev-environment](https://github.com/Salacious-Oni-Dev/oni-dev-environment) | a debuggable development copy of the game, with its own data and Klei's debug tools working again | MIT |
 | [oni-sim-vanilla](https://github.com/Salacious-Oni-Dev/oni-sim-vanilla) | a plain `SimDLL.dll` that behaves like the game's own, with no extensions and every part documented; frozen, and not used by the SDK | MPL-2.0 |
+
+Mods built on the SDK need one of two framework mods, both in the
+[oni-framework-api](https://github.com/Salacious-Oni-Dev/oni-framework-api) release: a mod that uses
+the replacement simulation library needs `OniFramework` together with `OniFramework.Library`, which
+it is built on; a mod that does not needs only `OniFramework.Library` 1.3 or later, and runs on the
+game's own `SimDLL.dll`.
 
 ## Guides
 
@@ -33,44 +53,33 @@ version.
 | [Writing a mod](guides/mod-authors.md) | referencing the framework, declaring the API level you need, and where each reference lives |
 | [Visualizing the simulation](guides/simviz.md) | recording a corpus from your own game, and attaching the visualizer to a running game |
 
+## How it is checked
+
+Before every release, in the development repositories:
+
+- the replacement library is run against the game's own library, on recorded scenarios, and the
+  output has to match exactly, except for changes that a release names (Alpha 2 names one);
+- offline suites test the simulation's kernels, the extension surface and the save format;
+- scripted runs in a real game end in a recorded pass or fail, and the showcase videos are
+  recordings of those runs;
+- each repository is built from source, installed, played and removed again.
+
+The details are in [How a candidate is checked before it ships](NEXT-ALPHA.md#how-a-candidate-is-checked-before-it-ships).
+
 ## What comes next
 
-Releases come about every four weeks after Alpha 1. The date is fixed and the scope moves: each
-release ships what has passed its checks by its cut-off, and anything late moves to the next one.
+Releases follow a regular cadence, currently a trial of about ten days. Each release ships what
+has passed its checks by its cut-off; anything late moves to the next one.
 
-**Candidates for the next alpha.** The simulation side of each is built in development and going
-through its checks:
+- **Alpha 2:** shipped, see [above](#alpha-2-current-release).
+- **Preview:** built in development, not in this release: a first trade route between planets, a
+  chlor-alkali cell, an in-game element reference, and art that
+  reloads into a running game. Videos are attached to the release. See [Preview](NEXT-ALPHA.md#preview).
+- **Further out:** the rest of the five-mod plan: Dynamic Planet (Mars) and Planetary Logistics,
+  and what comes next for Automation (Mod 5, first released in Alpha 2). See [Further out](NEXT-ALPHA.md#further-out).
 
-- **More than one disease per cell.** Several diseases can share a cell instead of one destroying
-  the other where they meet. Off unless a mod switches it on.
-- **An odour field.** Three odour channels that spread through the air, for gameplay mods to
-  build on: duplicants getting grimy, smelling, and reacting to it come later.
-- **Liquids with real depth pressure.** Liquid keeps its real density, pressure rises with depth,
-  and connected pools level out by pressure. Off by default at first, as a simulation setting.
-- **Fixes** to anything reported against Alpha 1.
-
-**Performance.** Work under way on the game's garbage-collection stutter (on a large test save,
-the pause of a collection fell from about 220 ms to about 42 ms in development), on the AI
-scheduler that costs time even while the game is paused, and on further simulation speed-ups.
-
-**Further out.** The rest of the five-mod plan:
-
-- **Dynamic Planet (Mod 3).** Mars as a world of its own: the colony lands in a crippled rocket on
-  a thin carbon dioxide atmosphere, with a day and night swing from about 293 K to 220 K, a sun
-  that moves through the Martian year, and an atmosphere that is a resource. Early versions run in
-  development builds.
-- **Planetary Logistics (Mod 4).** Landing pads, cargo, storage and trade between colonies, built
-  on the game's own rockets. Planned.
-- **Automation (Mod 5).** Programmable automation built on Stationeers' IC10 language, with
-  sensors and devices that read and drive the new simulation. Built in private development; the
-  language and the chip work, the art does not, and it is not tied to a release.
-
-[What comes next](NEXT-ALPHA.md) has all of this in detail: how releases are planned and checked,
-everything Alpha 1 contains and its known limitations, the performance measurements, what each
-candidate gives players and modders, and the status of each future mod.
-
-Between releases, [In progress](NEXT-ALPHA.md#in-progress) gives a look at what is being worked
-on, including work that is still private.
+Have an idea? Open an [idea request](NEXT-ALPHA.md#suggesting-an-idea). Make building art? See
+[Art wanted](ART-WANTED.md).
 
 ## License
 
@@ -80,6 +89,7 @@ MIT, see `LICENSE`.
 
 Oxygen Not Included is developed and published by Klei Entertainment. This project is not
 affiliated with or endorsed by Klei.
+How this project follows Klei's modding guidelines, rule by rule: [COMPLIANCE](COMPLIANCE.md).
 
-Development of this project uses AI coding assistants. All changes are reviewed and released
-by the maintainer.
+Development of this project uses AI coding assistants. All changes are reviewed, tested and
+released by the maintainer.

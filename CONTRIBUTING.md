@@ -40,6 +40,13 @@ During the alpha, the public repositories are generated from the development rep
 each release. A commit made here would be replaced by the next release, so pull requests
 cannot be merged.
 
+The release checks (the bit-exact comparison with the game's own library, the offline suites,
+the live runs in the game and the install test) run in the development repositories before every
+release. The public repositories have no automated checks of their own yet. See
+[How a candidate is checked](NEXT-ALPHA.md#how-a-candidate-is-checked-before-it-ships).
+
+Ideas go in an [idea request](NEXT-ALPHA.md#suggesting-an-idea), not a pull request.
+
 If you have a fix, describe it in an issue, with a patch or a snippet if it helps. Fixes are
 ported by hand, and the changelog entry for the fix links the issue.
 

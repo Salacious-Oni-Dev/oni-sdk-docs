@@ -1,0 +1,43 @@
+name: Idea request
+description: An idea for the simulation, the API or one of the mods.
+labels: [idea]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea. Please check the open idea requests first: someone may already have asked for it.
+        Ideas are not promises. Anything accepted lands in the release whose cut-off it makes.
+  - type: textarea
+    id: what
+    attributes:
+      label: What should happen in the game
+      description: A sentence or two is fine.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it would make the game better
+      description: The problem it solves, or the play it creates.
+    validations:
+      required: true
+  - type: dropdown
+    id: part
+    attributes:
+      label: Which part it touches
+      options:
+        - The simulation
+        - The API (for mod authors)
+        - One of the mods
+        - Building art (see ART-WANTED.md)
+        - Not sure
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Anything that helps, such as another game, a real-world process or a sketch.
+  - type: input
+    id: credit
+    attributes:
+      label: Credit
+      description: The name to credit you by in the release notes, or "don't name me".

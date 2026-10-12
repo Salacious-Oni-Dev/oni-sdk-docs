@@ -28,6 +28,8 @@ The SDK runs only on the game's Windows version; see [Compatibility](compatibili
   your mod    example mods
        \         /
         framework          (a mod; OniFramework.dll)
+            |    \
+            |     library  (a mod; OniFramework.Library.dll, no simulation library needed)
             |
      replacement SimDLL    (replaces one file in the game)
             |
@@ -35,7 +37,10 @@ The SDK runs only on the game's Windows version; see [Compatibility](compatibili
 ```
 
 - A mod that uses the SDK references the framework and never calls the simulation library
-  directly.
+  directly. A mod that needs none of the simulation's extensions can reference only the
+  library: building paint, hover cards, building claims, the element registry, playstyles and
+  the other surfaces the framework's README marks *(library)*. Its players need only the
+  library mod, on the game's own simulation library.
 - The framework loads on the game's own library too. There it reports that the replacement is
   absent (`SimVersion.IsCustom` is false). A call that only sends the simulation a setting is
   ignored; a call that must return a physical quantity has no safe default, so it throws rather
