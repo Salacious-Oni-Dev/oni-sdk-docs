@@ -3,6 +3,12 @@
 Notable changes to this repository, newest first. All SDK repositories share one version
 number per release; see [Compatibility](https://github.com/Salacious-Oni-Dev/oni-sdk-docs/blob/main/guides/compatibility.md).
 
+## Unreleased
+
+- New: the [Project Navigator](https://salacious-oni-dev.github.io/oni-sdk-docs/navigator/navigator.html)
+  (`navigator/`), a page listing every simulation system the game has and the SDK adds, the
+  machines whose fixed recipes hide physics, and which elements exist. The README links it.
+
 ## 0.1.0-alpha.2 (2026-10-12)
 
 *Oxygen Not Included: now with actual reasons for the oxygen to be not included.*

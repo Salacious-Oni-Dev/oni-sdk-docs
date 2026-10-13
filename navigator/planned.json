@@ -1,0 +1,536 @@
+{
+ "_comment": "Elements and compounds in development.",
+ "planned": [
+  {
+   "symbol": "Na",
+   "name": "Sodium",
+   "group": "chemistry",
+   "target": "alpha3",
+   "scope": "gameplay",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Chlor-alkali side (NaOH); named a known gap. Klei's Salt (NaCl) already exists as a compound."
+  },
+  {
+   "symbol": "K",
+   "name": "Potassium",
+   "group": "chemistry",
+   "target": "alpha3",
+   "scope": "gameplay",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Chemistry group, gameplay in Alpha 3."
+  },
+  {
+   "symbol": "Li",
+   "name": "Lithium",
+   "group": "chemistry",
+   "target": "alpha3",
+   "scope": "gameplay",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Chemistry group, gameplay in Alpha 3."
+  },
+  {
+   "symbol": "Ca",
+   "name": "Calcium",
+   "group": "chemistry",
+   "target": "alpha3",
+   "scope": "gameplay",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Lime chain: CaCO3 -> CaO + CO2, slaking, CO2 capture on Mars."
+  },
+  {
+   "symbol": "Mg",
+   "name": "Magnesium",
+   "group": "chemistry",
+   "target": "alpha3",
+   "scope": "gameplay",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Chemistry group, gameplay in Alpha 3."
+  },
+  {
+   "symbol": "V",
+   "name": "Vanadium",
+   "group": "chemistry",
+   "target": "alpha3",
+   "scope": "gameplay",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "V2O5 is the contact-process catalyst (SO2 -> SO3)."
+  },
+  {
+   "symbol": "Pt",
+   "name": "Platinum",
+   "group": "chemistry",
+   "target": "alpha3",
+   "scope": "gameplay",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Ostwald-process catalyst (nitric acid)."
+  },
+  {
+   "symbol": "Pd",
+   "name": "Palladium",
+   "group": "chemistry",
+   "target": "alpha3",
+   "scope": "gameplay",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Catalyst metal, chemistry group."
+  },
+  {
+   "symbol": "Br",
+   "name": "Bromine",
+   "group": "chemistry",
+   "target": "alpha3",
+   "scope": "gameplay",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Halogen, chemistry group."
+  },
+  {
+   "symbol": "I",
+   "name": "Iodine",
+   "group": "chemistry",
+   "target": "alpha3",
+   "scope": "gameplay",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Halogen, chemistry group."
+  },
+  {
+   "symbol": "Si",
+   "name": "Silicon",
+   "group": "electronics",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "With Mod 5; named a known gap."
+  },
+  {
+   "symbol": "Ge",
+   "name": "Germanium",
+   "group": "electronics",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "With Mod 5."
+  },
+  {
+   "symbol": "Ga",
+   "name": "Gallium",
+   "group": "electronics",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "With Mod 5."
+  },
+  {
+   "symbol": "In",
+   "name": "Indium",
+   "group": "electronics",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "With Mod 5."
+  },
+  {
+   "symbol": "Sn",
+   "name": "Tin",
+   "group": "electronics",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "With Mod 5."
+  },
+  {
+   "symbol": "B",
+   "name": "Boron",
+   "group": "electronics",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "With Mod 5 (dopant)."
+  },
+  {
+   "symbol": "Sb",
+   "name": "Antimony",
+   "group": "electronics",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "With Mod 5 (dopant)."
+  },
+  {
+   "symbol": "As",
+   "name": "Arsenic",
+   "group": "electronics",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "With Mod 5 (dopant)."
+  },
+  {
+   "symbol": "Se",
+   "name": "Selenium",
+   "group": "electronics",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "With Mod 5."
+  },
+  {
+   "symbol": "Ne",
+   "name": "Neon",
+   "group": "noble",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Noble gas."
+  },
+  {
+   "symbol": "Ar",
+   "name": "Argon",
+   "group": "noble",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "About 1.9% of Mars' atmosphere; named a known gap."
+  },
+  {
+   "symbol": "Kr",
+   "name": "Krypton",
+   "group": "noble",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Noble gas."
+  },
+  {
+   "symbol": "Xe",
+   "name": "Xenon",
+   "group": "noble",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Noble gas."
+  },
+  {
+   "symbol": "Rn",
+   "name": "Radon",
+   "group": "noble",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Noble gas, radioactive."
+  },
+  {
+   "symbol": "Ti",
+   "name": "Titanium",
+   "group": "inert",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Inert ore."
+  },
+  {
+   "symbol": "Zr",
+   "name": "Zirconium",
+   "group": "inert",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Inert ore."
+  },
+  {
+   "symbol": "Mn",
+   "name": "Manganese",
+   "group": "inert",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Inert ore."
+  },
+  {
+   "symbol": "Cr",
+   "name": "Chromium",
+   "group": "inert",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Inert ore."
+  },
+  {
+   "symbol": "Mo",
+   "name": "Molybdenum",
+   "group": "inert",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Inert ore."
+  },
+  {
+   "symbol": "Ag",
+   "name": "Silver",
+   "group": "inert",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Inert ore; named a known gap."
+  },
+  {
+   "symbol": "Bi",
+   "name": "Bismuth",
+   "group": "inert",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Inert ore."
+  },
+  {
+   "symbol": "H2SO4",
+   "name": "Sulfuric acid",
+   "group": "acid-base",
+   "target": "alpha3",
+   "states_planned": [
+    "liquid",
+    "solid"
+   ],
+   "note": "Contact process: S -> SO2 -> SO3 over V2O5 -> H2SO4."
+  },
+  {
+   "symbol": "HCl",
+   "name": "Hydrogen chloride / hydrochloric acid",
+   "group": "acid-base",
+   "target": "alpha3",
+   "states_planned": [
+    "gas",
+    "liquid",
+    "solid"
+   ],
+   "note": "From H2 + Cl2, or NaCl + H2SO4; the liquid is the acid in water."
+  },
+  {
+   "symbol": "HNO3",
+   "name": "Nitric acid",
+   "group": "acid-base",
+   "target": "alpha3",
+   "states_planned": [
+    "liquid"
+   ],
+   "note": "Ostwald process over Pt; needs ammonia."
+  },
+  {
+   "symbol": "NaOH",
+   "name": "Sodium hydroxide",
+   "group": "acid-base",
+   "target": "alpha3",
+   "states_planned": [
+    "solid"
+   ],
+   "note": "Chlor-alkali electrolysis: salt water -> Cl2 + H2 + NaOH."
+  },
+  {
+   "symbol": "CaO / Ca(OH)2",
+   "name": "Quicklime / slaked lime",
+   "group": "acid-base",
+   "target": "alpha3",
+   "states_planned": [
+    "solid"
+   ],
+   "note": "CaCO3 -> CaO + CO2; CaO + H2O -> Ca(OH)2."
+  },
+  {
+   "symbol": "SO2",
+   "name": "Sulfur dioxide",
+   "group": "acid-base",
+   "target": "alpha3",
+   "states_planned": [
+    "gas"
+   ],
+   "note": "Contact-process intermediate."
+  },
+  {
+   "symbol": "SO3",
+   "name": "Sulfur trioxide",
+   "group": "acid-base",
+   "target": "alpha3",
+   "states_planned": [
+    "solid",
+    "liquid",
+    "gas"
+   ],
+   "note": "Contact-process intermediate; boils at about 45 C, so liquid at room temperature."
+  },
+  {
+   "symbol": "CaSO4.2H2O",
+   "name": "Gypsum",
+   "group": "acid-base",
+   "target": "alpha3",
+   "states_planned": [
+    "solid"
+   ],
+   "note": "Lime + sulfuric acid; buildable as a tile. Dehydrates to anhydrite at 400 K (Mod 2 0.9.0, flagship 2a5f665)."
+  },
+  {
+   "symbol": "CaSO4",
+   "name": "Anhydrite",
+   "group": "acid-base",
+   "target": "alpha3",
+   "scope": "data-only",
+   "states_planned": [
+    "solid"
+   ],
+   "note": "Gypsum's 400 K dehydration residue; data only, not buildable."
+  },
+  {
+   "symbol": "Na2SO4",
+   "name": "Salt cake",
+   "group": "acid-base",
+   "target": "alpha3",
+   "states_planned": [
+    "solid",
+    "liquid"
+   ],
+   "note": "Sodium sulfate; NaCl + H2SO4 -> HCl + salt cake (Mannheim route)."
+  },
+  {
+   "symbol": "V2O5",
+   "name": "Vanadium pentoxide",
+   "group": "acid-base",
+   "target": "alpha3",
+   "states_planned": [
+    "solid",
+    "liquid"
+   ],
+   "note": "Contact-process catalyst (SO2 -> SO3); made from vanadinite."
+  },
+  {
+   "symbol": "Pb5(VO4)3Cl",
+   "name": "Vanadinite",
+   "group": "acid-base",
+   "target": "alpha3",
+   "states_planned": [
+    "solid"
+   ],
+   "note": "Ore: the vanadium source."
+  }
+ ]
+}

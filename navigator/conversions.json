@@ -1,0 +1,562 @@
+{
+ "_comment": "Each vanilla machine that hides physics or chemistry inside a fixed recipe, and the system that remakes it as visible physics.",
+ "conversions": [
+  {
+   "id": "electrolyzer",
+   "machine": "Electrolyzer",
+   "vanilla_recipe": "1 kg/s Water -> 0.888 kg/s Oxygen + 0.112 kg/s Hydrogen, 120 W",
+   "hidden": "electrolysis of water, which in reality costs far more energy than 120 W buys",
+   "real_system": "chemistry",
+   "elements": [
+    "Water",
+    "Oxygen",
+    "Hydrogen"
+   ],
+   "remade": "partial",
+   "note": "Mod 2 already raises its draw to 960 W, so splitting water and burning the hydrogen again loses energy; electrolysis as a native reaction is part of the chemistry plan (chlor-alkali shares the cell).",
+   "verified": true
+  },
+  {
+   "id": "oxygen-diffuser",
+   "machine": "Oxygen Diffuser",
+   "vanilla_recipe": "0.55 kg/s Algae -> 0.5 kg/s Oxygen, 120 W",
+   "hidden": "oxygen from algae with no light, water or carbon dioxide: photosynthesis run backwards from nothing",
+   "real_system": "chemistry",
+   "also": [
+    "combustion"
+   ],
+   "elements": [
+    "Algae",
+    "Oxygen"
+   ],
+   "remade": "no",
+   "note": "Planned to be replaced by an oxygen candle: sodium chlorate decomposed by an iron-powder igniter, made in the chlor-alkali cell's mixed mode; whether the diffuser itself is removed is not yet decided, so the row stays. Alpha 4.",
+   "verified": true
+  },
+  {
+   "id": "carbon-skimmer",
+   "machine": "Carbon Skimmer",
+   "vanilla_recipe": "1 kg/s Water + 0.3 kg/s Carbon Dioxide -> 1 kg/s Polluted Water, 120 W",
+   "hidden": "carbon dioxide dissolving into water (carbonation), then the water counted as polluted",
+   "real_system": "dissolved-gas",
+   "also": [
+    "chemistry"
+   ],
+   "elements": [
+    "Water",
+    "CarbonDioxide",
+    "DirtyWater"
+   ],
+   "remade": "no",
+   "note": "Physical route: carbon dioxide absorbed into water by Henry's law until it saturates; chemical route: caustic or slaked lime binds it as carbonate. Alpha 3 candidate.",
+   "verified": true
+  },
+  {
+   "id": "water-sieve",
+   "machine": "Water Sieve",
+   "vanilla_recipe": "5 kg/s Polluted Water + 1 kg/s Sand -> 5 kg/s Water + 0.2 kg/s Polluted Dirt, 120 W",
+   "hidden": "filtration through a sand bed",
+   "real_system": "porous-flow",
+   "also": [
+    "dissolved-cargo"
+   ],
+   "elements": [
+    "DirtyWater",
+    "Sand",
+    "Water",
+    "ToxicSand"
+   ],
+   "remade": "no",
+   "note": "Depth filtration: polluted water through a sand bed that loads up, slows, and becomes Polluted Dirt. Scoped in Alpha 4, built in Alpha 5 or later.",
+   "verified": true
+  },
+  {
+   "id": "desalinator",
+   "machine": "Desalinator",
+   "vanilla_recipe": "5 kg/s Salt Water -> 4.65 kg/s Water + 0.35 kg/s Salt; 5 kg/s Brine -> 3.5 kg/s Water + 1.5 kg/s Salt",
+   "hidden": "evaporation or reverse osmosis, energy-free in the game",
+   "real_system": "fermentation",
+   "also": [
+    "latent-heat",
+    "phase-pressure",
+    "caustic-boiling-elevation",
+    "combustion",
+    "porous-flow"
+   ],
+   "elements": [
+    "SaltWater",
+    "Water",
+    "Salt",
+    "Brine"
+   ],
+   "remade": "no",
+   "note": "Thermal route: boil and condense the water, with the solution boiling above 100 C, on the volatility and boiling kernel planned with fermentation; heat paid at real energy, fuel-fired through combustion. Keeps the vanilla element identities. A membrane route waits on porous-flow. Alpha 4.",
+   "verified": true
+  },
+  {
+   "id": "algae-terrarium",
+   "machine": "Algae Terrarium",
+   "vanilla_recipe": "0.03 kg/s Algae + 0.3 kg/s Water -> 0.04 kg/s Oxygen + 0.29 kg/s Polluted Water; also draws 0.0003 kg/s Carbon Dioxide",
+   "hidden": "photosynthesis",
+   "real_system": "photosynthesis",
+   "also": [
+    "bio-kinetics",
+    "dissolved-gas"
+   ],
+   "elements": [
+    "Algae",
+    "Water",
+    "Oxygen",
+    "DirtyWater",
+    "CarbonDioxide"
+   ],
+   "remade": "no",
+   "note": "Photosynthesis: algae turn carbon dioxide and water into biomass and oxygen under light, by real stoichiometry. Alpha 4, on bio-kinetics.",
+   "verified": true
+  },
+  {
+   "id": "fertilizer-synthesizer",
+   "machine": "Fertilizer Synthesizer",
+   "vanilla_recipe": "0.039 kg/s Polluted Water + 0.065 kg/s Dirt + 0.026 kg/s Phosphorite -> 0.12 kg/s Fertilizer + 0.01 kg/s Natural Gas, 120 W",
+   "hidden": "fertiliser chemistry (phosphate processing)",
+   "real_system": "chemistry",
+   "also": [
+    "bio-kinetics"
+   ],
+   "elements": [
+    "DirtyWater",
+    "Dirt",
+    "Phosphorite",
+    "Fertilizer",
+    "Methane"
+   ],
+   "remade": "no",
+   "note": "Phosphate rock acidulated with sulfuric acid (superphosphate); the methane leg moves to anaerobic digestion. Alpha 4, after sulfuric acid.",
+   "verified": true
+  },
+  {
+   "id": "natural-gas-generator",
+   "machine": "Natural Gas Generator",
+   "vanilla_recipe": "0.09 kg/s Natural Gas -> 800 W + 0.0675 kg/s Polluted Water + 0.0225 kg/s Carbon Dioxide",
+   "hidden": "combustion of methane with oxygen it never takes",
+   "real_system": "combustion",
+   "elements": [
+    "Methane",
+    "DirtyWater",
+    "CarbonDioxide"
+   ],
+   "remade": "no",
+   "note": "Combustion burns methane by its composition in the world; the generator itself still runs its recipe.",
+   "verified": true
+  },
+  {
+   "id": "petroleum-generator",
+   "machine": "Petroleum Generator",
+   "vanilla_recipe": "2 kg/s Petroleum or Ethanol -> 2000 W + 0.75 kg/s Polluted Water + 0.5 kg/s Carbon Dioxide",
+   "hidden": "combustion of a liquid fuel with oxygen it never takes",
+   "real_system": "combustion",
+   "elements": [
+    "Petroleum",
+    "Ethanol",
+    "DirtyWater",
+    "CarbonDioxide"
+   ],
+   "remade": "no",
+   "note": "As the Natural Gas Generator.",
+   "verified": true
+  },
+  {
+   "id": "wood-burner",
+   "machine": "Wood Burner",
+   "vanilla_recipe": "1.2 kg/s Lumber -> 300 W + 0.17 kg/s Carbon Dioxide",
+   "hidden": "combustion of wood",
+   "real_system": "combustion",
+   "elements": [
+    "CarbonDioxide"
+   ],
+   "remade": "no",
+   "note": "Wood burns by its composition in the Campfire; the generator itself still runs its recipe.",
+   "verified": true
+  },
+  {
+   "id": "hydrogen-generator",
+   "machine": "Hydrogen Generator",
+   "vanilla_recipe": "0.1 kg/s Hydrogen -> 800 W, no products",
+   "hidden": "combustion of hydrogen with oxygen into water",
+   "real_system": "combustion",
+   "elements": [
+    "Hydrogen"
+   ],
+   "remade": "yes",
+   "note": "Remade: it burns hydrogen with oxygen into hot water and passes unburned gas out.",
+   "verified": true
+  },
+  {
+   "id": "campfire",
+   "machine": "Campfire",
+   "vanilla_recipe": "0.025 kg/s wood -> 0.004 kg/s Carbon Dioxide, flat 20 kW of heat, lights itself",
+   "hidden": "combustion of wood; 84% of the wood's mass is deleted",
+   "real_system": "combustion",
+   "elements": [
+    "WoodLog",
+    "CarbonDioxide"
+   ],
+   "remade": "yes",
+   "note": "Remade: duplicants deliver fuel and light it, it draws oxygen from the room and gives off carbon dioxide, steam, soot and heat, and goes out when fuel or air runs out or it is drowned.",
+   "verified": true
+  },
+  {
+   "id": "fire-sprinkler",
+   "machine": "Fire Sprinkler",
+   "vanilla_recipe": "none: the base game has no fire and no sprinkler",
+   "hidden": "nothing hidden: a new building for a new hazard",
+   "real_system": "combustion",
+   "remade": "yes",
+   "note": "New: a glass bulb bursts at a set temperature and sprays water on the fire below.",
+   "verified": false
+  },
+  {
+   "id": "oil-refinery",
+   "machine": "Oil Refinery",
+   "vanilla_recipe": "10 kg/s Crude Oil -> 5 kg/s Petroleum + 0.09 kg/s Natural Gas",
+   "hidden": "fractional distillation of crude oil; half the mass disappears",
+   "real_system": "fermentation",
+   "also": [
+    "dissolved-cargo",
+    "combustion"
+   ],
+   "elements": [
+    "CrudeOil",
+    "Petroleum",
+    "Methane"
+   ],
+   "remade": "no",
+   "note": "Fractional distillation of crude: heat it and its fractions boil off in order of volatility, on the boiling kernel planned with fermentation, generalised to many components. Alpha 4 at the earliest, more likely Alpha 5.",
+   "verified": true
+  },
+  {
+   "id": "polymer-press",
+   "machine": "Polymer Press",
+   "vanilla_recipe": "0.833 kg/s Petroleum -> 0.5 kg/s Plastic + 0.0083 kg/s Steam + 0.0083 kg/s Carbon Dioxide, 240 W",
+   "hidden": "polymerisation",
+   "real_system": "chemistry",
+   "also": [
+    "element-expansion"
+   ],
+   "elements": [
+    "Petroleum",
+    "Polypropylene",
+    "Steam",
+    "CarbonDioxide"
+   ],
+   "remade": "no",
+   "note": "Steam cracking of petroleum to ethylene, then polymerisation over a catalyst, which releases heat; needs Ethylene as a new species. Alpha 5 or later.",
+   "verified": true
+  },
+  {
+   "id": "metal-refinery",
+   "machine": "Metal Refinery",
+   "vanilla_recipe": "100 kg metal ore -> 100 kg refined metal (a few ores split off a second element), 1200 W, 80% of the heat into the coolant; 70 kg Iron + 20 kg Refined Carbon + 10 kg Lime -> 100 kg Steel",
+   "hidden": "smelting: reduction of an ore, with the gangue and the reducing agent ignored",
+   "real_system": "vanadinite-refinery",
+   "elements": [
+    "Iron",
+    "RefinedCarbon",
+    "Lime",
+    "Steel"
+   ],
+   "remade": "partial",
+   "note": "Vanadinite adds a recipe that yields Lead and V2O5 from one ore; the existing recipes stay.",
+   "verified": true
+  },
+  {
+   "id": "rock-crusher",
+   "machine": "Rock Crusher",
+   "vanilla_recipe": "metal ore -> half refined metal + half Sand; Fossil 100 kg -> 5 kg Lime + 95 kg Sedimentary Rock",
+   "hidden": "crushing (honest) and, for ores, smelting with no heat",
+   "real_system": "no-heat-deletion",
+   "also": [
+    "smoke"
+   ],
+   "elements": [
+    "Sand",
+    "Fossil",
+    "Lime",
+    "SedimentaryRock"
+   ],
+   "remade": "no",
+   "note": "Crushing is honest for rock and fossil: the work becomes heat and dust. Planned to turn ore into ore concentrate rather than metal, leaving smelting to the refinery; not yet decided, so the recipe stands. Alpha 4.",
+   "verified": true
+  },
+  {
+   "id": "kiln",
+   "machine": "Kiln",
+   "vanilla_recipe": "100 kg Clay + 25 kg Coal, Peat or wood -> 100 kg Ceramic; 125 kg Coal (or 200 kg wood, 300 kg Peat) -> 100 kg Refined Carbon; unpowered",
+   "hidden": "firing clay and calcination",
+   "real_system": "chemistry",
+   "elements": [
+    "Clay",
+    "Carbon",
+    "Peat",
+    "WoodLog",
+    "Ceramic",
+    "RefinedCarbon"
+   ],
+   "remade": "no",
+   "note": "The chemistry plan calcines limestone as a driven reaction in a hot cell; the Kiln may be re-skinned as the lime kiln. The game's Kiln does no calcination: its two recipes fire clay and coke coal into Refined Carbon.",
+   "verified": true
+  },
+  {
+   "id": "glass-forge",
+   "machine": "Glass Forge",
+   "vanilla_recipe": "100 kg Sand -> 25 kg Molten Glass, 1200 W",
+   "hidden": "melting sand",
+   "real_system": "melt-pour",
+   "also": [
+    "latent-heat",
+    "combustion"
+   ],
+   "elements": [
+    "Sand",
+    "MoltenGlass"
+   ],
+   "remade": "no",
+   "note": "Melting: sand heated through its real melting point and the latent heat paid, fuel-fired through combustion at real energy, then poured as Molten Glass with no mass lost. Alpha 4.",
+   "verified": true
+  },
+  {
+   "id": "ethanol-distiller",
+   "machine": "Ethanol Distiller",
+   "vanilla_recipe": "1 kg/s Lumber -> 0.5 kg/s Ethanol + 1/3 Polluted Dirt + 1/6 Carbon Dioxide",
+   "hidden": "fermentation of sugar and distillation of the result, from wood in one step",
+   "real_system": "fermentation",
+   "elements": [
+    "Ethanol",
+    "ToxicSand",
+    "CarbonDioxide"
+   ],
+   "remade": "no",
+   "note": "The Mash Tun (first step) splits fruit into sugary water; nothing ferments yet.",
+   "verified": true
+  },
+  {
+   "id": "sublimation-station",
+   "machine": "Sublimation Station",
+   "vanilla_recipe": "1 kg/s Polluted Dirt -> 0.66 kg/s Polluted Oxygen, 60 W",
+   "hidden": "off-gassing of polluted dirt",
+   "real_system": "sublimation",
+   "elements": [
+    "ToxicSand",
+    "ContaminatedOxygen"
+   ],
+   "remade": "no",
+   "note": "Thermal desorption: heated polluted dirt gives off its volatile fraction at a rate set by vapour pressure and leaves Dirt behind. Alpha 4.",
+   "verified": true
+  },
+  {
+   "id": "compost",
+   "machine": "Compost",
+   "vanilla_recipe": "0.1 kg/s compostable (Polluted Dirt, rotten food) -> 0.1 kg/s Dirt at 75 C",
+   "hidden": "aerobic decomposition, which in reality takes oxygen and gives off carbon dioxide",
+   "real_system": "bio-kinetics",
+   "also": [
+    "germs",
+    "odour",
+    "chemistry"
+   ],
+   "elements": [
+    "ToxicSand",
+    "Dirt"
+   ],
+   "remade": "no",
+   "note": "Aerobic decomposition by microbes: organic matter and oxygen to carbon dioxide, water and heat, so the pile self-heats; sealed, it goes anaerobic and gives methane. Alpha 4.",
+   "verified": true
+  },
+  {
+   "id": "oxylite-refinery",
+   "machine": "Oxylite Refinery",
+   "vanilla_recipe": "0.6 kg/s Oxygen + 0.003 kg/s Gold -> 0.6 kg/s Oxylite, 1200 W",
+   "hidden": "gas into solid with gold as an unexplained reagent",
+   "real_system": "chemistry",
+   "also": [
+    "element-expansion",
+    "sublimation"
+   ],
+   "elements": [
+    "Oxygen",
+    "Gold",
+    "OxyRock"
+   ],
+   "remade": "no",
+   "note": "Oxidation to a peroxide (sodium burned in oxygen) with gold as a catalyst that is not consumed; Oxylite's oxygen release in the world rides sublimation. Alpha 5 or later, after sodium.",
+   "verified": true
+  },
+  {
+   "id": "rust-deoxidizer",
+   "machine": "Rust Deoxidizer",
+   "vanilla_recipe": "0.75 kg/s Rust + 0.25 kg/s Salt -> 0.57 kg/s Oxygen + 0.03 kg/s Chlorine + 0.4 kg/s Iron Ore",
+   "hidden": "reduction of iron oxide, with chlorine from salt",
+   "real_system": "chemistry",
+   "elements": [
+    "Rust",
+    "Salt",
+    "Oxygen",
+    "ChlorineGas",
+    "IronOre"
+   ],
+   "remade": "no",
+   "note": "Balanced in mass; a reference row for the chemistry plan.",
+   "verified": true
+  },
+  {
+   "id": "sludge-press",
+   "machine": "Sludge Press",
+   "vanilla_recipe": "150 kg of a mixed element (Mud, Polluted Mud) -> its parts by mass (Water or Polluted Water + Dirt), 120 W",
+   "hidden": "mechanical dewatering (pressing)",
+   "real_system": "porous-flow",
+   "elements": [
+    "Mud",
+    "ToxicMud",
+    "Water",
+    "DirtyWater",
+    "Dirt"
+   ],
+   "remade": "no",
+   "note": "Mechanical dewatering, already close to honest: kept as it is. Only if porous-flow lands does the press become its pressure-driven case. Alpha 5 or later, or never.",
+   "verified": true
+  },
+  {
+   "id": "steam-turbine",
+   "machine": "Steam Turbine",
+   "vanilla_recipe": "Steam -> power + Water at 95 C, up to 850 W",
+   "hidden": "a heat engine that deletes most of the heat it takes from the steam",
+   "real_system": "no-heat-deletion",
+   "elements": [
+    "Steam",
+    "Water"
+   ],
+   "remade": "yes",
+   "note": "The largest single heat sink in the game; Mod 1 puts its heat into a real destination.",
+   "verified": true
+  },
+  {
+   "id": "space-heater",
+   "machine": "Space Heater",
+   "vanilla_recipe": "120-240 W -> up to 32 kW into the building + 4 kW exhausted, until the room reaches 70 C",
+   "hidden": "resistive heating, where heat out equals power in",
+   "real_system": "no-heat-deletion",
+   "remade": "partial",
+   "note": "Mod 1 turns power draw into heat in the building; the heater's own fixed output is not confirmed reworked.",
+   "verified": true
+  },
+  {
+   "id": "thermo-aquatuner",
+   "machine": "Thermo Aquatuner",
+   "vanilla_recipe": "liquid through it leaves 14 K colder, that heat goes into the building; 1200 W",
+   "hidden": "a heat pump, whose 1200 W of work becomes no heat",
+   "real_system": "no-heat-deletion",
+   "also": [
+    "refrigeration"
+   ],
+   "remade": "partial",
+   "note": "The moved heat is conserved even in the game; the power is not. The refrigeration cycle is the physical alternative.",
+   "verified": true
+  },
+  {
+   "id": "thermo-regulator",
+   "machine": "Thermo Regulator",
+   "vanilla_recipe": "gas through it leaves 14 K colder, that heat goes into the building",
+   "hidden": "a heat pump, whose power becomes no heat",
+   "real_system": "no-heat-deletion",
+   "also": [
+    "refrigeration"
+   ],
+   "remade": "partial",
+   "note": "Shares the Aquatuner's code in the game.",
+   "verified": true
+  },
+  {
+   "id": "aetn",
+   "machine": "Anti Entropy Thermo-Nullifier",
+   "vanilla_recipe": "0.01 kg/s Hydrogen in, 80 kW deleted (64 kW from the building, 16 kW from the room), no products",
+   "hidden": "heat deleted outright, with no destination",
+   "real_system": "no-heat-deletion",
+   "elements": [
+    "Hydrogen"
+   ],
+   "remade": "no",
+   "note": "Named in the no-heat-deletion scope; its rework is not confirmed by a doc read.",
+   "verified": true
+  },
+  {
+   "id": "wheezewort",
+   "machine": "Wheezewort (plant)",
+   "vanilla_recipe": "gas passing over it is cooled; the heat is deleted",
+   "hidden": "heat deleted outright, with no accounting",
+   "real_system": "no-heat-deletion",
+   "remade": "yes",
+   "note": "Mod 1 gives its heat a real destination; the plant stays as designed otherwise.",
+   "verified": true
+  },
+  {
+   "id": "liquid-reservoir",
+   "machine": "Liquid Reservoir",
+   "vanilla_recipe": "stores up to 5000 kg of liquid by mass, no volume or pressure",
+   "hidden": "a tank with no pressure, holding no dissolved gas",
+   "real_system": "pipe-pressure",
+   "also": [
+    "dissolved-gas"
+   ],
+   "remade": "yes",
+   "note": "Mod 1's tanks and pumps hold a volume, a pressure and dissolved gas.",
+   "verified": true
+  },
+  {
+   "id": "gas-reservoir",
+   "machine": "Gas Reservoir",
+   "vanilla_recipe": "stores up to 1000 kg of gas by mass, no volume or pressure",
+   "hidden": "a tank with no pressure",
+   "real_system": "pipe-pressure",
+   "remade": "yes",
+   "note": "As the Liquid Reservoir: a volume and a pressure by the ideal gas law.",
+   "verified": true
+  },
+  {
+   "id": "soda-fountain",
+   "machine": "Soda Fountain",
+   "vanilla_recipe": "Water + 1 kg Carbon Dioxide per drink -> a drink; the CO2 is deleted",
+   "hidden": "carbonation: gas dissolved in a liquid",
+   "real_system": "dissolved-gas",
+   "elements": [
+    "Water",
+    "CarbonDioxide"
+   ],
+   "remade": "yes",
+   "note": "A drink here holds a real 40 g of CO2, and the drinker burps it into the room.",
+   "verified": true
+  },
+  {
+   "id": "power-draw",
+   "machine": "Every powered building",
+   "vanilla_recipe": "power drawn -> nothing",
+   "hidden": "electrical work that should end as heat",
+   "real_system": "no-heat-deletion",
+   "remade": "yes",
+   "note": "Mod 1 turns power draw into heat in the building.",
+   "verified": true
+  },
+  {
+   "id": "temperature-phase-swap",
+   "machine": "Any cell or pipe changing phase",
+   "vanilla_recipe": "past a fixed temperature, the element swaps, no energy paid",
+   "hidden": "boiling, condensing, melting and freezing, each with latent heat and a pressure dependence",
+   "real_system": "latent-heat",
+   "also": [
+    "phase-pressure"
+   ],
+   "remade": "partial",
+   "note": "Mod 1's pipes, chambers and tanks pay latent heat; the world grid still swaps by temperature (condensation needs its pressure).",
+   "verified": true
+  }
+ ]
+}

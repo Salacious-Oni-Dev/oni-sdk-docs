@@ -53,6 +53,10 @@ game's own `SimDLL.dll`.
 | [Writing a mod](guides/mod-authors.md) | referencing the framework, declaring the API level you need, and where each reference lives |
 | [Visualizing the simulation](guides/simviz.md) | recording a corpus from your own game, and attaching the visualizer to a running game |
 
+## Project Navigator
+
+[Project Navigator](https://salacious-oni-dev.github.io/oni-sdk-docs/navigator/navigator.html): every simulation system the game has and the SDK adds, the machines whose fixed recipes hide physics, and which elements exist, on one page.
+
 ## How it is checked
 
 Before every release, in the development repositories:

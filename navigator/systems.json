@@ -1,0 +1,1403 @@
+{
+ "_comment": "Every simulation system in the ONI simulation platform: what the game already has and what the platform adds, with its status, layer, milestone and what it is built on.",
+ "systems": [
+  {
+   "id": "heat-conduction",
+   "name": "Heat transfer and conduction",
+   "kind": "vanilla",
+   "domain": "vanilla",
+   "status": "vanilla",
+   "owner": "SimDLL replacement",
+   "since": "base game",
+   "summary": "Neighbouring cells and buildings exchange heat by a pair conductivity; the replacement library reproduces the game's own kernel bit for bit.",
+   "divergence": "none: matches the game's own library (checked against it scenario by scenario)",
+   "replaces": "none",
+   "vanilla": "yes",
+   "uses": [],
+   "layer": "simdll",
+   "milestone": "base",
+   "rigs": [],
+   "public_doc": "oni-sim-replacement/docs/PHYSICS.md"
+  },
+  {
+   "id": "phase-by-temperature",
+   "name": "Element phase change by temperature",
+   "kind": "vanilla",
+   "domain": "vanilla",
+   "status": "vanilla",
+   "owner": "SimDLL replacement",
+   "since": "base game",
+   "summary": "A cell turns into its low or high transition element when it crosses a fixed temperature, whatever its pressure or mass.",
+   "divergence": "Real phase change depends on pressure and costs latent heat; see phase pressure and latent heat in the other column",
+   "replaces": "none",
+   "vanilla": "yes",
+   "uses": [],
+   "layer": "simdll",
+   "milestone": "base",
+   "rigs": [],
+   "public_doc": "oni-sim-replacement/docs/PHYSICS.md"
+  },
+  {
+   "id": "condensation-rain",
+   "name": "Condensation rain",
+   "kind": "vanilla",
+   "domain": "vanilla",
+   "status": "vanilla",
+   "owner": "SimDLL replacement",
+   "since": "base game",
+   "summary": "A condensing gas cell over open space becomes a falling drop instead of condensing in place; the replacement reproduces it and the vanilla library's mass ledger books it.",
+   "divergence": "none: it is the game's own behaviour, found missing and matched",
+   "replaces": "none",
+   "vanilla": "yes",
+   "uses": [
+    "phase-by-temperature"
+   ],
+   "layer": "simdll",
+   "milestone": "base",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "gas-pressure",
+   "name": "Gas and liquid pressure as mass per cell",
+   "kind": "vanilla",
+   "domain": "vanilla",
+   "status": "vanilla",
+   "owner": "SimDLL replacement",
+   "since": "base game",
+   "summary": "Pressure is the mass a cell holds: gas moves from heavier to lighter cells and one element holds each cell; a deeper liquid cell simply holds more mass.",
+   "divergence": "No ideal-gas law, no depth pressure; the platform adds both (gas mixtures, hydrostatics)",
+   "replaces": "none",
+   "vanilla": "yes",
+   "uses": [],
+   "layer": "simdll",
+   "milestone": "base",
+   "rigs": [],
+   "public_doc": "oni-sim-replacement/docs/PHYSICS.md"
+  },
+  {
+   "id": "germs",
+   "name": "Germs and disease",
+   "kind": "vanilla",
+   "domain": "vanilla",
+   "status": "vanilla",
+   "owner": "SimDLL replacement",
+   "since": "base game",
+   "summary": "One disease per cell that grows, dies and spreads by the element it rides; where two meet, one is destroyed.",
+   "divergence": "One disease per cell; the platform adds several per cell (opt-in)",
+   "replaces": "none",
+   "vanilla": "yes",
+   "uses": [],
+   "layer": "simdll",
+   "milestone": "base",
+   "rigs": [],
+   "public_doc": "oni-sim-replacement/docs/DISEASE.md"
+  },
+  {
+   "id": "radiation",
+   "name": "Radiation (Spaced Out)",
+   "kind": "vanilla",
+   "domain": "vanilla",
+   "status": "vanilla",
+   "owner": "SimDLL replacement",
+   "since": "base game",
+   "summary": "A radiation field from emitters, absorbed by the matter it passes through.",
+   "divergence": "none: matches the game's own library",
+   "replaces": "none",
+   "vanilla": "yes",
+   "uses": [],
+   "layer": "simdll",
+   "milestone": "base",
+   "rigs": [],
+   "public_doc": "oni-sim-replacement/docs/RADIATION.md"
+  },
+  {
+   "id": "conduit-flow",
+   "name": "Conduit flow (pipes)",
+   "kind": "vanilla",
+   "domain": "vanilla",
+   "status": "vanilla",
+   "owner": "SimDLL replacement",
+   "since": "base game",
+   "summary": "Each pipe tile holds one packet of one element with a mass and a temperature, moved tile by tile; a packet past its transition temperature damages the pipe.",
+   "divergence": "No volume or pressure in a pipe; the platform adds them (pipe pressure)",
+   "replaces": "none",
+   "vanilla": "yes",
+   "uses": [],
+   "layer": "simdll",
+   "milestone": "base",
+   "rigs": [],
+   "public_doc": "oni-sim-replacement/docs/CONDUITS.md"
+  },
+  {
+   "id": "decor",
+   "name": "Decor",
+   "kind": "vanilla",
+   "domain": "vanilla",
+   "status": "vanilla",
+   "owner": "game (Klei)",
+   "since": "base game",
+   "summary": "Buildings and objects spread a decor value over the cells around them, which duplicants' morale reads.",
+   "divergence": "none: game code, not part of the simulation library; left as the game has it",
+   "replaces": "none",
+   "vanilla": "yes",
+   "uses": [],
+   "layer": "game",
+   "milestone": "base",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "power-grid",
+   "name": "Power grid",
+   "kind": "vanilla",
+   "domain": "vanilla",
+   "status": "vanilla",
+   "owner": "game (Klei)",
+   "since": "base game",
+   "summary": "Generators, wires and batteries supply buildings' power draw; in the base game that draw becomes no heat.",
+   "divergence": "Power draw deletes its energy; Mod 1 turns it into heat in the building",
+   "replaces": "none",
+   "vanilla": "yes",
+   "uses": [],
+   "layer": "game",
+   "milestone": "base",
+   "rigs": [],
+   "public_doc": "oni-flagship-mods/mod1-thermo-fluid/README.md"
+  },
+  {
+   "id": "automation-signals",
+   "name": "Automation signals",
+   "kind": "vanilla",
+   "domain": "vanilla",
+   "status": "vanilla",
+   "owner": "game (Klei)",
+   "since": "base game",
+   "summary": "Green/red logic signals on automation wire drive the game's buildings through their automation inputs.",
+   "divergence": "Binary signals only; Mod 5 adds IC10 programs that read and write values",
+   "replaces": "none",
+   "vanilla": "yes",
+   "uses": [],
+   "layer": "game",
+   "milestone": "base",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "rockets",
+   "name": "Rockets",
+   "kind": "vanilla",
+   "domain": "vanilla",
+   "status": "vanilla",
+   "owner": "game (Klei)",
+   "since": "base game",
+   "summary": "Rockets built from modules travel between asteroids and carry crew and cargo.",
+   "divergence": "none yet: Mod 3's lander is built from the game's own rocket parts, and Mod 4 plans to extend them rather than replace them",
+   "replaces": "none",
+   "vanilla": "yes",
+   "uses": [],
+   "layer": "game",
+   "milestone": "base",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "worldgen",
+   "name": "World generation",
+   "kind": "vanilla",
+   "domain": "vanilla",
+   "status": "vanilla",
+   "owner": "game (Klei)",
+   "since": "base game",
+   "summary": "Asteroids are generated from Klei's world and template YAML: biomes, geysers, ruins, critters.",
+   "divergence": "Mars is a world of its own through the same pipeline, with no geysers or ruins",
+   "replaces": "none",
+   "vanilla": "yes",
+   "uses": [],
+   "layer": "game",
+   "milestone": "base",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "latent-heat",
+   "name": "Latent heat: real phase-change energy",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "Mod 2",
+   "since": "alpha1",
+   "summary": "Every seeded substance carries its real latent heats of vaporisation and fusion; Mod 1's pipes, chambers and tanks pay and release them when matter changes phase.",
+   "divergence": "Values from NIST reference data; Pollutant keeps the values of the Stationeers gas it is modelled on",
+   "replaces": "the instant temperature-only phase swap: a cell or pipe changes element with no energy paid",
+   "vanilla": "no",
+   "uses": [
+    "material-properties",
+    "phase-by-temperature"
+   ],
+   "layer": "mod2",
+   "milestone": "alpha1",
+   "rigs": [
+    "PHASECHAMBER",
+    "PHASELOOP"
+   ],
+   "public_doc": "oni-flagship-mods/mod2-matter-environment/README.md"
+  },
+  {
+   "id": "material-properties",
+   "name": "Material properties registry",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "framework",
+   "since": "alpha1",
+   "summary": "Molecular mass, vapour-pressure curve, lowest liquid pressure, critical point, heat-capacity ratio and liquid density per substance, readable and extendable by any mod.",
+   "divergence": "Klei's element table has none of these; it stores atomic mass for diatomic gases, the registry the real molecular mass",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [],
+   "layer": "framework",
+   "milestone": "alpha1",
+   "rigs": [],
+   "public_doc": "oni-flagship-mods/mod2-matter-environment/README.md"
+  },
+  {
+   "id": "phase-pressure",
+   "name": "Phase pressure: no liquid below its pressure",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "SimDLL replacement",
+   "since": "alpha1",
+   "summary": "A gas may only condense at or above its lowest liquid pressure (CO2 517 kPa), so Mars' 2.47 kPa air never rains liquid CO2; in pipes, a liquid boils when the headspace pressure puts its boiling point below its temperature.",
+   "divergence": "MATCH: Stationeers lets a gas condense only at or above its lowest liquid pressure, and so do we; the game's own test is temperature only",
+   "replaces": "condensation and boiling by temperature alone",
+   "vanilla": "partial",
+   "uses": [
+    "material-properties",
+    "phase-by-temperature"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha1",
+   "rigs": [],
+   "public_doc": null,
+   "aka": [
+    "condensation pressure"
+   ]
+  },
+  {
+   "id": "no-heat-deletion",
+   "name": "Heat goes somewhere",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "Mod 1",
+   "since": "alpha1",
+   "summary": "Power draw, exhaust heat, the Steam Turbine, generators and the Wheezewort put their heat into a real destination instead of deleting it; the rules are in the framework.",
+   "divergence": "Departs from the base game, which deletes this energy",
+   "replaces": "power draw that becomes no heat; the Steam Turbine, Wheezewort and AETN deleting heat",
+   "vanilla": "no",
+   "uses": [
+    "heat-conduction",
+    "power-grid",
+    "ledgers"
+   ],
+   "layer": "mod1",
+   "milestone": "alpha1",
+   "rigs": [
+    "COLDBREATHER",
+    "OVERHEAT"
+   ],
+   "public_doc": "oni-flagship-mods/mod1-thermo-fluid/README.md",
+   "aka": [
+    "heat conservation"
+   ]
+  },
+  {
+   "id": "cell-energy-carry",
+   "name": "Small heat payments land in full",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "SimDLL replacement",
+   "since": "alpha1",
+   "summary": "A cell keeps the remainder of a heat payment too small for one temperature step and applies it with the next; off by default, Mod 1 switches it on.",
+   "divergence": "Off is the game's own arithmetic",
+   "replaces": "heat payments too small for one temperature step, silently dropped",
+   "vanilla": "no",
+   "uses": [
+    "heat-conduction"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha1",
+   "rigs": [],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "gas-mixtures",
+   "name": "Gas mixtures: several gases per cell",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "SimDLL replacement",
+   "since": "alpha1",
+   "summary": "A mixture layer holds each gas's own mass in a cell, all adding to the pressure, and moves each down its own partial-pressure gradient; mixed temperatures blend by heat capacity.",
+   "divergence": "Stationeers-style per-cell atmosphere; the game holds one element per cell",
+   "replaces": "one gas element per cell",
+   "vanilla": "no",
+   "uses": [
+    "gas-pressure"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha1",
+   "rigs": [],
+   "public_doc": "oni-sim-replacement/docs/GAS-MIXTURES.md"
+  },
+  {
+   "id": "breathing-partial-pressure",
+   "name": "Breathing by oxygen partial pressure",
+   "kind": "real-world",
+   "domain": "life",
+   "status": "implemented",
+   "owner": "Mod 1",
+   "since": "alpha1",
+   "summary": "Breath is graded by oxygen partial pressure, carbon dioxide is a poison above 0.5%, and air temperature can damage lungs.",
+   "divergence": "The base game grades breathing by the oxygen element alone",
+   "replaces": "breathing by the oxygen element alone",
+   "vanilla": "partial",
+   "uses": [
+    "gas-mixtures"
+   ],
+   "elements": [
+    "Oxygen",
+    "CarbonDioxide"
+   ],
+   "layer": "mod1",
+   "milestone": "alpha1",
+   "rigs": [
+    "BREATHTEST",
+    "BUBBLEBREATH"
+   ],
+   "public_doc": "oni-flagship-mods/mod1-thermo-fluid/README.md"
+  },
+  {
+   "id": "pipe-pressure",
+   "name": "Pipe pressure, stress and burst",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "Mod 1",
+   "since": "alpha1",
+   "summary": "Each pipe network has a volume, a pressure (ideal gas law, or fill for liquids) and a phase; past its rating a pipe takes damage and an overpressure burst vents the line, and gas condenses or freezes inside it with its latent heat.",
+   "divergence": "Tooltip follows Stationeers'; a gas far above its critical point can still report a condensation temperature (open item)",
+   "replaces": "pipes that hold mass packets with no volume or pressure",
+   "vanilla": "no",
+   "uses": [
+    "conduit-flow",
+    "material-properties",
+    "latent-heat"
+   ],
+   "layer": "mod1",
+   "milestone": "alpha1",
+   "rigs": [
+    "PIPESTRESS"
+   ],
+   "public_doc": "oni-flagship-mods/mod1-thermo-fluid/README.md"
+  },
+  {
+   "id": "dissolved-gas",
+   "name": "Gas dissolved in liquid, and bubbles",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "implemented",
+   "owner": "Mod 1",
+   "since": "alpha1",
+   "summary": "Liquids carry dissolved gas through pumps, pipes, storage and bottles; released gas forms bubbles that rise, grow and trade heat with the water.",
+   "divergence": "The base game deletes the 1 kg of CO2 per soda; a drink here holds a real 40 g",
+   "replaces": "the Soda Fountain deleting 1 kg of CO2 per drink",
+   "vanilla": "no",
+   "uses": [
+    "conduit-flow",
+    "gas-mixtures"
+   ],
+   "layer": "mod1",
+   "milestone": "alpha1",
+   "rigs": [
+    "CARBONATION",
+    "DISSOLVEPIPE",
+    "BUBBLEPHYSICS",
+    "SODAFIZZ"
+   ],
+   "public_doc": "oni-flagship-mods/mod1-thermo-fluid/README.md",
+   "aka": [
+    "effervescence"
+   ]
+  },
+  {
+   "id": "refrigeration",
+   "name": "Refrigeration cycle",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "Mod 1",
+   "since": "alpha1",
+   "summary": "A vapour-compression cycle: a working fluid boils in the cold room, is pumped to the hot side, condenses there and returns; only the fluid crosses and every joule is booked.",
+   "divergence": "The doc read does not compare it with Stationeers' air conditioner",
+   "replaces": "the Thermo Aquatuner and Thermo Regulator's fixed -14 K step",
+   "vanilla": "partial",
+   "uses": [
+    "pipe-pressure",
+    "latent-heat",
+    "no-heat-deletion"
+   ],
+   "layer": "mod1",
+   "milestone": "alpha1",
+   "rigs": [
+    "FRIDGE"
+   ],
+   "public_doc": "oni-flagship-mods/mod1-thermo-fluid/README.md"
+  },
+  {
+   "id": "ledgers",
+   "name": "Mass and energy ledgers",
+   "kind": "real-world",
+   "domain": "platform",
+   "status": "implemented",
+   "owner": "SimDLL replacement",
+   "since": "alpha1",
+   "summary": "Every mass and energy change in a frame is booked to a named bucket, so a mod's change can be shown to conserve.",
+   "divergence": "none: Klei's library has no ledger",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [],
+   "layer": "simdll",
+   "milestone": "alpha1",
+   "rigs": [],
+   "public_doc": "oni-sim-replacement/docs/LEDGERS.md"
+  },
+  {
+   "id": "planetary-thermostat",
+   "name": "Mars atmosphere, day and night, planetary thermostat",
+   "kind": "real-world",
+   "domain": "planets",
+   "status": "implemented",
+   "owner": "SimDLL replacement",
+   "since": "alpha1",
+   "summary": "The simulation side: a CO2 sky at 2.47 kPa refilled by the planet, a 220-293 K day/night ambient, sunlight and sky radiation, and latent heat from sky condensation folded into the planet's temperature.",
+   "divergence": "Range and thermostat MATCH Stationeers' Mars: the planet refills its sky and holds its own temperature band; Mod 3, which drives it, is in development (see Mars world)",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "gas-mixtures",
+    "phase-pressure",
+    "latent-heat"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha1",
+   "rigs": [
+    "MARSDAY"
+   ],
+   "public_doc": null
+  },
+  {
+   "id": "fields",
+   "name": "Generic field solver",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "unverified",
+   "owner": "SimDLL replacement",
+   "since": "alpha1",
+   "summary": "A field, a propagation rule and per-material attenuation declared as parameters. Not yet confirmed in a release.",
+   "divergence": "not yet compared with Stationeers in a public document",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [],
+   "layer": "simdll",
+   "milestone": "alpha1",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "flow-keep-inflow",
+   "name": "Falling liquid keeps what flowed into it",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "SimDLL replacement",
+   "since": "alpha2",
+   "summary": "When a liquid cell starts to fall, liquid that flowed into it earlier in the step stays in the cell instead of being deleted; on by default.",
+   "divergence": "The first default that departs from the game's own library (a setting restores the game's behaviour)",
+   "replaces": "falling liquid deleting what flowed into its cell earlier in the step",
+   "vanilla": "no",
+   "uses": [],
+   "layer": "simdll",
+   "milestone": "alpha2",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "hydrostatics",
+   "name": "Liquid depth pressure (hydrostatics)",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "SimDLL replacement",
+   "since": "alpha2",
+   "summary": "Liquids keep their real density, pressure rises with depth, connected bodies level out by pressure and a sealed body can siphon; off by default.",
+   "divergence": "Levels out but no waves yet (H5 is planned)",
+   "replaces": "liquid pressure as mass per cell, with no depth",
+   "vanilla": "no",
+   "uses": [
+    "gas-pressure",
+    "material-properties"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha2",
+   "rigs": [
+    "HYDRO"
+   ],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "multi-disease",
+   "name": "Several diseases per cell",
+   "kind": "real-world",
+   "domain": "life",
+   "status": "implemented",
+   "owner": "SimDLL replacement",
+   "since": "alpha2",
+   "summary": "Up to eight diseases share a cell when a mod switches it on, ride gas and liquid and are saved with the world.",
+   "divergence": "Stationeers has no disease; the vanilla rule stays the default",
+   "replaces": "one disease per cell, the loser destroyed",
+   "vanilla": "partial",
+   "uses": [
+    "germs"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha2",
+   "rigs": [
+    "EXTREGISTRY"
+   ],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "odour",
+   "name": "Odour field",
+   "kind": "real-world",
+   "domain": "life",
+   "status": "implemented",
+   "owner": "SimDLL replacement",
+   "since": "alpha2",
+   "summary": "A three-channel odour property that moves with the air, spreads, fades and is saved.",
+   "divergence": "New feature; Stationeers has no odour field",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "gas-pressure"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha2",
+   "rigs": [
+    "EXTREGISTRY"
+   ],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "grime",
+   "name": "Grime and hygiene",
+   "kind": "real-world",
+   "domain": "life",
+   "status": "implemented",
+   "owner": "Mod 2",
+   "since": "alpha2",
+   "summary": "Duplicants get grimy, which slows them; showers clean them; grime smells and others react to it.",
+   "divergence": "Shape MATCHES Stationeers' hygiene stat (convergent, not a port): grime builds with activity and washing clears it; rates are our own",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "odour"
+   ],
+   "layer": "mod2",
+   "milestone": "alpha2",
+   "rigs": [
+    "GRIME"
+   ],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "smoke",
+   "name": "Smoke: conserved airborne particulate",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "implemented",
+   "owner": "SimDLL replacement",
+   "since": "alpha2",
+   "summary": "Gas carries particulate that moves with it, conserved, and settles out as a deposit; an idea by Kaz.",
+   "divergence": "Stationeers has no soot or deposits; particulate alongside Pollutant is a signed PREFERENCE",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "gas-pressure"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha2",
+   "rigs": [
+    "SMOKE"
+   ],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "combustion",
+   "name": "Combustion: fuel + oxidiser, products, heat",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "implemented",
+   "owner": "framework",
+   "since": "alpha2",
+   "summary": "Fuels burn by their composition, drawing oxygen from the cells around them; products, soot and heat all land somewhere, and gas fires ignite, spread and drown in water.",
+   "divergence": "Ignition MATCHES Stationeers: each cell tests its own fuel, oxidiser and temperature; two signed PREFERENCE divergences (pace, premixed flash)",
+   "replaces": "generators and the Campfire turning fuel into fixed outputs by recipe",
+   "vanilla": "partial",
+   "uses": [
+    "gas-mixtures",
+    "smoke",
+    "material-properties"
+   ],
+   "elements": [
+    "Oxygen",
+    "Soot"
+   ],
+   "layer": "framework",
+   "milestone": "alpha2",
+   "rigs": [
+    "CAMPFIRE",
+    "CAMPFIREOUT",
+    "FLASH",
+    "DOUSE",
+    "SPRINKLER"
+   ],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "mixture-rooms",
+   "name": "Mixture rooms: conduction, stirring, dew-point condensation",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "SimDLL replacement",
+   "since": "alpha2",
+   "summary": "A room run by the mixture layer trades heat with its walls and liquid, stirs at equal pressure, and condenses steam by its partial pressure.",
+   "divergence": "none recorded in the doc read",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "gas-mixtures",
+    "heat-conduction",
+    "phase-pressure"
+   ],
+   "elements": [
+    "Steam"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha2",
+   "rigs": [],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "thermal-gas",
+   "name": "Ideal-gas thermal model",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "SimDLL replacement",
+   "since": "alpha2",
+   "summary": "Hot gas expands into cooler gas of its own kind by an ideal-gas pressure model; off by default.",
+   "divergence": "An even-temperature world is identical to the game's",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "gas-pressure"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha2",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "falling-liquid-exchange",
+   "name": "Falling liquid trades heat in flight",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "framework",
+   "since": "alpha2",
+   "summary": "Falling liquid exchanges heat with the gas it falls through and can boil away or freeze in flight, never taking more heat than the gas holds.",
+   "divergence": "none recorded in the doc read",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "heat-conduction",
+    "latent-heat"
+   ],
+   "layer": "framework",
+   "milestone": "alpha2",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "pipe-levelling",
+   "name": "Levelled pipe lines and saturation-capped boiling",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "framework",
+   "since": "alpha2",
+   "summary": "Lines a tank or pump looks after hold one temperature and one gas mixture along their length and carry germs; a liquid line boils only until its headspace is saturated.",
+   "divergence": "One state per network MATCHES Stationeers' pipe networks; the boiling cap MATCHES its rule that a liquid boils only until the headspace is saturated; per-tile storage is STRUCTURAL (ONI pipes hold packets per tile)",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "pipe-pressure",
+    "gas-mixtures",
+    "germs"
+   ],
+   "layer": "framework",
+   "milestone": "alpha2",
+   "rigs": [],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "dissolved-cargo",
+   "name": "Payloads carried by liquid (sugar)",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "implemented",
+   "owner": "framework",
+   "since": "alpha2",
+   "summary": "Any liquid-borne property a mod registers travels with its liquid through pumps, pipes, storage and bottles; the Mash Tun's sugar is the first.",
+   "divergence": "Yeast fermentation instead of Stationeers' fixed-recipe Fermenter (for the planned F3)",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "dissolved-gas"
+   ],
+   "layer": "framework",
+   "milestone": "alpha2",
+   "rigs": [
+    "MASH"
+   ],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "determinism-digest",
+   "name": "Determinism digest",
+   "kind": "real-world",
+   "domain": "platform",
+   "status": "implemented",
+   "owner": "framework",
+   "since": "alpha2",
+   "summary": "A per-frame digest of the world's state and a tool that finds the first frame where two runs differ; for testing, not for play.",
+   "divergence": "none: new tooling",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [],
+   "layer": "framework",
+   "milestone": "alpha2",
+   "rigs": [
+    "DETERMINISM"
+   ],
+   "public_doc": null
+  },
+  {
+   "id": "mars-world",
+   "name": "Mars world (Mod 3)",
+   "kind": "real-world",
+   "domain": "planets",
+   "status": "in-development",
+   "owner": "Mod 3",
+   "since": "later",
+   "summary": "Mars generates as its own world; the colony lands in a crippled rocket and must build refrigeration to leave. In development; not in a release yet.",
+   "divergence": "Values from Stationeers' Mars and real data",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "planetary-thermostat",
+    "worldgen",
+    "rockets",
+    "refrigeration"
+   ],
+   "layer": "mod3",
+   "milestone": "later",
+   "rigs": [
+    "LANDER",
+    "R-COND",
+    "R-SOLAR"
+   ],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "multiplayer",
+   "name": "Deterministic lockstep multiplayer",
+   "kind": "real-world",
+   "domain": "platform",
+   "status": "in-development",
+   "owner": "Multiplayer",
+   "since": "later",
+   "summary": "Co-op on one colony: every PC runs the same simulation in 200 ms turns and only orders travel; a digest every few seconds catches drift. In development, with prediction and rollback.",
+   "divergence": "Runs on the game-identical library, so none of the new simulation is in it yet",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "determinism-digest"
+   ],
+   "layer": "mp",
+   "milestone": "alpha3",
+   "rigs": [],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "performance",
+   "name": "Performance mod and fast loading",
+   "kind": "real-world",
+   "domain": "platform",
+   "status": "in-development",
+   "owner": "performance mod",
+   "since": "alpha2",
+   "summary": "Changes to the game's own code, each behind a switch, plus loading a very large colony about five times faster. The first set was released alongside Alpha 2 under Salacious-Oni-Mods (fast loading ships switched off); more is in development.",
+   "divergence": "none: not a simulation change",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [],
+   "layer": "game",
+   "milestone": "alpha3",
+   "rigs": [],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "gc",
+   "name": "Garbage-collection stutter",
+   "kind": "real-world",
+   "domain": "platform",
+   "status": "implemented",
+   "owner": "GC runtime mod",
+   "since": "alpha2",
+   "summary": "A rebuilt runtime that marks memory on several threads (pause about 220 to 42 ms) and a mod that times collections. Released alongside Alpha 2 under Salacious-Oni-Mods.",
+   "divergence": "none: not a simulation change",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [],
+   "layer": "game",
+   "milestone": "alpha2",
+   "rigs": [],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "ic10",
+   "name": "IC10 programmable automation",
+   "kind": "real-world",
+   "domain": "platform",
+   "status": "implemented",
+   "owner": "Mod 5",
+   "since": "alpha2",
+   "summary": "The IC Housing runs IC10 programs (all 154 instructions) against buildings on a data cable, reading and driving vanilla and physics-mod buildings. Released in Alpha 2 with AI placeholder art.",
+   "divergence": "The language MATCHES Stationeers' IC10; the device adapter is ONI's own",
+   "replaces": "none",
+   "vanilla": "partial",
+   "uses": [
+    "automation-signals"
+   ],
+   "layer": "mod5",
+   "milestone": "alpha2",
+   "rigs": [
+    "IC10LIVE",
+    "IC10LOAD",
+    "IC10AIRLOCK"
+   ],
+   "public_doc": "oni-flagship-mods/mod5-automation-ic10/README.md"
+  },
+  {
+   "id": "chemistry",
+   "name": "Industrial chemistry: acids, bases, catalysts",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "in-development",
+   "owner": "SimDLL replacement",
+   "since": "alpha3",
+   "summary": "Acids, bases and catalysts as native cell reactions exposed through the API: chlor-alkali, contact process, HCl, nitric acid, lime, neutralisation. The first piece, a Chlor-Alkali Cell, is built (Alpha 2 preview).",
+   "divergence": "Stationeers has no acids, bases, pH or corrosion: a new feature",
+   "replaces": "the Electrolyzer, Rust Deoxidizer and refinery recipes as hidden reactions",
+   "vanilla": "no",
+   "uses": [
+    "combustion",
+    "dissolved-cargo",
+    "gas-mixtures",
+    "material-properties"
+   ],
+   "elements": [
+    "Lime"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha3",
+   "rigs": [
+    "CHLORALKALI"
+   ],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "element-expansion",
+   "name": "31 new elements",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "planned",
+   "owner": "Mod 2",
+   "since": "alpha3",
+   "summary": "All 31 registered as data in Alpha 3, gameplay by tier: chemistry first, electronics and noble gases with Mod 5, inert ores later.",
+   "divergence": "To be registered per element in the chemistry design",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "material-properties"
+   ],
+   "layer": "mod2",
+   "milestone": "alpha3",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "more-smoke",
+   "name": "Smoker, soot deposits, liquid smoke",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "planned",
+   "owner": "Mod 2",
+   "since": "alpha3",
+   "summary": "A smoker that pipes its smoke, soot that settles on tiles, buildings and duplicants, and liquid smoke; an idea by Kaz.",
+   "divergence": "Stationeers has no soot or deposits: a new feature",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "smoke"
+   ],
+   "elements": [
+    "Soot"
+   ],
+   "layer": "mod2",
+   "milestone": "alpha3",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "fermentation",
+   "name": "Fermentation and distillation",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "planned",
+   "owner": "Mod 2",
+   "since": "alpha3",
+   "summary": "Sugar ferments into ethanol, then distils as a physical process on the dissolved-gas machinery.",
+   "divergence": "Yeast-driven fermentation instead of Stationeers' fixed-recipe Fermenter",
+   "replaces": "the Ethanol Distiller's fixed wood-to-ethanol recipe",
+   "vanilla": "no",
+   "uses": [
+    "dissolved-cargo",
+    "dissolved-gas"
+   ],
+   "elements": [
+    "Ethanol"
+   ],
+   "layer": "mod2",
+   "milestone": "alpha3",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "fire-damage",
+   "name": "Explosions, flashback, fire damage",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "planned",
+   "owner": "Mod 2",
+   "since": "alpha3",
+   "summary": "Confined gas fires build pressure, a vent can burn back into its line, walls and pipes can fail, and duplicants react to fire.",
+   "divergence": "To be compared with Stationeers in its design",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "combustion",
+    "pipe-pressure"
+   ],
+   "layer": "mod2",
+   "milestone": "alpha3",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "waves",
+   "name": "Liquid waves",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "planned",
+   "owner": "SimDLL replacement",
+   "since": "alpha3",
+   "summary": "Liquid with depth pressure that moves with momentum instead of only levelling out (H5).",
+   "divergence": "none recorded in the doc read",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "hydrostatics"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha3",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "atmosphere-extraction",
+   "name": "Atmosphere extraction and the liquid CO2 loop",
+   "kind": "real-world",
+   "domain": "planets",
+   "status": "planned",
+   "owner": "Mod 3",
+   "since": "later",
+   "summary": "Machines that extract and process Mars' air, and a liquid carbon dioxide refrigeration loop.",
+   "divergence": "none recorded in the doc read",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "planetary-thermostat",
+    "pipe-pressure",
+    "refrigeration"
+   ],
+   "elements": [
+    "LiquidCarbonDioxide"
+   ],
+   "layer": "mod3",
+   "milestone": "later",
+   "rigs": [],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "logistics",
+   "name": "Planetary logistics",
+   "kind": "real-world",
+   "domain": "planets",
+   "status": "in-development",
+   "owner": "Mod 4",
+   "since": "alpha3",
+   "summary": "Landing pads, cargo, storage, a console for orders and trade between colonies, on the game's own rockets. A first trade route between planets is built (Alpha 2 preview).",
+   "divergence": "Built on the game's rockets rather than a new transport system",
+   "replaces": "none",
+   "vanilla": "partial",
+   "uses": [
+    "rockets"
+   ],
+   "layer": "mod4",
+   "milestone": "alpha3",
+   "rigs": [],
+   "public_doc": "oni-sdk-docs/NEXT-ALPHA.md"
+  },
+  {
+   "id": "humidity",
+   "name": "Humidity: water vapour in the air",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "planned",
+   "owner": "unassigned",
+   "since": "later",
+   "summary": "Water vapour as a partial pressure in the air: relative humidity, condensation on cold surfaces, and duplicant comfort.",
+   "divergence": "not yet compared with Stationeers",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "gas-mixtures",
+    "phase-pressure"
+   ],
+   "layer": "mod2",
+   "milestone": "later",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "solid-sulfur-ignition",
+   "name": "Solid sulfur ignition",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "in-development",
+   "owner": "Mod 2",
+   "since": "alpha3",
+   "summary": "Solid sulfur ignites in air (about 505 K) and burns to sulfur dioxide, paying its melting heat on the way; the feed of a sulfur-burning acid plant.",
+   "divergence": "Stationeers has no sulfur: a new feature",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "combustion",
+    "latent-heat"
+   ],
+   "elements": [
+    "Sulfur"
+   ],
+   "layer": "mod2",
+   "milestone": "alpha3",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "caustic-boiling-elevation",
+   "name": "Boiling-point elevation of solutions",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "in-development",
+   "owner": "Mod 2",
+   "since": "alpha3",
+   "summary": "A liquid carrying a dissolved solute (caustic soda first) boils above the pure liquid's boiling point, by the real boiling-point elevation.",
+   "divergence": "Stationeers has no solutions: a new feature",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "phase-pressure",
+    "dissolved-cargo"
+   ],
+   "layer": "mod2",
+   "milestone": "alpha3",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "water-vapour-curve-refit",
+   "name": "Water vapour-pressure curve refit",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "implemented",
+   "owner": "framework",
+   "since": "alpha2",
+   "summary": "Water boils at 373.15 K at 1 atm on the fitted vapour-pressure curve, so pipe boiling and condensation land where real water does.",
+   "divergence": "none: the curve now matches real water at 1 atm",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "phase-pressure"
+   ],
+   "elements": [
+    "Water"
+   ],
+   "layer": "framework",
+   "milestone": "alpha2",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "split-burns",
+   "name": "Split burns: every oxidiser in proportion",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "in-development",
+   "owner": "framework",
+   "since": "alpha3",
+   "summary": "A fire draws every oxidiser in its cell in proportion to what is there, instead of one oxidiser at a time.",
+   "divergence": "Stationeers draws the oxidiser from the whole mixture; we now do the same",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [
+    "combustion",
+    "gas-mixtures"
+   ],
+   "layer": "framework",
+   "milestone": "alpha3",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "vanadinite-refinery",
+   "name": "Vanadinite at the Metal Refinery",
+   "kind": "real-world",
+   "domain": "chemistry",
+   "status": "in-development",
+   "owner": "Mod 2",
+   "since": "alpha3",
+   "summary": "Vanadinite, a new ore, refines into Lead and vanadium pentoxide (V2O5) at the Metal Refinery.",
+   "divergence": "Stationeers has no vanadium: a new feature",
+   "replaces": "the Metal Refinery's fixed ore-to-metal recipe",
+   "vanilla": "no",
+   "uses": [
+    "element-expansion"
+   ],
+   "elements": [
+    "Lead"
+   ],
+   "layer": "mod2",
+   "milestone": "alpha3",
+   "rigs": [],
+   "public_doc": null
+  },
+  {
+   "id": "screen-effects",
+   "name": "Screen effects: camera post-process hook",
+   "kind": "real-world",
+   "domain": "platform",
+   "status": "in-development",
+   "owner": "framework",
+   "since": "alpha3",
+   "summary": "A framework hook for camera post-process effects, with the spacetime-warp effect as the first user (FxSandbox).",
+   "divergence": "none: a rendering feature, not a simulation change",
+   "replaces": "none",
+   "vanilla": "no",
+   "uses": [],
+   "layer": "framework",
+   "milestone": "alpha3",
+   "rigs": [
+    "FXWARP"
+   ],
+   "public_doc": null
+  },
+  {
+   "id": "sublimation",
+   "name": "Sublimation and desorption by vapour pressure",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "planned",
+   "owner": "unassigned",
+   "since": "alpha4",
+   "summary": "A solid gives off gas at a rate set by its vapour pressure against the partial pressure above it, instead of a fixed per-element rate: the Sublimation Station, exposed Oxylite, Bleach Stone and Mars' carbon dioxide frost.",
+   "divergence": "Matches Stationeers: off-gassing follows the same vapour-pressure curve form as phase change; with the feature off the game's fixed-rate sublimation is reproduced exactly",
+   "replaces": "the fixed per-element sublimation rate, and the Sublimation Station's fixed recipe",
+   "vanilla": "no",
+   "uses": [
+    "phase-pressure",
+    "material-properties",
+    "gas-mixtures"
+   ],
+   "elements": [
+    "OxyRock",
+    "BleachStone"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha4",
+   "rigs": [],
+   "public_doc": null,
+   "aka": [
+    "desorption",
+    "off-gassing",
+    "thermal desorption"
+   ]
+  },
+  {
+   "id": "bio-kinetics",
+   "name": "Bio-kinetics: one rate law for living things",
+   "kind": "real-world",
+   "domain": "life",
+   "status": "planned",
+   "owner": "unassigned",
+   "since": "alpha4",
+   "summary": "Organisms in cells grow and work by one rate law (cardinal temperatures, substrate, oxygen with an aerobic or anaerobic branch, inhibition), carried as germs; compost, biogas and the fermentation yeast share it.",
+   "divergence": "Stationeers' fermenter gives fixed products after a fixed time; here organisms follow a rate law in temperature, food, oxygen and inhibitors, and their heat is the reaction's own",
+   "replaces": "fixed-rate recipes in the Compost, the Fertilizer Synthesizer's methane and the Algae Terrarium",
+   "vanilla": "no",
+   "uses": [
+    "germs",
+    "multi-disease",
+    "chemistry"
+   ],
+   "elements": [
+    "Oxygen"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha4",
+   "rigs": [],
+   "public_doc": null,
+   "aka": [
+    "microbes",
+    "composting",
+    "anaerobic digestion"
+   ]
+  },
+  {
+   "id": "porous-flow",
+   "name": "Porous flow through granular beds",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "planned",
+   "owner": "unassigned",
+   "since": "alpha4",
+   "summary": "Liquid moves through a permeable granular cell and leaves what it carries behind, so a sand bed filters, loads up and slows; the Water Sieve, Sludge Press and a membrane Desalinator ride it. Scope first, build after.",
+   "divergence": "A new capability: liquid flowing through a permeable solid cell, which neither ONI nor Stationeers has; Stationeers' water filter is a consumable part of the device",
+   "replaces": "the Water Sieve's fixed recipe (and later the Sludge Press's)",
+   "vanilla": "no",
+   "uses": [
+    "hydrostatics",
+    "pipe-pressure",
+    "dissolved-cargo"
+   ],
+   "elements": [
+    "Sand"
+   ],
+   "layer": "simdll",
+   "milestone": "alpha4",
+   "rigs": [],
+   "public_doc": null,
+   "aka": [
+    "filtration",
+    "sand filter",
+    "permeability"
+   ]
+  },
+  {
+   "id": "photosynthesis",
+   "name": "Photosynthesis",
+   "kind": "real-world",
+   "domain": "life",
+   "status": "idea",
+   "owner": "unassigned",
+   "since": "later",
+   "summary": "Bio-kinetics with a light term: algae and later plants turn carbon dioxide and water into biomass and oxygen under light, by real stoichiometry.",
+   "divergence": "Expected to match Stationeers' plants, which trade carbon dioxide for oxygen under light; not yet compared in detail",
+   "replaces": "the Algae Terrarium's light-free recipe",
+   "vanilla": "no",
+   "uses": [
+    "bio-kinetics",
+    "dissolved-gas",
+    "gas-mixtures"
+   ],
+   "elements": [
+    "Algae",
+    "CarbonDioxide",
+    "Water",
+    "Oxygen"
+   ],
+   "layer": "simdll",
+   "milestone": "later",
+   "rigs": [],
+   "public_doc": null,
+   "aka": [
+    "algae",
+    "light"
+   ]
+  },
+  {
+   "id": "melt-pour",
+   "name": "Melt and pour",
+   "kind": "real-world",
+   "domain": "physics",
+   "status": "idea",
+   "owner": "Mod 1",
+   "since": "later",
+   "summary": "A building heats stored solids through their real melting point, pays the latent heat, and pours the liquid into a cell or pipe; starts inside the Glass Forge.",
+   "divergence": "Matches Stationeers' furnaces, heated by burning fuel inside and paying the melt's energy; the product is a poured liquid because ONI elements carry their state",
+   "replaces": "the Glass Forge's fixed recipe",
+   "vanilla": "no",
+   "uses": [
+    "latent-heat",
+    "phase-by-temperature",
+    "combustion"
+   ],
+   "layer": "mod1",
+   "milestone": "later",
+   "rigs": [],
+   "public_doc": null,
+   "aka": [
+    "glass",
+    "smelting",
+    "furnace"
+   ]
+  }
+ ]
+}

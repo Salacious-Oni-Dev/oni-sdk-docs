@@ -1,0 +1,3859 @@
+{
+ "generator": "gen-origins.py",
+ "bins": [
+  "natural",
+  "geyser",
+  "living",
+  "machine",
+  "none"
+ ],
+ "origins": {
+  "CrushedIce": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/Misc.yaml, dlc/expansion1/worldgen/biomes/Misc.yaml, worldgen/biomes/Misc.yaml",
+      "HardIceCometConfig.cs (meteor shower)"
+     ]
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "Diamond": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/features/oilpockets/DiamondCoalClump.yaml, dlc/dlc5/worldgen/biomes/Abyss.yaml, worldgen/biomes/Crystal.yaml +6 more"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "DiamondPressConfig.cs, RockCrusherConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "events",
+    "interiors",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Aerogel": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Isoresin": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "Resin (heated, leaves ore)"
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Manganese": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Sucrose": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/CarrotQuarry.yaml, dlc/expansion1/worldgen/features/wasteland/SucroseBlob.yaml"
+     ]
+    },
+    "living": {
+     "direct": [
+      "DivergentBeetleConfig.cs, SealConfig.cs"
+     ]
+    },
+    "machine": {
+     "via": "Latex (cooled, leaves ore)"
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "SolidKrypton": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Peat": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Garden.yaml, dlc/dlc4/worldgen/features/garden/ButterflyHome.yaml, dlc/dlc4/worldgen/features/garden/SmallLake.yaml +2 more"
+     ]
+    },
+    "living": {
+     "direct": [
+      "StegoTuning.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "ZincOre": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/biomes/Beach.yaml, dlc/dlc5/worldgen/biomes/Reef.yaml, dlc/dlc5/worldgen/borders.yaml"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "PhosphateNodules": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Misc.yaml, worldgen/features/FlutBowl.yaml, worldgen/features/FlutBowlTall.yaml +2 more"
+     ]
+    }
+   }
+  },
+  "Algae": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Garden.yaml, dlc/dlc4/worldgen/features/garden/AlgaeBall.yaml, dlc/dlc4/worldgen/features/wetlands/LargeCave.yaml +30 more",
+      "AlgaeCometConfig.cs (meteor shower)"
+     ]
+    },
+    "living": {
+     "direct": [
+      "AlgaeStegoConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "AlgaeDistilleryConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "SolidRadon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MilkFat": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "FishMilk (heated, leaves ore)"
+    },
+    "machine": {
+     "direct": [
+      "MilkFatSeparatorConfig.cs"
+     ]
+    }
+   }
+  },
+  "Niobium": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Niobium.yaml"
+     ]
+    },
+    "geyser": {
+     "via": "MoltenNiobium (cooled)"
+    },
+    "machine": {
+     "via": "MoltenNiobium (cooled) <- TempConductorSolid (heated)"
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Nickel": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenNickel (cooled) <- NickelOre (heated)"
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "MilkIce": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "via": "Milk (cooled)"
+    }
+   }
+  },
+  "Cuprite": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Metallic.yaml, dlc/expansion1/worldgen/biomes/Misc.yaml, dlc/expansion1/worldgen/biomes/Sedimentary.yaml +20 more",
+      "CopperCometConfig.cs (meteor shower)"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "interiors",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Copper": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/features/Geode.yaml"
+     ]
+    },
+    "geyser": {
+     "via": "MoltenCopper (cooled)"
+    }
+   },
+   "found_in": [
+    "chunk.yaml",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "CrushedRock": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Misc.yaml"
+     ]
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "SuperInsulator": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "SupermaterialRefineryConfig.cs"
+     ]
+    }
+   }
+  },
+  "Shale": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Garden.yaml, dlc/dlc4/worldgen/features/garden/AlgaeBall.yaml, dlc/dlc4/worldgen/features/garden/ButterflyHome.yaml +3 more"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Corallium": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/biomes/Reef.yaml, dlc/dlc5/worldgen/borders.yaml"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Gypsum": {
+   "primary": "none",
+   "bins": {}
+  },
+  "PalmWood": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "direct": [
+      "TUNING/CROPS.cs (crop)"
+     ]
+    }
+   }
+  },
+  "SolidHydrogenChloride": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Tallow": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "via": "RefinedLipid (cooled)"
+    }
+   }
+  },
+  "Yellowcake": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Bismuth": {
+   "primary": "none",
+   "bins": {}
+  },
+  "BrineIce": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Raptor.yaml, dlc/expansion1/worldgen/biomes/Frozen.yaml, dlc/expansion1/worldgen/features/frozen/SlushPool.yaml +3 more"
+     ]
+    },
+    "geyser": {
+     "via": "Brine (cooled)"
+    },
+    "machine": {
+     "via": "Brine (cooled)"
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "SolidViscoGel": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "via": "ViscoGel (cooled)"
+    }
+   }
+  },
+  "Molybdenum": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Ceramic": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Clay (heated)"
+    },
+    "machine": {
+     "direct": [
+      "KilnConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "storytraits"
+   ]
+  },
+  "Indium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Vanadinite": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Cobaltite": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Metallic.yaml, dlc/expansion1/worldgen/biomes/Swamp.yaml, dlc/expansion1/worldgen/borders.yaml +11 more"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Fertilizer": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Garden.yaml, dlc/dlc4/worldgen/borders.yaml, dlc/dlc4/worldgen/features/garden/SmallLake.yaml +15 more"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "AtmoicGardenConfig.cs, FertilizerMakerConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi",
+    "storytraits"
+   ]
+  },
+  "Silver": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SolidNeon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Titanium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SolidCrudeOil": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Oil.yaml, worldgen/features/oilpockets/CavityPondFrozen.yaml"
+     ]
+    },
+    "geyser": {
+     "via": "CrudeOil (cooled)"
+    },
+    "living": {
+     "via": "CrudeOil (cooled)"
+    },
+    "machine": {
+     "via": "CrudeOil (cooled)"
+    }
+   }
+  },
+  "SaltCake": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Wolframite": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Radioactive.yaml, dlc/expansion1/worldgen/features/frozen/MetalShelf.yaml, dlc/expansion1/worldgen/features/radioactive/BeeBubble.yaml +4 more"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "SolidSulfuricAcid": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SlimeMold": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/borders.yaml, worldgen/biomes/HotMarsh.yaml, worldgen/features/hotmarsh/BlobRoom.yaml +7 more",
+      "SlimeCometConfig.cs (meteor shower)"
+     ]
+    },
+    "living": {
+     "direct": [
+      "BaseSeaHorseConfig.cs, PuftAlphaConfig.cs, PuftConfig.cs"
+     ]
+    },
+    "machine": {
+     "via": "Mucus (heated, leaves ore)"
+    }
+   },
+   "found_in": [
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Polypropylene": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "direct": [
+      "DreckoPlasticConfig.cs, TUNING/CROPS.cs (crop), TubeWormConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "PolymerizerConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "events",
+    "poi",
+    "storytraits"
+   ]
+  },
+  "Amber": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "direct": [
+      "TUNING/CROPS.cs (crop)"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "SolidNaphtha": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "Naphtha (cooled) <- Polypropylene (heated)"
+    },
+    "machine": {
+     "via": "Naphtha (cooled) <- ViscoGel (heated)"
+    }
+   }
+  },
+  "Antimony": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Tungsten": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenTungsten (cooled) <- Katairite (heated)"
+    },
+    "geyser": {
+     "via": "MoltenTungsten (cooled)"
+    },
+    "living": {
+     "direct": [
+      "BaseHatchConfig.cs"
+     ]
+    },
+    "machine": {
+     "via": "TempConductorSolid (heated, leaves ore)"
+    }
+   },
+   "found_in": [
+    "geysers",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "SandCement": {
+   "primary": "none",
+   "bins": {}
+  },
+  "RefinedCarbon": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Carbon (heated)"
+    },
+    "living": {
+     "direct": [
+      "UrchinPlantConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "KilnConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "Sodium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Steel": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "MetalRefineryConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "interiors",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Phosphorite": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/IceCaves.yaml, dlc/dlc2/worldgen/biomes/SugarWoods.yaml, dlc/dlc4/worldgen/biomes/Raptor.yaml +12 more",
+      "PhosphoricCometConfig.cs (meteor shower)"
+     ]
+    },
+    "living": {
+     "direct": [
+      "DreckoConfig.cs, DreckoPlasticConfig.cs, PlanktonCoralConfig.cs, TUNING/CROPS.cs (crop)"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "RockCrusherConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "poi"
+   ]
+  },
+  "SolidBromine": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SolidHydrogen": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/features/Geode.yaml, worldgen/features/traits/Geode.yaml"
+     ]
+    },
+    "geyser": {
+     "via": "LiquidHydrogen (cooled) <- Hydrogen (cooled)"
+    },
+    "living": {
+     "via": "LiquidHydrogen (cooled) <- Hydrogen (cooled)"
+    },
+    "machine": {
+     "via": "LiquidHydrogen (cooled) <- Hydrogen (cooled)"
+    }
+   }
+  },
+  "BleachStone": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Raptor.yaml, dlc/dlc4/worldgen/features/raptor/RaptorHabitat.yaml, dlc/expansion1/worldgen/biomes/Moo.yaml +11 more",
+      "BleachStoneCometConfig.cs (meteor shower)"
+     ]
+    },
+    "living": {
+     "direct": [
+      "ChameleonConfig.cs, PuftAlphaConfig.cs, PuftBleachstoneConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "ChlorinatorConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "events",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Lead": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Oil.yaml, worldgen/features/oilpockets/Cavity.yaml, worldgen/features/oilpockets/CavityOilFloatersTall.yaml +2 more"
+     ]
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "Sulfur": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/biomes/Beach.yaml, dlc/expansion1/worldgen/biomes/Radioactive.yaml, dlc/expansion1/worldgen/biomes/Wasteland.yaml +5 more"
+     ]
+    },
+    "geyser": {
+     "via": "LiquidSulfur (cooled)"
+    },
+    "living": {
+     "via": "LiquidGunk (heated, leaves ore)"
+    },
+    "machine": {
+     "via": "SourGas (cooled, leaves ore) <- Petroleum (heated)"
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Lime": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/borders.yaml"
+     ]
+    },
+    "living": {
+     "direct": [
+      "BaseParrotFish.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "RockCrusherConfig.cs"
+     ]
+    }
+   }
+  },
+  "SolidSyngas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SolidChlorine": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Moo.yaml, dlc/expansion1/worldgen/biomes/Radioactive.yaml, worldgen/features/Geode.yaml +1 more"
+     ]
+    },
+    "geyser": {
+     "via": "Chlorine (cooled) <- ChlorineGas (cooled)"
+    },
+    "living": {
+     "via": "Chlorine (cooled) <- ChlorineGas (cooled)"
+    },
+    "machine": {
+     "via": "Chlorine (cooled) <- ChlorineGas (cooled)"
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "SolidMucus": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "Mucus (cooled) <- Ink (heated)"
+    },
+    "machine": {
+     "via": "Mucus (cooled)"
+    }
+   }
+  },
+  "SolidMercury": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/SugarWoods.yaml, worldgen/features/Geode.yaml"
+     ]
+    }
+   }
+  },
+  "SolidNuclearWaste": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "NuclearWaste (cooled) <- Fallout (cooled)"
+    },
+    "machine": {
+     "via": "NuclearWaste (cooled)"
+    }
+   }
+  },
+  "Coquina": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/biomes/Reef.yaml, dlc/dlc5/worldgen/borders.yaml"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Obsidian": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/Magma.yaml, dlc/dlc2/worldgen/features/space/FloatingRock.yaml, dlc/dlc4/worldgen/biomes/Wetlands.yaml +17 more"
+     ]
+    },
+    "living": {
+     "direct": [
+      "BaseSnailConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "geysers",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "SolidPetroleum": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Petroleum (cooled) <- CrudeOil (heated)"
+    },
+    "geyser": {
+     "via": "Petroleum (cooled) <- CrudeOil (heated)"
+    },
+    "living": {
+     "via": "Petroleum (cooled)"
+    },
+    "machine": {
+     "via": "Petroleum (cooled)"
+    }
+   }
+  },
+  "SolidXenon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SolidSuperCoolant": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "via": "SuperCoolant (cooled)"
+    }
+   }
+  },
+  "IgneousRock": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/CarrotQuarry.yaml, dlc/dlc2/worldgen/features/carrotquarry/IceBellyCave.yaml, dlc/dlc2/worldgen/features/oilpockets/DiamondCoalClump.yaml +46 more"
+     ]
+    },
+    "geyser": {
+     "via": "Magma (cooled)"
+    },
+    "living": {
+     "via": "Magma (cooled) <- Obsidian (heated)"
+    },
+    "machine": {
+     "via": "Magma (cooled) <- SedimentaryRock (heated)"
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "geysers",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Rubber": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "RubberMakerConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "EnrichedUranium": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "UraniumCentrifugeConfig.cs"
+     ]
+    }
+   }
+  },
+  "SiltStone": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/biomes/Beach.yaml, dlc/dlc5/worldgen/features/beach/AirPocket.yaml, dlc/dlc5/worldgen/features/beach/MediumFreshwaterLake.yaml +3 more"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Iodine": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Brick": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Gold": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Magma.yaml, worldgen/biomes/Misc.yaml, worldgen/features/Geode.yaml"
+     ]
+    },
+    "geyser": {
+     "via": "MoltenGold (cooled)"
+    },
+    "living": {
+     "direct": [
+      "BaseHatchConfig.cs"
+     ]
+    },
+    "machine": {
+     "via": "MoltenGold (cooled) <- GoldAmalgam (heated)"
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Rust": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Misc.yaml, dlc/expansion1/worldgen/biomes/Radioactive.yaml, dlc/expansion1/worldgen/borders.yaml +6 more"
+     ]
+    },
+    "living": {
+     "direct": [
+      "PrehistoricPacuTuning.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Gunk": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "LiquidGunk (cooled)"
+    }
+   }
+  },
+  "FrozenPhytoOil": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "via": "PhytoOil (cooled)"
+    }
+   }
+  },
+  "Corium": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "NuclearWasteCometConfig.cs (meteor shower)"
+     ]
+    }
+   }
+  },
+  "Phosphorus": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "LiquidPhosphorus (cooled) <- Phosphorite (heated)"
+    },
+    "living": {
+     "via": "LiquidPhosphorus (cooled) <- Phosphorite (heated)"
+    },
+    "machine": {
+     "via": "LiquidPhosphorus (cooled) <- Phosphorite (heated)"
+    }
+   }
+  },
+  "Iridium": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "IridiumCometConfig.cs (meteor shower)"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Vanadium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Palladium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Granite": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Raptor.yaml, dlc/dlc5/worldgen/biomes/KelpForest.yaml, dlc/expansion1/worldgen/biomes/Barren.yaml +27 more"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "geysers",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Radium": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Misc.yaml, worldgen/features/Geode.yaml, worldgen/features/HexapedStart.yaml"
+     ]
+    }
+   }
+  },
+  "Anhydrite": {
+   "primary": "none",
+   "bins": {}
+  },
+  "WoodLog": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "direct": [
+      "TUNING/CROPS.cs (crop)"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "RockCrusherConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi"
+   ]
+  },
+  "Electrum": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Crystal.yaml, worldgen/biomes/Misc.yaml, worldgen/features/Geode.yaml +2 more"
+     ]
+    }
+   }
+  },
+  "Germanium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SolidCarbonDioxide": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/IceCaves.yaml, dlc/dlc2/worldgen/biomes/Misc.yaml, dlc/expansion1/worldgen/biomes/Frozen.yaml +5 more"
+     ]
+    },
+    "geyser": {
+     "via": "LiquidCarbonDioxide (cooled)"
+    },
+    "living": {
+     "via": "LiquidCarbonDioxide (cooled) <- CarbonDioxide (cooled)"
+    },
+    "machine": {
+     "via": "LiquidCarbonDioxide (cooled) <- CarbonDioxide (cooled)"
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Cobalt": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenCobalt (cooled) <- Cobaltite (heated)"
+    },
+    "geyser": {
+     "via": "MoltenCobalt (cooled)"
+    }
+   }
+  },
+  "CarbonFibre": {
+   "primary": "none",
+   "bins": {}
+  },
+  "UraniumOre": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Radioactive.yaml, dlc/expansion1/worldgen/borders.yaml, dlc/expansion1/worldgen/features/radioactive/BeeBubble.yaml",
+      "UraniumCometConfig.cs (meteor shower)"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "SolidPropane": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/features/Geode.yaml"
+     ]
+    }
+   }
+  },
+  "AluminumOre": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Forest.yaml, dlc/expansion1/worldgen/biomes/Metallic.yaml, dlc/expansion1/worldgen/borders.yaml +7 more"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "SedimentaryRock": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/features/space/FloatingRock.yaml, dlc/expansion1/worldgen/biomes/Swamp.yaml, dlc/expansion1/worldgen/borders.yaml +27 more"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "RockCrusherConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Fullerene": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Barren.yaml",
+      "FullereneCometConfig.cs (meteor shower)"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "SupermaterialRefineryConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "Gallium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Calcium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Zirconium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "GoldAmalgam": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Wetlands.yaml, dlc/dlc4/worldgen/features/wetlands/LargeCave.yaml, dlc/dlc4/worldgen/features/wetlands/MosquitoCave.yaml +7 more",
+      "GoldCometConfig.cs (meteor shower)"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "RockCrusherConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "events",
+    "poi"
+   ]
+  },
+  "Salt": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/biomes/Beach.yaml, dlc/dlc5/worldgen/features/beach/OxyliteCave.yaml, dlc/dlc5/worldgen/features/beach/PalmyShore.yaml +11 more"
+     ]
+    },
+    "geyser": {
+     "via": "SaltWater (heated, leaves ore)"
+    },
+    "living": {
+     "direct": [
+      "SaltPlantConfig.cs, TUNING/CROPS.cs (crop)"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "DesalinatorConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Sand": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Wetlands.yaml, dlc/dlc4/worldgen/features/wetlands/LargeCave.yaml, dlc/dlc4/worldgen/features/wetlands/MosquitoCave.yaml +43 more"
+     ]
+    },
+    "geyser": {
+     "via": "Dirt (heated) <- DirtyWater (heated, leaves ore)"
+    },
+    "living": {
+     "direct": [
+      "CrabConfig.cs, CrabFreshWaterConfig.cs, CrabWoodConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "ChlorinatorConfig.cs, MilkPressConfig.cs, RockCrusherConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Selenium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Arsenic": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Snow": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/IceCaves.yaml, dlc/dlc2/worldgen/biomes/Misc.yaml, dlc/dlc2/worldgen/biomes/SugarWoods.yaml +21 more",
+      "SnowballCometConfig.cs (meteor shower), SpaceTreeSeedCometConfig.cs (meteor shower)"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "SandStone": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/features/beach/AlgaeBall.yaml, dlc/expansion1/worldgen/biomes/Barren.yaml, dlc/expansion1/worldgen/biomes/Sedimentary.yaml +37 more"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Soot": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Potassium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SlakedLime": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Glass": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenGlass (cooled) <- Sand (heated)"
+    },
+    "geyser": {
+     "via": "MoltenGlass (cooled) <- Sand (heated) <- Dirt (heated) <- DirtyWater (heated, leaves ore)"
+    },
+    "living": {
+     "via": "MoltenGlass (cooled) <- Sand (heated)"
+    },
+    "machine": {
+     "via": "MoltenGlass (cooled)"
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "FrozenInk": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "Ink (cooled)"
+    }
+   }
+  },
+  "SolidArgon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "FabricatedWood": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "FabricatedWoodMakerConfig.cs"
+     ]
+    }
+   }
+  },
+  "Platinum": {
+   "primary": "none",
+   "bins": {}
+  },
+  "VanadiumPentoxide": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SolidSulfurTrioxide": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Clay": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/HotMarsh.yaml, worldgen/features/hotmarsh/GeyserHole.yaml, worldgen/features/hotmarsh/MethaneGeyserHole.yaml"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "AirFilterConfig.cs, RockCrusherConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "events",
+    "poi"
+   ]
+  },
+  "ToxicSand": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Wetlands.yaml, dlc/expansion1/worldgen/biomes/Swamp.yaml, dlc/expansion1/worldgen/borders.yaml +4 more"
+     ]
+    },
+    "living": {
+     "direct": [
+      "BasePacuConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "EthanolDistilleryConfig.cs, WaterPurifierConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Ice": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/CarrotQuarry.yaml, dlc/dlc2/worldgen/biomes/IceCaves.yaml, dlc/dlc2/worldgen/biomes/Misc.yaml +24 more"
+     ]
+    },
+    "geyser": {
+     "via": "Water (cooled)"
+    },
+    "living": {
+     "via": "Water (cooled)"
+    },
+    "machine": {
+     "via": "Water (cooled)"
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Graphite": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Aquatic.yaml, dlc/expansion1/worldgen/biomes/Barren.yaml"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "RockCrusherConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "ToxicMud": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/biomes/KelpForest.yaml, dlc/expansion1/worldgen/biomes/Swamp.yaml, dlc/expansion1/worldgen/features/swamp/DirtyPool.yaml +6 more"
+     ]
+    },
+    "living": {
+     "direct": [
+      "SeaTurtleTuning.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi"
+   ]
+  },
+  "Mud": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Swamp.yaml, dlc/expansion1/worldgen/features/swamp/DirtBallSmall.yaml, dlc/expansion1/worldgen/features/swamp/FreshwaterWell.yaml +2 more"
+     ]
+    },
+    "living": {
+     "direct": [
+      "DivergentWormConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Carbon": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/features/oilpockets/DiamondCoalClump.yaml, dlc/dlc5/worldgen/biomes/Abyss.yaml, dlc/expansion1/worldgen/biomes/Barren.yaml +17 more"
+     ]
+    },
+    "living": {
+     "direct": [
+      "HatchConfig.cs, HatchHardConfig.cs, HatchVeggieConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Tin": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SolidOxygen": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/features/Geode.yaml, worldgen/features/traits/Geode.yaml"
+     ]
+    },
+    "geyser": {
+     "via": "LiquidOxygen (cooled) <- ContaminatedOxygen (cooled)"
+    },
+    "living": {
+     "via": "LiquidOxygen (cooled) <- Oxygen (cooled)"
+    },
+    "machine": {
+     "via": "LiquidOxygen (cooled) <- Oxygen (cooled)"
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "Creature": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "DieselMooCometConfig.cs (meteor shower), FoodCometConfig.cs (meteor shower), GassyMooCometConfig.cs (meteor shower)"
+     ]
+    },
+    "living": {
+     "direct": [
+      "DinofernConfig.cs, EntityTemplates.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "poi",
+    "storytraits"
+   ]
+  },
+  "Silicon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "DepletedUranium": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenUranium (cooled) <- UraniumOre (heated)"
+    },
+    "machine": {
+     "direct": [
+      "ManualHighEnergyParticleSpawnerConfig.cs"
+     ]
+    }
+   }
+  },
+  "Katairite": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Raptor.yaml, dlc/expansion1/worldgen/features/traits/MetalCavesSmall.yaml, worldgen/biomes/Crystal.yaml +5 more"
+     ]
+    },
+    "living": {
+     "direct": [
+      "SquidTuning.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "RockCrusherConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "events",
+    "geysers",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Pearl": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "direct": [
+      "ClamConfig.cs, TUNING/CROPS.cs (crop)"
+     ]
+    }
+   }
+  },
+  "Magnesium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SolidMethane": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/features/traits/Geode.yaml"
+     ]
+    },
+    "geyser": {
+     "via": "LiquidMethane (cooled) <- Methane (cooled)"
+    },
+    "living": {
+     "via": "LiquidMethane (cooled) <- Methane (cooled)"
+    },
+    "machine": {
+     "via": "LiquidMethane (cooled) <- Methane (cooled)"
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "FishMilkIce": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "FishMilk (cooled)"
+    }
+   }
+  },
+  "HardPolypropylene": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "SupermaterialRefineryConfig.cs"
+     ]
+    }
+   }
+  },
+  "NaturalSolidResin": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "NaturalResin (cooled) <- Amber (heated)"
+    },
+    "machine": {
+     "via": "NaturalResin (cooled)"
+    }
+   }
+  },
+  "OxyRock": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/IceCaves.yaml, dlc/dlc2/worldgen/features/icecaves/OxyliteDeposit.yaml, dlc/dlc2/worldgen/worlds/CeresBaseGameAsteroid.yaml +17 more",
+      "BleachStoneCometConfig.cs (meteor shower), OxyliteCometConfig.cs (meteor shower)"
+     ]
+    },
+    "living": {
+     "direct": [
+      "PuftAlphaConfig.cs, PuftOxyliteConfig.cs, TUNING/CROPS.cs (crop)"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "OxyliteRefineryConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi"
+   ]
+  },
+  "MaficRock": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/borders.yaml, dlc/expansion1/worldgen/biomes/Misc.yaml, dlc/expansion1/worldgen/biomes/Wasteland.yaml +13 more"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "MurkyBrineIce": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MurkyBrine (cooled)"
+    },
+    "geyser": {
+     "via": "MurkyBrine (cooled)"
+    }
+   }
+  },
+  "Iron": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Barren.yaml, dlc/expansion1/worldgen/features/aquatic/SolidBoulder.yaml, dlc/expansion1/worldgen/features/barren/GraniteCoalDeposit.yaml +2 more",
+      "IronCometConfig.cs (meteor shower)"
+     ]
+    },
+    "geyser": {
+     "via": "MoltenIron (cooled)"
+    },
+    "living": {
+     "via": "MoltenIron (cooled) <- Rust (heated)"
+    },
+    "machine": {
+     "via": "MoltenIron (cooled) <- IronOre (heated)"
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Basalt": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/biomes/Abyss.yaml"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Regolith": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/borders.yaml, dlc/expansion1/worldgen/biomes/Misc.yaml, dlc/expansion1/worldgen/borders.yaml +1 more",
+      "DustCometConfig.cs (meteor shower), LargeImpactorCometConfig.cs (meteor shower), LightDustCometConfig.cs (meteor shower), MiniCometConfig.cs (meteor shower) +1 more"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "SolidResin": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "Resin (cooled)"
+    }
+   }
+  },
+  "NickelOre": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Garden.yaml, dlc/dlc4/worldgen/features/garden/NickelOreBall.yaml, worldgen/traits/MetalPoor.yaml +1 more"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "Slabs": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Lithium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Bitumen": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Quicklime": {
+   "primary": "none",
+   "bins": {}
+  },
+  "StableSnow": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "SnowTileConfig.cs (packed snow is what a snow tile is built of)"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi"
+   ]
+  },
+  "TempConductorSolid": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "SupermaterialRefineryConfig.cs"
+     ]
+    }
+   }
+  },
+  "IronOre": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/CarrotQuarry.yaml, dlc/dlc2/worldgen/features/carrotquarry/IceBellyCave.yaml, dlc/dlc2/worldgen/features/oilpockets/DiamondCoalClump.yaml +27 more"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "RustDeoxidizerConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Zinc": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenZinc (cooled) <- ZincOre (heated)"
+    }
+   }
+  },
+  "Dirt": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/IceCaves.yaml, dlc/dlc2/worldgen/features/icecaves/DirtDeposit.yaml, dlc/dlc4/worldgen/biomes/Garden.yaml +42 more"
+     ]
+    },
+    "geyser": {
+     "via": "DirtyWater (heated, leaves ore)"
+    },
+    "living": {
+     "direct": [
+      "BaseSnailConfig.cs, GlassDeerConfig.cs, SquirrelConfig.cs, SquirrelHugConfig.cs +1 more"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "CompostConfig.cs, MilkPressConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "geysers",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Cement": {
+   "primary": "none",
+   "bins": {}
+  },
+  "DirtyIce": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Frozen.yaml, dlc/expansion1/worldgen/biomes/Misc.yaml, dlc/expansion1/worldgen/features/frozen/MetalShelf.yaml +10 more"
+     ]
+    },
+    "geyser": {
+     "via": "DirtyWater (cooled)"
+    },
+    "living": {
+     "via": "DirtyWater (cooled)"
+    },
+    "machine": {
+     "via": "DirtyWater (cooled)"
+    }
+   },
+   "found_in": [
+    "events",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "CementMix": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Boron": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Chromium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Fossil": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/borders.yaml, dlc/expansion1/worldgen/features/swamp/DirtBall.yaml, dlc/expansion1/worldgen/features/swamp/SandClump.yaml +2 more"
+     ]
+    },
+    "living": {
+     "via": "Amber (heated, leaves ore)"
+    },
+    "machine": {
+     "direct": [
+      "FossilDigSiteConfig.cs, MilkPressConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Unobtanium": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Magma.yaml, worldgen/biomes/Misc.yaml, worldgen/borders.yaml"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "chunk.yaml",
+    "events",
+    "geysers",
+    "interiors",
+    "poi",
+    "storytraits"
+   ]
+  },
+  "SodiumHydroxide": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Cinnabar": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/IceCaves.yaml, dlc/dlc2/worldgen/features/icecaves/MetalBlob.yaml, worldgen/traits/MetalPoor.yaml +1 more"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "SolidEthanol": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Ethanol (cooled)"
+    },
+    "living": {
+     "via": "Ethanol (cooled)"
+    },
+    "machine": {
+     "via": "Ethanol (cooled)"
+    }
+   }
+  },
+  "FoolsGold": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/features/Geode.yaml, worldgen/features/GeoventCave.yaml, worldgen/features/SprinkleOfElement.yaml +1 more"
+     ]
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "Galena": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/biomes/Abyss.yaml"
+     ]
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "Aluminum": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenAluminum (cooled) <- AluminumOre (heated)"
+    },
+    "geyser": {
+     "via": "MoltenAluminum (cooled)"
+    }
+   },
+   "found_in": [
+    "satellite debris",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Latex": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "MilkPressConfig.cs"
+     ]
+    }
+   }
+  },
+  "MurkyBrine": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/biomes/Abyss.yaml"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "MoltenChromium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "LiquidHelium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "LiquidOxygen": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/biomes/Frozen.yaml, worldgen/biomes/Frozen.yaml"
+     ]
+    },
+    "geyser": {
+     "via": "ContaminatedOxygen (cooled)"
+    },
+    "living": {
+     "via": "Oxygen (cooled)"
+    },
+    "machine": {
+     "via": "Oxygen (cooled)"
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "MoltenIndium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenSilver": {
+   "primary": "none",
+   "bins": {}
+  },
+  "ViscoGel": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "ChemicalRefineryConfig.cs"
+     ]
+    }
+   }
+  },
+  "MoltenAluminum": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "AluminumOre (heated)"
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    }
+   }
+  },
+  "MoltenLead": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Lead (heated)"
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "LiquidXenon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "LiquidCarbonDioxide": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/features/frozen/CO2Lake.yaml"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "via": "CarbonDioxide (cooled)"
+    },
+    "machine": {
+     "via": "CarbonDioxide (cooled)"
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "LiquidNitrogen": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "Nitrogen (cooled)"
+    }
+   }
+  },
+  "CausticSolution": {
+   "primary": "none",
+   "bins": {}
+  },
+  "CrudeOil": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Oil.yaml, worldgen/features/oilpockets/Cavity.yaml, worldgen/features/oilpockets/CavityPond.yaml +1 more"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "direct": [
+      "OilEater.cs, OilFloaterConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "OilWellCapConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "MoltenSodium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenGlass": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Sand (heated)"
+    },
+    "geyser": {
+     "via": "Sand (heated) <- Dirt (heated) <- DirtyWater (heated, leaves ore)"
+    },
+    "living": {
+     "via": "Sand (heated)"
+    },
+    "machine": {
+     "direct": [
+      "GlassForgeConfig.cs"
+     ]
+    }
+   }
+  },
+  "MoltenIridium": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Iridium (heated)"
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "RefinedLipid": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "ChemicalRefineryConfig.cs"
+     ]
+    }
+   }
+  },
+  "LiquidSulfur": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Sulfur (heated)"
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "via": "Sulfur (heated) <- LiquidGunk (heated, leaves ore)"
+    },
+    "machine": {
+     "via": "Sulfur (heated) <- SourGas (cooled, leaves ore) <- Petroleum (heated)"
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "MoltenGold": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Electrum (heated)"
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "via": "Gold (heated)"
+    },
+    "machine": {
+     "via": "GoldAmalgam (heated)"
+    }
+   },
+   "found_in": [
+    "events"
+   ]
+  },
+  "Magma": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/Magma.yaml, dlc/expansion1/worldgen/biomes/Magma.yaml, worldgen/biomes/Magma.yaml +2 more"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "via": "Obsidian (heated)"
+    },
+    "machine": {
+     "via": "SedimentaryRock (heated)"
+    }
+   },
+   "found_in": [
+    "geysers",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "LiquidPollutant": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Pollutant (cooled)"
+    },
+    "geyser": {
+     "via": "Pollutant (cooled)"
+    },
+    "living": {
+     "via": "Pollutant (cooled)"
+    },
+    "machine": {
+     "via": "Pollutant (cooled)"
+    }
+   }
+  },
+  "SulfuricAcid": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Chlorine": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/features/raptor/RaptorHabitat.yaml, dlc/expansion1/worldgen/biomes/Moo.yaml, dlc/expansion1/worldgen/biomes/Radioactive.yaml +4 more"
+     ]
+    },
+    "geyser": {
+     "via": "ChlorineGas (cooled)"
+    },
+    "living": {
+     "via": "ChlorineGas (cooled)"
+    },
+    "machine": {
+     "via": "ChlorineGas (cooled)"
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "MoltenGallium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "LiquidHydrogen": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Hydrogen (cooled)"
+    },
+    "geyser": {
+     "via": "Hydrogen (cooled)"
+    },
+    "living": {
+     "via": "Hydrogen (cooled)"
+    },
+    "machine": {
+     "via": "Hydrogen (cooled)"
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "Resin": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "direct": [
+      "SapTree.cs (the sap tree stores it)"
+     ]
+    }
+   }
+  },
+  "LiquidGunk": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "direct": [
+      "VomitChore.cs (duplicant)"
+     ]
+    }
+   }
+  },
+  "LiquidIodine": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenCalcium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenTitanium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenSaltCake": {
+   "primary": "none",
+   "bins": {}
+  },
+  "LiquidPropane": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/rivers.yaml"
+     ]
+    }
+   }
+  },
+  "MoltenAntimony": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenTungsten": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Katairite (heated)"
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "via": "Katairite (heated)"
+    },
+    "machine": {
+     "via": "Katairite (heated)"
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "Petroleum": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "CrudeOil (heated)"
+    },
+    "geyser": {
+     "via": "CrudeOil (heated)"
+    },
+    "living": {
+     "direct": [
+      "OilFloaterHighTempConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "OilRefineryConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "LiquidArgon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenSalt": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Salt (heated)"
+    },
+    "geyser": {
+     "via": "Salt (heated) <- SaltWater (heated, leaves ore)"
+    },
+    "living": {
+     "via": "Salt (heated)"
+    },
+    "machine": {
+     "via": "Salt (heated)"
+    }
+   }
+  },
+  "MoltenPalladium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenCobalt": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Cobaltite (heated)"
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    }
+   }
+  },
+  "Brine": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Ocean.yaml, worldgen/features/forest/TallRoom.yaml, worldgen/features/ocean/TallRoom.yaml +1 more"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "MilkFatSeparatorConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "MoltenBoron": {
+   "primary": "none",
+   "bins": {}
+  },
+  "NuclearWaste": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Fallout (cooled)"
+    },
+    "machine": {
+     "direct": [
+      "Reactor.cs (the research reactor dumps it)"
+     ]
+    }
+   }
+  },
+  "MoltenGermanium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SuperCoolant": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "ChemicalRefineryConfig.cs"
+     ]
+    }
+   }
+  },
+  "Ethanol": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/CarrotQuarry.yaml, worldgen/features/rust/EthanolLake.yaml"
+     ]
+    },
+    "living": {
+     "direct": [
+      "SealConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "EthanolDistilleryConfig.cs"
+     ]
+    }
+   }
+  },
+  "PhytoOil": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "MilkPressConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "MoltenSilicon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenTin": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Milk": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "direct": [
+      "MilkPressConfig.cs"
+     ]
+    }
+   }
+  },
+  "MoltenZirconium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenPotassium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "LiquidNeon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenVanadium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "LiquidMethane": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Methane (cooled)"
+    },
+    "geyser": {
+     "via": "Methane (cooled)"
+    },
+    "living": {
+     "via": "Methane (cooled)"
+    },
+    "machine": {
+     "via": "Methane (cooled)"
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "MoltenLithium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenIron": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Iron (heated)"
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "via": "Rust (heated)"
+    },
+    "machine": {
+     "via": "IronOre (heated)"
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "MoltenCarbon": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Diamond (heated)"
+    },
+    "living": {
+     "via": "RefinedCarbon (heated)"
+    },
+    "machine": {
+     "via": "Diamond (heated)"
+    }
+   }
+  },
+  "MoltenSyngas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenSodiumHydroxide": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenZinc": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "ZincOre (heated)"
+    }
+   }
+  },
+  "Ink": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "direct": [
+      "BaseSquidConfig.cs"
+     ]
+    }
+   }
+  },
+  "SugarWater": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "direct": [
+      "SpaceTreePlant.cs, TUNING/CROPS.cs (crop)"
+     ]
+    }
+   }
+  },
+  "MoltenMagnesium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenSelenium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenMolybdenum": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Naphtha": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "Polypropylene (heated)"
+    },
+    "machine": {
+     "via": "ViscoGel (heated)"
+    }
+   }
+  },
+  "LiquidHydrogenChloride": {
+   "primary": "none",
+   "bins": {}
+  },
+  "NaturalResin": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "Amber (heated)"
+    },
+    "machine": {
+     "direct": [
+      "MilkPressConfig.cs"
+     ]
+    }
+   }
+  },
+  "MoltenQuicklime": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenPlatinum": {
+   "primary": "none",
+   "bins": {}
+  },
+  "LiquidSulfurTrioxide": {
+   "primary": "none",
+   "bins": {}
+  },
+  "LiquidRadon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenSucrose": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Sucrose (heated)"
+    },
+    "living": {
+     "via": "Sucrose (heated)"
+    },
+    "machine": {
+     "via": "Sucrose (heated) <- Latex (cooled, leaves ore)"
+    }
+   }
+  },
+  "LiquidPhosphorus": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Phosphorite (heated)"
+    },
+    "living": {
+     "via": "Phosphorite (heated)"
+    },
+    "machine": {
+     "via": "Phosphorite (heated)"
+    }
+   }
+  },
+  "LiquidSulfurDioxide": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Bromine": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenSteel": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "via": "Steel (heated)"
+    }
+   }
+  },
+  "MoltenNiobium": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Niobium (heated)"
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs, NiobiumGeyserConfig.cs"
+     ]
+    },
+    "machine": {
+     "via": "TempConductorSolid (heated)"
+    }
+   }
+  },
+  "LiquidKrypton": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Mucus": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "via": "Ink (heated)"
+    },
+    "machine": {
+     "direct": [
+      "MilkFatSeparatorConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "FishMilk": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "direct": [
+      "BaseSeaHorseConfig.cs"
+     ]
+    }
+   }
+  },
+  "MoltenBismuth": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Mercury": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Misc.yaml"
+     ]
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "DirtyWater": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Wetlands.yaml, dlc/dlc4/worldgen/features/wetlands/LargeCave.yaml, dlc/dlc4/worldgen/features/wetlands/MosquitoCave.yaml +14 more"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "direct": [
+      "PeeChore.cs (duplicant), VomitChore.cs (duplicant)"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "AlgaeDistilleryConfig.cs, AlgaeHabitatConfig.cs, CO2ScrubberConfig.cs, DesalinatorConfig.cs +4 more"
+     ]
+    }
+   },
+   "found_in": [
+    "events",
+    "poi",
+    "storytraits"
+   ],
+   "review": [
+    "LubricationStickConfig.cs"
+   ]
+  },
+  "Water": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/features/garden/SmallLake.yaml, dlc/dlc5/worldgen/features/beach/MediumFreshwaterLake.yaml, dlc/dlc5/worldgen/features/beach/PalmyShore.yaml +28 more"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "direct": [
+      "FilterPlantConfig.cs, TUNING/CROPS.cs (crop)"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "DesalinatorConfig.cs, FoodDehydratorConfig.cs, WaterPurifierConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "SaltWater": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/biomes/Reef.yaml, dlc/expansion1/worldgen/biomes/Metallic.yaml, dlc/expansion1/worldgen/features/frozen/SlushPool.yaml +5 more"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "ChemicalRefineryConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "MoltenUranium": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "UraniumOre (heated)"
+    },
+    "machine": {
+     "direct": [
+      "UraniumCentrifugeConfig.cs"
+     ]
+    }
+   }
+  },
+  "MoltenVanadiumPentoxide": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenNickel": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "NickelOre (heated)"
+    }
+   }
+  },
+  "MoltenManganese": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MoltenCopper": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Cuprite (heated)"
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "space (rocket harvest)"
+   ]
+  },
+  "SulfurGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "LiquidSulfur (heated) <- Sulfur (heated)"
+    },
+    "geyser": {
+     "via": "LiquidSulfur (heated)"
+    },
+    "living": {
+     "via": "LiquidSulfur (heated) <- Sulfur (heated) <- LiquidGunk (heated, leaves ore)"
+    },
+    "machine": {
+     "via": "LiquidSulfur (heated) <- Sulfur (heated) <- SourGas (cooled, leaves ore) <- Petroleum (heated)"
+    }
+   }
+  },
+  "ZincGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenZinc (heated) <- ZincOre (heated)"
+    }
+   }
+  },
+  "SaltGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenSalt (heated) <- Salt (heated)"
+    },
+    "geyser": {
+     "via": "MoltenSalt (heated) <- Salt (heated) <- SaltWater (heated, leaves ore)"
+    },
+    "living": {
+     "via": "MoltenSalt (heated) <- Salt (heated)"
+    },
+    "machine": {
+     "via": "MoltenSalt (heated) <- Salt (heated)"
+    }
+   }
+  },
+  "GermaniumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Propane": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Misc.yaml, worldgen/features/GeoventCave.yaml, worldgen/features/HexapedStart.yaml"
+     ]
+    }
+   }
+  },
+  "Nitrogen": {
+   "primary": "living",
+   "bins": {
+    "living": {
+     "direct": [
+      "the Oxyfern breathes out air, nitrogen included (Mod 1 Biology) (oni-flagship-mods/mod1-thermo-fluid/Biology.cs)"
+     ]
+    }
+   }
+  },
+  "SeleniumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "NiobiumGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenNiobium (heated) <- Niobium (heated)"
+    },
+    "geyser": {
+     "via": "MoltenNiobium (heated)"
+    },
+    "machine": {
+     "via": "MoltenNiobium (heated) <- TempConductorSolid (heated)"
+    }
+   }
+  },
+  "BromineGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "GalliumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Helium": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Oxygen": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/CarrotQuarry.yaml, dlc/dlc2/worldgen/biomes/IceCaves.yaml, dlc/dlc2/worldgen/biomes/SugarWoods.yaml +73 more",
+      "HardIceCometConfig.cs (meteor shower), OxyliteCometConfig.cs (meteor shower)"
+     ]
+    },
+    "geyser": {
+     "via": "LiquidOxygen (heated) <- ContaminatedOxygen (cooled)"
+    },
+    "living": {
+     "direct": [
+      "BaseParrotFish.cs, BasePufferFish.cs, FilterPlantConfig.cs, OxyfernConfig.cs +1 more"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "AirFilterConfig.cs, AlgaeHabitatConfig.cs, DevLifeSupportConfig.cs, ElectrolyzerConfig.cs +2 more"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "geysers",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "Argon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "CobaltGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenCobalt (heated) <- Cobaltite (heated)"
+    },
+    "geyser": {
+     "via": "MoltenCobalt (heated)"
+    }
+   }
+  },
+  "SteelGas": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "via": "MoltenSteel (heated) <- Steel (heated)"
+    }
+   }
+  },
+  "ChlorineGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc4/worldgen/biomes/Raptor.yaml, dlc/expansion1/worldgen/features/radioactive/BeeBubble.yaml, worldgen/biomes/Jungle.yaml +5 more",
+      "BleachStoneCometConfig.cs (meteor shower)"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "direct": [
+      "ChameleonConfig.cs, DinofernConfig.cs, SaltPlantConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "RustDeoxidizerConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "events",
+    "poi"
+   ]
+  },
+  "Hydrogen": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/features/metallic/DreckoHome.yaml, dlc/expansion1/worldgen/features/ocean/SlushPool.yaml, worldgen/biomes/Jungle.yaml +1 more"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "direct": [
+      "CritterTrapPlantConfig.cs, StaterpillarConfig.cs, StaterpillarGasConfig.cs, StaterpillarLiquidConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "ElectrolyzerConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "ChromiumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SourGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/features/rust/SulfurHole.yaml"
+     ]
+    },
+    "geyser": {
+     "via": "Petroleum (heated) <- CrudeOil (heated)"
+    },
+    "living": {
+     "via": "Petroleum (heated)"
+    },
+    "machine": {
+     "via": "Petroleum (heated)"
+    }
+   }
+  },
+  "IodineGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "VanadiumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Steam": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/features/hotmarsh/GeyserHole.yaml, worldgen/features/hotmarsh/MethaneGeyserHole.yaml"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "via": "Water (heated)"
+    },
+    "machine": {
+     "direct": [
+      "PolymerizerConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "poi"
+   ]
+  },
+  "AntimonyGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "BoronGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Methane": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/expansion1/worldgen/features/moo/MooBubbleSmall.yaml, dlc/expansion1/worldgen/features/moo/MooCaveLarge.yaml, worldgen/biomes/Misc.yaml",
+      "GassyMooCometConfig.cs (meteor shower)"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "direct": [
+      "Flatulence.cs (duplicant), MooConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "OilRefineryConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "poi",
+    "space (rocket harvest)"
+   ]
+  },
+  "MercuryGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Mercury (heated)"
+    }
+   }
+  },
+  "GoldGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenGold (heated) <- Electrum (heated)"
+    },
+    "geyser": {
+     "via": "MoltenGold (heated)"
+    },
+    "living": {
+     "via": "MoltenGold (heated) <- Gold (heated)"
+    },
+    "machine": {
+     "via": "MoltenGold (heated) <- GoldAmalgam (heated)"
+    }
+   }
+  },
+  "ZirconiumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "EthanolGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Ethanol (heated)"
+    },
+    "living": {
+     "via": "Ethanol (heated)"
+    },
+    "machine": {
+     "via": "Ethanol (heated)"
+    }
+   }
+  },
+  "TitaniumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "RockGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "Magma (heated)"
+    },
+    "geyser": {
+     "via": "Magma (heated)"
+    },
+    "living": {
+     "via": "Magma (heated) <- Obsidian (heated)"
+    },
+    "machine": {
+     "via": "MoltenGlass (heated)"
+    }
+   }
+  },
+  "BismuthGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "CarbonGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenCarbon (heated) <- Diamond (heated)"
+    },
+    "living": {
+     "via": "MoltenCarbon (heated) <- RefinedCarbon (heated)"
+    },
+    "machine": {
+     "via": "MoltenCarbon (heated) <- Diamond (heated)"
+    }
+   }
+  },
+  "HydrogenChloride": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SuperCoolantGas": {
+   "primary": "machine",
+   "bins": {
+    "machine": {
+     "via": "SuperCoolant (heated)"
+    }
+   }
+  },
+  "PlatinumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SilverGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "AluminumGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenAluminum (heated) <- AluminumOre (heated)"
+    },
+    "geyser": {
+     "via": "MoltenAluminum (heated)"
+    }
+   },
+   "found_in": [
+    "satellite debris"
+   ]
+  },
+  "Radon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Krypton": {
+   "primary": "none",
+   "bins": {}
+  },
+  "PalladiumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Pollutant": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "split out of Polluted Oxygen wherever it lands (Mod 1 Biology), from ContaminatedOxygen's natural sources (oni-flagship-mods/mod1-thermo-fluid/Biology.cs)"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "split out of Polluted Oxygen wherever it lands (Mod 1 Biology), from ContaminatedOxygen's geyser sources (oni-flagship-mods/mod1-thermo-fluid/Biology.cs)"
+     ]
+    },
+    "living": {
+     "direct": [
+      "split out of Polluted Oxygen wherever it lands (Mod 1 Biology), from ContaminatedOxygen's living sources (oni-flagship-mods/mod1-thermo-fluid/Biology.cs)"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "split out of Polluted Oxygen wherever it lands (Mod 1 Biology), from ContaminatedOxygen's machine sources (oni-flagship-mods/mod1-thermo-fluid/Biology.cs)"
+     ]
+    }
+   }
+  },
+  "TinGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "TungstenGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenTungsten (heated) <- Katairite (heated)"
+    },
+    "geyser": {
+     "via": "MoltenTungsten (heated)"
+    },
+    "living": {
+     "via": "MoltenTungsten (heated) <- Katairite (heated)"
+    },
+    "machine": {
+     "via": "MoltenTungsten (heated) <- Katairite (heated)"
+    }
+   }
+  },
+  "SulfurDioxide": {
+   "primary": "none",
+   "bins": {}
+  },
+  "ContaminatedOxygen": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc5/worldgen/biomes/KelpForest.yaml, dlc/expansion1/worldgen/biomes/Swamp.yaml, dlc/expansion1/worldgen/features/swamp/AirPocket.yaml +9 more",
+      "SlimeCometConfig.cs (meteor shower)"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "direct": [
+      "GlomConfig.cs"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "SublimationStationConfig.cs"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "chunk.yaml",
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "PotassiumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Neon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SulfurTrioxide": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MagnesiumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "LeadGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenLead (heated) <- Lead (heated)"
+    }
+   }
+  },
+  "ManganeseGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Fallout": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "NuclearWasteCometConfig.cs (meteor shower)"
+     ]
+    },
+    "machine": {
+     "via": "NuclearWaste (heated)"
+    }
+   }
+  },
+  "Syngas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "NickelGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenNickel (heated) <- NickelOre (heated)"
+    }
+   }
+  },
+  "CalciumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "SodiumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "IronGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenIron (heated) <- Iron (heated)"
+    },
+    "geyser": {
+     "via": "MoltenIron (heated)"
+    },
+    "living": {
+     "via": "MoltenIron (heated) <- Rust (heated)"
+    },
+    "machine": {
+     "via": "MoltenIron (heated) <- IronOre (heated)"
+    }
+   }
+  },
+  "Xenon": {
+   "primary": "none",
+   "bins": {}
+  },
+  "IridiumGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenIridium (heated) <- Iridium (heated)"
+    }
+   }
+  },
+  "PhosphorusGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "LiquidPhosphorus (heated) <- Phosphorite (heated)"
+    },
+    "living": {
+     "via": "LiquidPhosphorus (heated) <- Phosphorite (heated)"
+    },
+    "machine": {
+     "via": "LiquidPhosphorus (heated) <- Phosphorite (heated)"
+    }
+   }
+  },
+  "LithiumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "CarbonDioxide": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/CarrotQuarry.yaml, dlc/dlc2/worldgen/biomes/IceCaves.yaml, dlc/dlc2/worldgen/features/icecaves/SnowCave.yaml +37 more",
+      "BaseCometConfig.cs (meteor shower), DieselMooCometConfig.cs (meteor shower), FullereneCometConfig.cs (meteor shower), IridiumCometConfig.cs (meteor shower) +1 more"
+     ]
+    },
+    "geyser": {
+     "direct": [
+      "GeyserGenericConfig.cs"
+     ]
+    },
+    "living": {
+     "direct": [
+      "BaseCometConfig.cs, BeanPlantConfig.cs, BlueGrassConfig.cs, DieselMooConfig.cs +2 more"
+     ]
+    },
+    "machine": {
+     "direct": [
+      "CampfireConfig.cs, EthanolDistilleryConfig.cs, FoodDehydratorConfig.cs, GourmetCookingStationConfig.cs +6 more"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "chunk.yaml",
+    "events",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  },
+  "CopperGas": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "via": "MoltenCopper (heated) <- Cuprite (heated)"
+    },
+    "geyser": {
+     "via": "MoltenCopper (heated)"
+    }
+   }
+  },
+  "IndiumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "MolybdenumGas": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Void": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: worldgen/biomes/Misc.yaml, worldgen/features/Geode.yaml",
+      "AlgaeCometConfig.cs (meteor shower), FoodCometConfig.cs (meteor shower), LightDustCometConfig.cs (meteor shower), PhosphoricCometConfig.cs (meteor shower) +2 more"
+     ]
+    }
+   }
+  },
+  "COMPOSITION": {
+   "primary": "none",
+   "bins": {}
+  },
+  "Vacuum": {
+   "primary": "natural",
+   "bins": {
+    "natural": {
+     "direct": [
+      "worldgen: dlc/dlc2/worldgen/biomes/Magma.yaml, dlc/dlc2/worldgen/biomes/Misc.yaml, dlc/dlc2/worldgen/features/icecaves/MetalBlob.yaml +20 more"
+     ]
+    }
+   },
+   "found_in": [
+    "bases",
+    "events",
+    "geysers",
+    "interiors",
+    "poi",
+    "space (rocket harvest)",
+    "storytraits"
+   ]
+  }
+ }
+}
